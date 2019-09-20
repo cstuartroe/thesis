@@ -2,4 +2,8 @@
 *.log
 *.out
 *.synctex.gz
+*.bbl
+*.blg
+*.sav
+*.bak
 .idea
