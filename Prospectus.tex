@@ -1,0 +1,67 @@
+\documentclass{article} 
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{multicol}
+\setlength\parindent{0pt}
+\usepackage{fancyhdr}
+\usepackage{centernot}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+
+\pagestyle{fancy}
+\lhead{Conor Stuart Roe}
+\rhead{\today}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+\urlstyle{same}
+
+\title{Prospectus \& Annotated Bibliography}
+\author{Conor Stuart Roe}
+\date{\today}
+
+\begin{comment}
+\begin{tabular}{|c|c|c|c|}|}
+\hline
+\backslashbox{y}{x} & 0 & 1 & 2\\
+\hline \hline
+0 & 0 & 3 & 6 \\
+\hline
+1 & 5 & 8 & 11 \\
+\hline
+\end{tabular}
+\end{comment}
+
+\begin{document}
+\thispagestyle{empty}
+\maketitle
+
+\section*{Prospectus}
+
+In highly inflected languages, a very high proportion of specific word forms appearing in a corpus may be hapax legomena, only appearing once. This presents a challenge for language technology which seeks to grammatically annotate texts, or linguists who wish to predict unattested forms. Where thousands of inflected forms are possible for a given lemma or where a large body of vocabulary needs to be analyzed, manual annotation of inflected forms is impractical and rule-based approaches may be difficult to produce and of limited reliability, depending on morphophonological and orthographic complexity or morphological irregularity. \\
+
+In order to generate a system capable of predicting inflections or grammatical tags that covers a broad scope of vocabulary, a machine learning approach may be useful. If data about the inflectional categories of a language and some supervised learning examples of inflected forms with full inflectional annotation can be provided, it should be possible to use deep learning to infer unseen grammatical forms or grammatical annotations. \\
+
+Such a tool would have the greatest usefulness for highly inflected languages for which existing resources are limited. However, it can only be effectively tested on languages with sufficient data about grammatical paradigms of a large body of vocabulary, so that test data can be used to assess model competence. In the interest of ensuring that a cross-linguistically useful approach is produced, I propose supplying an algorithm with supervised data for several languages and assessing its competence on each. For identifying such test languages I propose three criteria: moderate to high morphological complexity, transparent orthography, and sufficient corpus and grammatical data. Languages I have in mind that may fit the project are Spanish, Russian, Turkish, and Hungarian. \\
+
+The steps involved in building this approach include a literature review of existing tools for morphological inference; the specification, identification, and formatting of training data; the proposition of an algorithmic design; and the implementation, assessment, and iterative revision of that algorithm. \\
+
+I have already begun reading some papers that broadly cover computational morphology, including part of speech tagging, segmentation of non-space-delineated languages, disambiguating morphological categories, and unsupervised morphology induction, but I need to find more materials related specifically to supervised morphology induction. I will try to identify and annotate a significant part of my literature by Week 3. \\
+
+For my training data, I need to gather inflectional paradigms from online dictionaries, as well as wordlists or simple texts to identify unknown grammatical inflections, in several languages. The identification of materials should take place by week 2; the extraction and reformatting can wait until the algorithmic implementation stage. \\
+
+The proposition of an algorithmic design will take much of my time this semester, and may require that I gather additional literature about the deep learning architectures I'm considering. Implementation can take place in the spring. \\
+
+\section*{Annotated Bibliography}
+
+
+
+
+\end{document}
