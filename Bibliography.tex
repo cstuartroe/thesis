@@ -1,0 +1,168 @@
+\documentclass[12pt]{report}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{centernot}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{bibentry}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1.5in}
+
+\pagestyle{headings}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+\urlstyle{same}
+
+\nobibliography*
+
+\title{Annotated Bibliography}
+\author{Conor Stuart Roe}
+\date{\today}
+
+\renewcommand{\baselinestretch}{1.5}
+\setlength\parindent{0pt} 
+
+\begin{comment}
+\begin{tabular}{|c|c|c|c|}|}
+\hline
+\backslashbox{y}{x} & 0 & 1 & 2\\
+\hline \hline
+0 & 0 & 3 & 6 \\
+\hline
+1 & 5 & 8 & 11 \\
+\hline
+\end{tabular}
+\end{comment}
+
+\begin{document}
+\maketitle
+\thispagestyle{headings}
+
+\bibentry{Dreyer2008}
+
+\begin{itemize}
+	
+	\item This paper introduces a new method of training weighted finite state machines for the task of string transduction. It operates over a space of string alignments and characterwise latent variables, allows the construction of task-specific feature templates to reduce search space in training. 
+	
+	\item Their method, applied to morphological transformation tasks, improved over string transduction models lacking latent variables. However, as presented in this study, they only trained for specific form-to-form transductions; to apply this method to morphological paradigm completion would require substantive adaptations. To use training data, a way would be needed of incorporating origin morphological information as part of a string. To produce an target form, predictions based on all known forms would need to be synthesized. A single canonical lemma could be used as the basis of all transformations, but depending on language it would be very likely impossible to choose such a form that implies all relevant paradigmatic information.
+	
+\end{itemize}
+
+\bibentry{Durrett2013}
+
+\begin{itemize}
+	
+	\item The goal of this paper is very similar to my project - generating whole morphological paradigms. Their dataset is also one morphological paradigm each from a few languages, pulled from Wiktionary, validating my choice of data structure and sourcing.
+	
+	\item they introduce a very interesting alternative to simple Levenshtein distance for string alignment, weighting matched characters based on how often they match across a paradigm, encouraging consistent/intuitive alignments. The paper ignores words with space-separated forms.
+	
+	\item They have an interesting feature model, which picks up on spans of $n$ characters in a word to help determine what rules to apply. Their actual model is a "Semi-Markov Model," not a deep learning approach. 
+	
+\end{itemize}
+
+\bibentry{DosSantos2014}
+
+\begin{itemize}
+
+	\item This paper is one of the closest I've found to my own project idea. They use a convolutional neural architecture on character embeddings, in additional to more typical word vector embeddings, to extract a piece of morphological category information, namely part of speech. They claim to have surpassed other means of part of speech tagging, attaining up to 97\% accuracy. At the moment I don't fully understand their convolutional neural architecture, but it appears to be a promising method for extracting morphological information from words.
+	
+	\item I have two main concerns in adapting their methodlogy. The first is whether comparable results can be achieved with character embeddings alone, as opposed to the addition of word embeddings, which would require conducting SkipGram or a similar method on a plaintext corpus. The second is whether their convolutional architecture can be made bidirectional without introducing new limitations.
+
+\end{itemize}
+
+\bibentry{Hulden2014}
+
+\begin{itemize}
+	
+	\item This paper has an interesting set of goals and an expansive, flexible range of use cases. They designed a system whose rules would be human-readable and easily able to be reviewed and corrected by a linguist. In addition to completing morphological paradigms, goals they identify include lemmatizing inflected forms with in order to construct a lexicon, and generalizing inflection of all words a small set of paradigms (e.g., "ar", "er", and "ir" verbs in Spanish).
+	
+	\item The methodology does not use any type of deep learning, simply string pattern matching. It builds templates using "variables" containing lexically-specific substrings, and collapses exactly matching paradigms. This method clearly does not favor any broad type of inflection - prefixing, suffixing, or non-concatenative. Its variable model may provide a way to represent reduplication effectively. However, I would worry about its flexibility to learn phonological alternations; when more than one regular morphophonological process is at work in a single paradigm, as in Finnish gradation or Turkish harmony and consonant voicing alternation, this model may be forced to create an exponentially larger body of paradigms. This can be seen in the model's worse performance on Finnish relative to German and Spanish - I'd bet that some languages would be very incompatible with it. I'm also unclear on how it handles very irregular forms.
+	
+	\item Part of what makes this method more readable to a linguist also makes it more rigid - its output looks more like whole inflection patterns that might be specified in a textbook, but it doesn't seem easily able to build an inflection table from the composition of several types of transformations.
+	
+	\item This paper evaluates its proposed methodology via the same experiment with Wiktionary data as Durrett \& DeNero 2013 (\cite{Durrett2013}). This might be a good benchmark for me as well. They also run an experiment on identifying the paradigm of words seen in a POS-annotated text corpus.
+	
+\end{itemize}
+
+\bibentry{Nicolai2015}
+
+\begin{itemize}
+	
+	\item This paper builds on the work of Hulden et. al. 2014 (\cite{Hulden2014}) and Durrett \& DeNero 2013 (\cite{Durrett2013}), with a few key differences. It allows for common character transformations - a character remaining unchanged over a paradigm is only regarded as a particular, common case of transformation. It uses a Semi-Markov model like Durrett \& DeNero.
+	
+	\item They use the experimental Wiktionary data set that Durrett \& DeNero introduced.
+	
+\end{itemize}
+
+\bibentry{Soricut2015}
+
+\begin{itemize}
+
+	\item The authors present a means of induction of morphological alternations that uses only an unannotated monolingual corpus. They claim in addition that it works well across languages and language families, predicts unseen forms, discovers the semantic content of morphological categories, and identify which pairs of words are actually morphologically related, as opposed to being spuriously similar. My main points of skepticism are the simplistic manner of morphological modeling (simple one-to-one prefix and suffix alternation) and the claim that meaningful semantic information can be inferred.
+	
+	\item Perhaps the simplicity of the morphological model provides room for my project to build on. If I can build a more sophisticated morphological pattern recognizer, it would be interesting to try plugging it into their algorithm in some way.
+
+\end{itemize}
+
+\bibentry{Cotterell2016}
+
+\begin{itemize}
+	
+	\item The task in this paper is very similar to what I'd like to accomplish - given any inflected form of a word, "re-inflect" it in a specified way. That is, replace all current inflection with inflection for a new set of categories. Their approach is very similar to what I initially imagined: a recurrent neural network architecture design to work cross-linguistically (they tested their system on ten languages, including all four I am considering using). 
+	
+	\item Their system does a similar task to one direction of my idea, transforming a set of morphological categories and a lemma into a correct inflected form. It does not, however, do the reverse, and MacKay et. al. 2018 among others make me think that adapting their system to be bidirectional might not be straightforward. Tackling the challenge of bidirectionality with this type of system might be an interesting research niche for me to follow. 
+	
+	\item Other interesting directions they name for future research include generating entire morphological paradigms, analyzing reduplicating morphology, and analyzing derivational morphology. The last idea might tie in nicely with Dos Santos and Zadrozny 2014.
+	
+	\item One thing I found very interesting about their approach is that their output is a sequence of string edits, which transform the input word to the output, rather than directly producing an output word. 
+	
+	\item A valuable piece of information they provide is a statistical analysis, separate from their main work, of how frequently their subject languages were prefixing, suffixing, and apophonic. According to their data, the four languages I named as possible subjects (Spanish, Turkish, Russian, and Hungarian), are all extremely suffixing. It might be valuable for me to incorporate less purely suffixing languages, such as Maltese or Navajo.
+	
+\end{itemize}
+
+\bibentry{Belinkov2017}
+
+\begin{itemize}
+
+	\item Here, the authors present a means of assessing the inferences that neural machine translation systems make about morphology, and draw several conclusions. Least surprisingly, a convolutional neural network operating over character embeddings learns morphological patterns much more effectively than a system using word embeddings. They also claim that lower network layers carry more morphological information, and that having a morphologically poor target language actually improves the system's learning of source language morphology.
+	
+	\item Some of the conclusions here are potentially very relevant to me, specifically the notes about which parts of a neural network architecture are best suited to learn morphology. I need to read more about the convolutional architecture they use to analyze character embeddings - dealing with character embeddings will be one of the most important tasks of my project.
+
+\end{itemize}
+
+\bibentry{MacKay2018}
+
+\begin{itemize}
+
+	\item To achieve the goal of producing a system which can both provide a morphological analysis given a word and vice versa, I'd need a deep learning system which can be used bidirectionally. That is, such an architecture would need to be able to accept either end as input and produce output from the other, without loss of information. 
+	
+	\item Here, a class of reversible, non-forgetting RNN architectures is presented, which has been designed for another goal - to avoid the memory-intensive backpropagation step of standard LSTM and GRU RNNs. The authors claim to demonstrate severe limitations of this class - inability to forget information means that reversible RNNs simply become overloaded on too long an input. These concerns do not apply to my project because my input sizes will be limited, reducing the memory burden of backpropagation or a no-forgetting architecture, so this model may be a good fit.
+	
+	\item The authors also cite Gomez et. al. 2017\cite{Gomez2017} in saying of residual neural networks: "Because this mapping is reversible with an easily computable Jacobian determinant, maximum likelihood training is efficient." Reversible residual networks sounds like a more developed area; if I can accomplish my goals with a residual neural network, that may be simpler.
+
+\end{itemize}
+
+\bibentry{WolfSonkin2018}
+
+\begin{itemize}
+	
+	\item This paper definitely takes a different strategy than I'm planning on, using an unannotated text corpus as training data and predicting morphological forms at the level of whole words. However, it uses a few interesting architectural features I might find useful, namely LSTM (which it only describes via reference) and wake-sleep (a manner of abstracting surface forms from underlying representations that I may find useful).
+	
+\end{itemize}
+
+\bibliographystyle{plain}
+\bibliography{sources}
+
+\end{document}
