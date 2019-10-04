@@ -8,7 +8,7 @@
 \usepackage{centernot}
 \usepackage{verbatim}
 \usepackage{hyperref}
-\usepackage{cite}
+\usepackage[noadjust]{cite}
 \usepackage{bibentry}
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
@@ -50,6 +50,16 @@
 \maketitle
 \thispagestyle{headings}
 
+\bibentry{Alexandrescu2006}
+
+\begin{itemize}
+	
+	\item The chief problem that this paper attempts to solve is that neural language models, which operate on vectorized representations of words, cannot produce out-of-vocabulary inflected forms. It seeks to address this by storing its "factors" (pre-defined features of any kind) in separate vector spaces.
+	
+	\item For out-of-vocabulary inputs, a good set of factors will leave many factors derivable from word shape. Unknown factors are produced by averaging those of in-vocabulary words with the same known factors.
+	
+\end{itemize}
+
 \bibentry{Dreyer2008}
 
 \begin{itemize}
@@ -58,6 +68,16 @@
 	
 	\item Their method, applied to morphological transformation tasks, improved over string transduction models lacking latent variables. However, as presented in this study, they only trained for specific form-to-form transductions; to apply this method to morphological paradigm completion would require substantive adaptations. To use training data, a way would be needed of incorporating origin morphological information as part of a string. To produce an target form, predictions based on all known forms would need to be synthesized. A single canonical lemma could be used as the basis of all transformations, but depending on language it would be very likely impossible to choose such a form that implies all relevant paradigmatic information.
 	
+\end{itemize}
+
+\bibentry{Luong2013}
+
+\begin{itemize} 
+	
+	\item This paper seeks to improve on vector-embedding neural language models by building word representations with an RNN from constituent morphemes. With the goal of learning the semantics of affixes, it initializes vector values based on embeddings provided by Collobert et. al. 2011 (\cite{Collobert2011}).
+	
+	\item It assumes the possession of a morphological parser or a morphologically tagged corpus.
+	 
 \end{itemize}
 
 \bibentry{Durrett2013}
@@ -116,6 +136,34 @@
 
 \end{itemize}
 
+\bibentry{Ahlberg2015}
+
+\begin{itemize}
+	
+	\item This is a continuation of the work in Hulden et. al. 2014 (\cite{Hulden2014}, a paper by the same group sometimes referred to in literature as Ahlberg et. al. 2014). The method of abstracting paradigms is the same; the methodology in this paper introduces a new means of predicting the paradigm of a new lexeme via the use of a support-vector machine used on the left and right edges of the citation form.
+	
+	\item They do achieve generally better results than Hulden et. al. 2014 or Durrett \& DeNero 2013 (\cite{Durrett2013}), though in some trials, most notably on Maltese verbs, the performance is significantly hindered by their reliance on guessing a lexeme's paradigm based purely on citation form. In general, almost all the languages that this line of research uses in trials come from a related set of European IE languages, which have fusional, mostly suffixing morphology and on the order of one hundred cells in each paradigm table. I would guess that the methodology presented here would fail on languages which make use of reduplication or more prevalent synchronic morphophonological change, or have larger, agglutinating paradigms; Malay and Navajo come to mind, although unfortunately I lack good data for those languages.
+	 
+\end{itemize}
+
+\bibentry{Faruqui2015}
+
+\begin{itemize}
+	
+	\item I think this paper may represent the transition of the line of work beginning with Durrett \& DeNero 2013 (\cite{Durrett2013}) into neural models. They point out many of the criticisms I've had of those models - their inflexibility with regard to reduplication, segment lengthening, harmony, or other processes which operate based on individual stem features, and/or the artificial data sparsity they impose attempting to deal with those processes.
+	
+	\item A summary of the model: they use an LSTM network with an encoder-decoder architecture, meaning that the entire input is consumed by an encoder to produce a fixed-size representation \textbf{e}, before this is fed into a decoder to produce the output form. At each decoder LSTM step, in addition to transferring the state of the previous step, they feed in \textbf{e}, the input letter matching the current step, and the previous letter of output. I suspect that the left-alignment of output with input favors suffixing languages. They distinguish two variants of their model - a "Factored Model" in which each paradigm cell is learned separately, and a "Joint Model" in which an encoder is shared across paradigm cells.
+	
+	\item "it has been shown that unlabeled data can generally improve the performance of such systems (Ahlberg et al., 2014; Nicolai et al., 2015)." (page 638)
+	
+	\item They experiment with interpolation with a 5-gram character language model with Witten-Bell smoothing.
+	
+	\item An interesting by-product of their model is that it builds vector embeddings for characters, which results in it discovering some aspects of phonology, such as Finnish vowel harmony.
+	
+	\item There is an interesting interplay of word length and accuracy. Surprisingly, Nicolai et. al. 2015 (\cite{Nicolai2015}), Durrett and DeNero 2013 (\cite{Durrett2013}), and this paper all have models which are more accurate on longer words.
+	
+\end{itemize}
+
 \bibentry{Cotterell2016}
 
 \begin{itemize}
@@ -142,6 +190,18 @@
 
 \end{itemize}
 
+\bibentry{Cotterell2017}
+
+\begin{itemize}
+	
+	\item This papers aims to train morphological parsers given small training sets, and constructs a transfer learning scheme to simultaneously train a morphological parser on high-resource and low-resource languages.
+	
+	\item There are two tasks: generating specific inflected forms given sparse training paradigms, and generating whole tables given entire training paradigms. Performance was assessed via form accuracy rate, average form Levenshtein distance, and full paradigm accuracy rate.
+	
+	\item The UniMorph structured inflectional tag system \cite{SylakGlassman2015} \cite{SylakGlassman2015a} \cite{SylakGlassman2016} was used to represent morphological categories across all 52 languages.
+	
+\end{itemize}
+
 \bibentry{MacKay2018}
 
 \begin{itemize}
@@ -150,7 +210,7 @@
 	
 	\item Here, a class of reversible, non-forgetting RNN architectures is presented, which has been designed for another goal - to avoid the memory-intensive backpropagation step of standard LSTM and GRU RNNs. The authors claim to demonstrate severe limitations of this class - inability to forget information means that reversible RNNs simply become overloaded on too long an input. These concerns do not apply to my project because my input sizes will be limited, reducing the memory burden of backpropagation or a no-forgetting architecture, so this model may be a good fit.
 	
-	\item The authors also cite Gomez et. al. 2017\cite{Gomez2017} in saying of residual neural networks: "Because this mapping is reversible with an easily computable Jacobian determinant, maximum likelihood training is efficient." Reversible residual networks sounds like a more developed area; if I can accomplish my goals with a residual neural network, that may be simpler.
+	\item The authors also cite Gomez et. al. 2017 (\cite{Gomez2017}) in saying of residual neural networks: "Because this mapping is reversible with an easily computable Jacobian determinant, maximum likelihood training is efficient." Reversible residual networks sounds like a more developed area; if I can accomplish my goals with a residual neural network, that may be simpler.
 
 \end{itemize}
 
