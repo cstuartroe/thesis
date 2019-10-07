@@ -1,0 +1,173 @@
+%% LLT: Turn off some annoying warnings...
+\RequirePackage{silence}
+\WarningFilter{titlesec}{Non standard sectioning command}
+\WarningFilter{scrreprt}{Usage of package}
+\WarningFilter{scrreprt}{Activating an ugly workaround}
+
+% **************************************************
+% Document Class Definition
+% **************************************************
+\documentclass[%
+	paper=A4,					% paper size --> A4 is default in Germany
+	twoside=false,				% onesite or twoside printing
+	openany,					% doublepage cleaning ends up right side
+	parskip=full,				% spacing value / method for paragraphs
+	chapterprefix=true,			% prefix for chapter marks
+	11pt,						% font size
+	headings=normal,			% size of headings
+	bibliography=totoc,			% include bib in toc
+	listof=totoc,				% include listof entries in toc
+	titlepage=on,				% own page for each title page
+	captions=tableabove,		% display table captions above the float env
+	draft=true,				% value for draft version
+]{scrreprt}%
+
+% **************************************************
+% Debug LaTeX Information
+% **************************************************
+%\listfiles
+
+% **************************************************
+% Information and Commands for Reuse
+% **************************************************
+\newcommand{\thesisTitle}{Morphological Paradigm Completion\\with LSTM Neural Models}
+\newcommand{\thesisName}{Conor Stuart Roe}
+\newcommand{\thesisDate}{\today}
+\newcommand{\thesisVersion}{Draft 0\\Advisor: Jane Chandlee}
+
+
+% **************************************************
+% Load and Configure Packages
+% **************************************************
+\usepackage{subfig}
+\usepackage{booktabs}
+\usepackage[utf8]{inputenc}		% defines file's character encoding
+\usepackage[english]{babel} % babel system, adjust the language of the content
+\usepackage[textsize=footnotesize]{todonotes}   % allows todo notes
+\usepackage[					% clean thesis style
+	figuresep=colon,%
+	sansserif=false,%
+	hangfigurecaption=false,%
+	hangsection=true,%
+	hangsubsection=true,%
+	colorize=full,%
+	colortheme=bluemagenta,%
+% LLT: Use biber if using UTF8 encoding
+ 	bibsys=bibtex,%
+%	bibsys=biber,%
+	bibfile=sources,%
+	bibstyle=authoryear,%
+]{cleanthesis}
+
+% Maroon and grey theme:
+\cthesissetcolor{cmyk}{0, 1, .7, .3}{.7, 1, .7, .3}
+
+\hypersetup{					% setup the hyperref-package options
+%	pdftitle={\thesisTitle},	% 	- title (PDF meta)
+%	pdfsubject={\thesisSubject},% 	- subject (PDF meta)
+%	pdfauthor={\thesisName},	% 	- author (PDF meta)
+%	plainpages=false,			% 	-
+	colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,			% 	- colorize links?
+%	pdfborder={0 0 0},			% 	-
+%	breaklinks=true,			% 	- allow line break inside links
+%	bookmarksnumbered=true,		%
+%	bookmarksopen=true			%
+}
+
+\usepackage{amsthm}
+ 
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[section]
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+
+% **************************************************
+% Document CONTENT
+% **************************************************
+\begin{document}
+
+% --------------------------
+% rename document parts
+% --------------------------
+%\renewcaptionname{ngerman}{\figurename}{Abb.}
+%\renewcaptionname{ngerman}{\tablename}{Tab.}
+\renewcaptionname{english}{\figurename}{Fig.}
+\renewcaptionname{english}{\tablename}{Tab.}
+\setstretch{1.5}
+
+% --------------------------
+% Front matter
+% --------------------------
+\pagenumbering{roman}			% roman page numbing (invisible for empty page style)
+\pagestyle{empty}				% no header or footers
+\input{content/titlepages}		% INCLUDE: all titlepages
+% \cleardoublepage
+
+\pagestyle{plain}				% display just page numbers
+% \input{content/abstract}		% INCLUDE: the abstracts (english and german)
+% \cleardoublepage
+
+% \input{content/acknowledgement} % INCLUDE: acknowledgement
+% \cleardoublepage
+
+\setcounter{tocdepth}{2}		% define depth of toc
+\tableofcontents				% display table of contents
+% \cleardoublepage
+
+% --------------------------
+% Body matter
+% --------------------------
+\pagenumbering{arabic}			% arabic page numbering
+\setcounter{page}{1}			% set page counter
+\pagestyle{maincontentstyle} 	% fancy header and footer
+
+% \input{content/introduction.tex}
+\input{content/litreview.tex}
+\input{content/data.tex}
+% \input{content/problem.tex}
+% \input{content/conclusion.tex}
+%\input{content/append.tex}
+
+%\cleardoublepage
+
+% --------------------------
+% Back matter
+% --------------------------
+{%
+\setstretch{1.1}
+\renewcommand{\bibfont}{\normalfont\small}
+\setlength{\biblabelsep}{0pt}
+\setlength{\bibitemsep}{0.5\baselineskip plus 0.5\baselineskip}
+\printbibliography[nottype=online]
+\printbibliography[heading=subbibliography,title={Webseiten},type=online,prefixnumbers={@}]
+}
+% \cleardoublepage
+
+%\listoffigures
+
+
+% % \listoftables
+% \cleardoublepage
+
+% % \input{content/colophon}
+% \cleardoublepage
+
+% \input{content/declaration}
+
+% \newpage
+% \mbox{}
+
+% **************************************************
+% End of Document CONTENT
+% **************************************************
+\end{document}
