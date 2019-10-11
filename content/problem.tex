@@ -1,7 +1,23 @@
-% !TEX root = ../thesis-example.tex
-%
 \chapter{Potential research directions}
 
+\section{Research gaps}
 
+The research so far has been conducted on a fairly comprehensive set of languages, covering many language families and types of grammatical inflection. However, there are areas that stand out as gaps, many of which have been noted as potential research directions for the field. \\
 
- 
+\subsection{Highly synthetic languages and large paradigms}
+
+Although certain highly synthetic languages such as Navajo have been modeled, the grammatical paradigms of those languages have not been modeled in their entirety. The data sources used, primarily Wiktionary, segment paradigms, and certain grammatical dimensions are either treated as lexical or simply not listed. For instance, in Wiktionary's Navajo data, only subject agreement patterns are explicitly given; tables may be listed for a few aspects, but most aspectual categories, as well as object agreement, thematic and classifier distinctions are not given. The paradigms trained in existing SIGMORPHON tasks are limited to 100-200 forms at the most, even though there are paradigms in some languages an order of magnitude or more greater. The chief challenges in using larger paradigms include producing them manually and handling the much larger sets of individual forms they entail. 
+
+\subsection{Less paradigmatic morphology}
+
+There has also been no real exploration into less paradigmatic types of morphology, including cliticization and more compositional or derivational morphology. Highly synthetic languages such as the Inuit languages, of a type that rely more on compositional morphology and other strategies like noun incorporation, would have no way of being effectively modeled given the current scope of research.
+
+The major hurdle in modeling less paradigmatic morphology, similar to very large paradigms, is acquiring and structuring data. Existing datasets of these types are much harder to find, and some reliance on unannotated text corpora is probably necessary. Thus, any research in these directions must concern itself with new strategies for data acquisition and labeling.
+
+\subsection{Transfer learning pairs}
+
+A last area is more pointedly investigating the effectiveness of transfer learning pairs. Only 79 transfer pairs have been tested, while the possibility space of transfer learning pairs is much larger than that of individual languages. A further advantage of this research question is that data already exists - it's only a matter of combining pairs of the many existing structured paradigm training sets. Since the 2019 shared task explicitly focused on related language pairs, there is room to conduct testing of unrelated pairs, and hopefully learn more about what factors other than genetic relation can make for effective transfer learning pairs. Such a research question has a real-world justification as well - many currently under-resourced languages are not closely related to major world languages, and if modeling of those languages can benefit from large existing datasets, the language technology toolkits for those language communities could see considerable improvement. Such an investigation would be aided by a dataset of typological information about the languages for which training data exists, so that regular patterns in transfer learning effectiveness can be identified. Much of this information can probably be derived from typological databases such as WALS, though the dataset may need to be manually constructed to some degree. Fortunately, it would be much smaller than most NLP datasets!
+
+\section{Research proposal}
+
+My choice of research direction will ultimately depend on the nature of the data that I can locate, but investigating transfer learning is the most straightforward direction from a data acquisition perspective. In the coming week, I will conduct a concerted search for useful datasets, but in the meantime I tentatively propose constructing a typological dataset specific to the SIGMORPHON 2018 languages, and using it to identify gaps in the transfer learning tests to date and explore which types of such pairs are most effective.

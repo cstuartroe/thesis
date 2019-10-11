@@ -52,9 +52,9 @@
 	hangsubsection=true,%
 	colorize=full,%
 	colortheme=bluemagenta,%
-% LLT: Use biber if using UTF8 encoding
- 	bibsys=bibtex,%
-%	bibsys=biber,%
+ LLT: Use biber if using UTF8 encoding
+	bibsys=bibtex,%
+	bibsys=biber,%
 	bibfile=sources,%
 	bibstyle=authoryear,%
 ]{cleanthesis}
@@ -62,6 +62,18 @@
 % Maroon and grey theme:
 \cthesissetcolor{cmyk}{0, 1, .7, .3}{.7, 1, .7, .3}
 
+\usepackage{amsthm}
+ 
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[section]
+ \usepackage{algorithm}
+ \usepackage{algpseudocode}
+ \usepackage{mathtools}
+ \usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
 \hypersetup{					% setup the hyperref-package options
 %	pdftitle={\thesisTitle},	% 	- title (PDF meta)
 %	pdfsubject={\thesisSubject},% 	- subject (PDF meta)
@@ -77,19 +89,7 @@
 %	bookmarksopen=true			%
 }
 
-\usepackage{amsthm}
- 
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}
-\theoremstyle{theorem}
-\newtheorem{theorem}{Theorem}[section]
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{mathtools}
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage{hyperref}
-
+\urlstyle{same}
 
 % **************************************************
 % Document CONTENT
@@ -111,9 +111,9 @@
 \pagenumbering{roman}			% roman page numbing (invisible for empty page style)
 \pagestyle{empty}				% no header or footers
 \input{content/titlepages}		% INCLUDE: all titlepages
-% \cleardoublepage
+ \cleardoublepage
 
-\pagestyle{plain}				% display just page numbers
+%\pagestyle{plain}				% display just page numbers
 % \input{content/abstract}		% INCLUDE: the abstracts (english and german)
 % \cleardoublepage
 
@@ -122,7 +122,7 @@
 
 \setcounter{tocdepth}{2}		% define depth of toc
 \tableofcontents				% display table of contents
-% \cleardoublepage
+ \cleardoublepage
 
 % --------------------------
 % Body matter
@@ -134,7 +134,7 @@
 % \input{content/introduction.tex}
 \input{content/litreview.tex}
 \input{content/data.tex}
-% \input{content/problem.tex}
+\input{content/problem.tex}
 % \input{content/conclusion.tex}
 %\input{content/append.tex}
 
@@ -151,7 +151,7 @@
 \printbibliography[nottype=online]
 \printbibliography[heading=subbibliography,title={Webseiten},type=online,prefixnumbers={@}]
 }
-% \cleardoublepage
+ \cleardoublepage
 
 %\listoffigures
 
