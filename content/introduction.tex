@@ -1,9 +1,24 @@
 \chapter{Introduction}
 \label{introduction}
 
-\section{Section Name}
+In linguistics, morphology refers to alterations to words to reflect changes in meaning or grammatical category. For example, English verbs have differing morphological forms to indicate the simple present and simple past tenses, e.g., \textit{show} $\rightarrow$ \textit{showed}, \textit{see} $\rightarrow$ \textit{saw}, etc. \parencite{Dreyer2008}. Grammatical inflection in particular has a tendency to be structured into \textbb{paradigms} - sets of all possible morphological forms that words of a certain type can take on, often shown arrayed in tables. The table below gives part of the paradigm for the verb \textit{to see}:
 
-\subsection{Subsection Name}
+\begin{tabular}{|c||c|c|c|c|}
+\hline
+& \multicolumn{2}{c|}{simple} & \multicolumn{2}{c|}{progressive} \\
+\hline
+& 3rd singular & 3rd plural & 3rd singular & 3rd plural \\
+\hline \hline
+present & (she) \textbf{sees} & (they) \textbf{see} & (she) \textbf{is seeing} & (they) \textbf{are seeing} \\
+\hline 
+past & (she) \textbf{saw} & (they) \textbf{saw} & (she) \textbf{was seeing} & (they) \textbf{were seeing} \\
+\hline
+\end{tabular}
 
+Historically, in language technologies and modeling, morphology has been somewhat under-emphasized. This is probably due at least in part to the dominance of English in language technology research, and its below-average morphological complexity \parencite{Cotterell2017}. English lexemes tend to have few grammatically inflected forms compared to in most other languages. This means that in machine learning models which are given an English training corpus and then tested on new material, the occurrence of \textit{out-of-vocabulary} (OOV) inflected forms - that is, forms in the test data that never occur in the training data - are less frequent. 
 
+Moreover, as can be seen above, many English grammatical forms are periphrastic, using several words to construct a single inflected form. This means that even with grammatical information removed via lemmatization, the process of reducing words to their citation form, an English sentence may still be fairly understandable. (The \textit{citation form} of a lexeme is the form under which it would appear in a dictionary: \textit{see}, \textit{sees}, \textit{seeing}, and \textit{saw} all belong to the same lexeme, with the citation form \textit{see}.) For instance, given a sentence \textit{she have see it} whose words have been lemmatized, a proficient reader of English can guess that the original sentence was \textit{she has seen it} or \textit{she had seen it}; not much information is lost.
 
+However, in many languages grammatical inflection carries much more semantic burden, and the number of possible inflected forms can be much greater. For instance, a single verb in the Archi language can be inflected in 1,725 ways \parencite{Kibrik1994}. For such highly inflected languages, data sparsity is a significant problem for language models naive to morphology. In languages with a high number of possible forms per lexeme, a much larger number OOV forms are inevitably encountered in test data, requiring reliance on a model's representation of OOV words. Even inflected forms that do occur in training data may not appear often enough for a naive model to understand their semantic content. A model that considers grammatical categories separately is better able to understand the semantic content of inflected words \parencite{Cotterell2016}. It has been empirically shown that comprehending grammatical categories and inflection improves accuracy rates in language modeling and machine translation \parencite{Faruqui2015}.
+
+To this end, an ongoing body of research in the last few years has attempted to apply machine learning to various tasks related to morphological analysis and generation. Very high accuracy rates have been achieved in tasks related to predicting grammatical inflection for many languages, but gaps in current capabilities exist.
