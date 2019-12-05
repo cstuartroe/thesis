@@ -1,9 +1,10 @@
 import sys
 
-from code import WALS, calculate
+from code import WALS, unimorph, calculate
 
 DISPATCH = {
     "WALS": WALS.pull,
+    "unimorph": unimorph.pull,
     "calculate": calculate.calculate
 }
 
