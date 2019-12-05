@@ -1,101 +1,101 @@
 Source Language,Target Language,Distance,Baseline Accuracy,Best Transfer Accuracy,Accuracy Improvement,Best Accuracy Team,Baseline Levenshtein,Best Transfer Levenshtein,Levenshtein Improvement,Best Levenshtein Team
-ady,kbd,Closely related,96.0,97.0,1.0,Tuebingen-02,0.04,0.03,-0.010000000000000002,Tuebingen-02
-aln,bre,Distantly related,40.0,81.0,41.0,CMU-03,1.3,0.44,-0.8600000000000001,it-ist-02
+ady,kbd,Closely related,96.0,97.0,1.0,Tuebingen-02,0.04,0.03,-0.01,Tuebingen-02
+aln,bre,Distantly related,40.0,81.0,41.0,CMU-03,1.3,0.44,-0.86,it-ist-02
 arb,syc,Closely related,66.0,92.0,26.0,CMU-03,0.46,0.1,-0.36,CMU-03
-arb,mlt,Closely related,31.0,41.0,10.0,CMU-03,1.42,1.37,-0.04999999999999982,CMU-03
+arb,mlt,Closely related,31.0,41.0,10.0,CMU-03,1.42,1.37,-0.05,CMU-03
 arb,tuk,Unrelated,74.0,84.0,10.0,CMU-03,0.46,0.32,-0.14,CMU-03
-hye,kbd,Unrelated,83.0,87.0,4.0,it-ist-01,0.21,0.14,-0.06999999999999998,CMU-03/it-ist-01
+hye,kbd,Unrelated,83.0,87.0,4.0,it-ist-01,0.21,0.14,-0.07,CMU-03/it-ist-01
 ast,oci,Closely related,48.0,77.0,29.0,CMU-03,1.74,0.8,-0.94,it-ist-01
 bak,azj,Distantly related,39.0,69.0,30.0,it-ist-02,1.64,0.69,-0.95,it-ist-02
-bak,crh,Closely related,70.0,70.0,0.0,CMU-03,0.39,0.42,0.02999999999999997,CMU-03
+bak,crh,Closely related,70.0,70.0,0.0,CMU-03,0.39,0.42,0.03,CMU-03
 bak,kaz,Closely related,80.0,90.0,10.0,it-ist-01,0.32,0.1,-0.22,it-ist-01
-bak,kjh,Distantly related,86.0,96.0,10.0,it-ist-02,0.18,0.04,-0.13999999999999999,it-ist-02
+bak,kjh,Distantly related,86.0,96.0,10.0,it-ist-02,0.18,0.04,-0.14,it-ist-02
 bak,tat,Closely related,68.0,74.0,6.0,it-ist-02,0.46,0.33,-0.13,CMU-03
-bak,tuk,Distantly related,94.0,88.0,-6.0,it-ist-01,0.1,0.12,0.01999999999999999,it-ist-01
+bak,tuk,Distantly related,94.0,88.0,-6.0,it-ist-01,0.1,0.12,0.02,it-ist-01
 eus,csb,Unrelated,40.0,76.0,36.0,CMU-03,1.16,0.42,-0.74,CMU-03
-bel,Old Irish,Distantly related,2.0,10.0,8.0,CMU-03,3.9,3.14,-0.7599999999999998,CMU-03
-ben,ell,Distantly related,17.7,74.6,56.89999999999999,CMU-03,2.86,0.59,-2.27,CMU-03
-bul,chu,Closely related,44.0,56.0,12.0,CMU-03,1.14,1.06,-0.07999999999999985,CMU-03
+bel,Old Irish,Distantly related,2.0,10.0,8.0,CMU-03,3.9,3.14,-0.76,CMU-03
+ben,ell,Distantly related,17.7,74.6,56.9,CMU-03,2.86,0.59,-2.27,CMU-03
+bul,chu,Closely related,44.0,56.0,12.0,CMU-03,1.14,1.06,-0.08,CMU-03
 ces,csb,Closely related,52.0,78.0,26.0,CMU-03,0.84,0.36,-0.48,CMU-03
 ces,lat,Distantly related,8.4,42.0,33.6,CMU-03,2.95,1.36,-1.59,CMU-03
 dan,Middle High German,Closely related,72.0,82.0,10.0,it-ist-02,0.5,0.38,-0.12,it-ist-02
-dan,Middle Low German,Closely related,36.0,44.0,8.0,it-ist-01,1.44,1.26,-0.17999999999999994,it-ist-01
-dan,frr,Closely related,28.0,46.0,18.0,CMU-03,2.78,2.11,-0.6699999999999999,CMU-03
-dan,fry,Closely related,42.0,43.0,1.0,CMU-03,1.57,1.27,-0.30000000000000004,it-ist-02
-dan,ydd,Closely related,76.0,67.0,-9.0,it-ist-01,0.91,0.72,-0.19000000000000006,Tuebingen-01
-nld,Middle High German,Closely related,76.0,78.0,2.0,it-ist-01/it-ist-02,0.44,0.36,-0.08000000000000002,it-ist-02
-nld,Middle Low German,Closely related,42.0,52.0,10.0,it-ist-02,1.34,1.16,-0.18000000000000016,it-ist-02
-nld,frr,Closely related,32.0,46.0,14.0,CMU-03,2.67,1.99,-0.6799999999999999,CMU-03
-nld,fry,Closely related,38.0,51.0,13.0,it-ist-02,2.18,1.18,-1.0000000000000002,it-ist-02
-nld,ydd,Closely related,78.0,64.0,-14.0,it-ist-01,0.53,0.72,0.18999999999999995,Tuebingen-01
-eng,mwf,Unrelated,22.0,42.0,20.0,it-ist-02,1.68,1.1,-0.5799999999999998,it-ist-02
-eng,frr,Closely related,31.0,42.0,11.0,CMU-03,2.73,2.22,-0.5099999999999998,it-ist-02
-eng,fry,Closely related,35.0,43.0,8.0,CMU-03,1.48,1.26,-0.21999999999999997,it-ist-02
-est,izh,Closely related,30.0,44.0,14.0,it-ist-02,1.56,1.24,-0.32000000000000006,it-ist-02
-est,krl,Closely related,74.0,68.0,-6.0,it-ist-01,0.52,0.62,0.09999999999999998,it-ist-02
-est,liv,Closely related,36.0,40.0,4.0,it-ist-02,1.87,1.47,-0.40000000000000013,it-ist-02
-est,vot,Closely related,25.0,35.0,10.0,it-ist-01,1.55,1.17,-0.3800000000000001,it-ist-02
-fin,izh,Closely related,54.0,48.0,-6.0,it-ist-02,1.08,1.2,0.11999999999999988,it-ist-02
-fin,krl,Closely related,70.0,78.0,8.0,it-ist-01,0.64,0.42,-0.22000000000000003,it-ist-01
+dan,Middle Low German,Closely related,36.0,44.0,8.0,it-ist-01,1.44,1.26,-0.18,it-ist-01
+dan,frr,Closely related,28.0,46.0,18.0,CMU-03,2.78,2.11,-0.67,CMU-03
+dan,fry,Closely related,42.0,43.0,1.0,CMU-03,1.57,1.27,-0.3,it-ist-02
+dan,ydd,Closely related,76.0,67.0,-9.0,it-ist-01,0.91,0.72,-0.19,Tuebingen-01
+nld,Middle High German,Closely related,76.0,78.0,2.0,it-ist-01/it-ist-02,0.44,0.36,-0.08,it-ist-02
+nld,Middle Low German,Closely related,42.0,52.0,10.0,it-ist-02,1.34,1.16,-0.18,it-ist-02
+nld,frr,Closely related,32.0,46.0,14.0,CMU-03,2.67,1.99,-0.68,CMU-03
+nld,fry,Closely related,38.0,51.0,13.0,it-ist-02,2.18,1.18,-1.0,it-ist-02
+nld,ydd,Closely related,78.0,64.0,-14.0,it-ist-01,0.53,0.72,0.19,Tuebingen-01
+eng,mwf,Unrelated,22.0,42.0,20.0,it-ist-02,1.68,1.1,-0.58,it-ist-02
+eng,frr,Closely related,31.0,42.0,11.0,CMU-03,2.73,2.22,-0.51,it-ist-02
+eng,fry,Closely related,35.0,43.0,8.0,CMU-03,1.48,1.26,-0.22,it-ist-02
+est,izh,Closely related,30.0,44.0,14.0,it-ist-02,1.56,1.24,-0.32,it-ist-02
+est,krl,Closely related,74.0,68.0,-6.0,it-ist-01,0.52,0.62,0.1,it-ist-02
+est,liv,Closely related,36.0,40.0,4.0,it-ist-02,1.87,1.47,-0.4,it-ist-02
+est,vot,Closely related,25.0,35.0,10.0,it-ist-01,1.55,1.17,-0.38,it-ist-02
+fin,izh,Closely related,54.0,48.0,-6.0,it-ist-02,1.08,1.2,0.12,it-ist-02
+fin,krl,Closely related,70.0,78.0,8.0,it-ist-01,0.64,0.42,-0.22,it-ist-01
 fin,liv,Closely related,22.0,34.0,12.0,CMU-03/it-ist-01,2.48,1.71,-0.77,it-ist-01
-fin,vot,Closely related,42.0,40.0,-2.0,it-ist-02,1.25,1.02,-0.22999999999999998,it-ist-02
+fin,vot,Closely related,42.0,40.0,-2.0,it-ist-02,1.25,1.02,-0.23,it-ist-02
 fra,oci,Closely related,50.0,80.0,30.0,CMU-03,1.22,0.69,-0.53,it-ist-01
 deu,Middle High German,Closely related,72.0,82.0,10.0,CMU-03,0.44,0.32,-0.12,it-ist-02
-deu,Middle Low German,Closely related,42.0,52.0,10.0,it-ist-02,1.24,1.16,-0.08000000000000007,it-ist-02
-deu,ydd,Closely related,77.0,68.0,-9.0,it-ist-01,0.46,0.72,0.25999999999999995,Tuebingen-01
-ell,ben,Distantly related,51.0,67.0,16.0,CMU-03,1.21,1.02,-0.18999999999999995,CMU-03
-heb,syc,Closely related,89.0,95.0,6.0,CMU-03,0.14,0.06,-0.08000000000000002,CMU-03
-heb,mlt,Closely related,37.0,47.0,10.0,CMU-03,1.24,1.1,-0.1399999999999999,CMU-03
-hin,ben,Closely related,54.0,68.0,14.0,CMU-03,1.18,0.72,-0.45999999999999996,UAlberta-02
-hun,izh,Distantly related,12.0,40.0,28.0,it-ist-01,2.6,1.46,-1.1400000000000001,it-ist-01
+deu,Middle Low German,Closely related,42.0,52.0,10.0,it-ist-02,1.24,1.16,-0.08,it-ist-02
+deu,ydd,Closely related,77.0,68.0,-9.0,it-ist-01,0.46,0.72,0.26,Tuebingen-01
+ell,ben,Distantly related,51.0,67.0,16.0,CMU-03,1.21,1.02,-0.19,CMU-03
+heb,syc,Closely related,89.0,95.0,6.0,CMU-03,0.14,0.06,-0.08,CMU-03
+heb,mlt,Closely related,37.0,47.0,10.0,CMU-03,1.24,1.1,-0.14,CMU-03
+hin,ben,Closely related,54.0,68.0,14.0,CMU-03,1.18,0.72,-0.46,UAlberta-02
+hun,izh,Distantly related,12.0,40.0,28.0,it-ist-01,2.6,1.46,-1.14,it-ist-01
 hun,krl,Distantly related,62.0,70.0,8.0,it-ist-02,0.9,0.5,-0.4,it-ist-01
 hun,liv,Distantly related,29.0,44.0,15.0,it-ist-01,2.56,1.81,-0.75,it-ist-02
 hun,vot,Distantly related,19.0,34.0,15.0,it-ist-01,2.47,1.11,-1.36,it-ist-01
 gle,bre,Closely related,39.0,79.0,40.0,CMU-03,1.57,0.38,-1.19,CMU-03
-gle,cor,Closely related,24.0,34.0,10.0,it-ist-01,2.0,1.56,-0.43999999999999995,it-ist-01
-gle,Old Irish,Closely related,2.0,6.0,4.0,it-ist-02,3.3,3.12,-0.17999999999999972,it-ist-02
-gle,gla,Closely related,64.0,66.0,2.0,CMU-03,0.96,1.06,0.10000000000000009,CMU-03
-ita,fur,Closely related,56.0,78.0,22.0,CMU-03,1.03,0.72,-0.31000000000000005,it-ist-02
-ita,lld,Closely related,55.0,74.0,19.0,CMU-03,0.79,0.6,-0.19000000000000006,CMU-03
-ita,mlt,Unrelated,26.0,45.0,19.0,CMU-03,1.39,1.23,-0.15999999999999992,CMU-03
-ita,nap,Closely related,80.0,83.0,3.0,CMU-03,0.4,0.36,-0.040000000000000036,it-ist-02
-kan,tel,Closely related,82.0,94.0,12.0,CMU-03,0.6,0.14,-0.45999999999999996,CMU-03
-kmr,ckb,Closely related,15.0,69.0,54.0,CMU-03,2.56,0.65,-1.9100000000000001,CMU-03
-lat,ces,Distantly related,20.1,71.4,51.300000000000004,CMU-03,2.77,1.14,-1.6300000000000001,CMU-03
-lav,lit,Closely related,17.1,48.4,31.299999999999997,CMU-03,2.21,1.69,-0.52,CMU-03
-lav,gla,Distantly related,48.0,68.0,20.0,CMU-03,1.16,1.0,-0.15999999999999992,CMU-03
-pes,azj,Unrelated,46.0,69.0,23.0,CMU-03,1.35,0.74,-0.6100000000000001,CMU-03
-pes,pst,Closely related,27.0,48.0,21.0,CMU-03,1.7,1.54,-0.15999999999999992,CMU-03
+gle,cor,Closely related,24.0,34.0,10.0,it-ist-01,2.0,1.56,-0.44,it-ist-01
+gle,Old Irish,Closely related,2.0,6.0,4.0,it-ist-02,3.3,3.12,-0.18,it-ist-02
+gle,gla,Closely related,64.0,66.0,2.0,CMU-03,0.96,1.06,0.1,CMU-03
+ita,fur,Closely related,56.0,78.0,22.0,CMU-03,1.03,0.72,-0.31,it-ist-02
+ita,lld,Closely related,55.0,74.0,19.0,CMU-03,0.79,0.6,-0.19,CMU-03
+ita,mlt,Unrelated,26.0,45.0,19.0,CMU-03,1.39,1.23,-0.16,CMU-03
+ita,nap,Closely related,80.0,83.0,3.0,CMU-03,0.4,0.36,-0.04,it-ist-02
+kan,tel,Closely related,82.0,94.0,12.0,CMU-03,0.6,0.14,-0.46,CMU-03
+kmr,ckb,Closely related,15.0,69.0,54.0,CMU-03,2.56,0.65,-1.91,CMU-03
+lat,ces,Distantly related,20.1,71.4,51.3,CMU-03,2.77,1.14,-1.63,CMU-03
+lav,lit,Closely related,17.1,48.4,31.3,CMU-03,2.21,1.69,-0.52,CMU-03
+lav,gla,Distantly related,48.0,68.0,20.0,CMU-03,1.16,1.0,-0.16,CMU-03
+pes,azj,Unrelated,46.0,69.0,23.0,CMU-03,1.35,0.74,-0.61,CMU-03
+pes,pst,Closely related,27.0,48.0,21.0,CMU-03,1.7,1.54,-0.16,CMU-03
 pol,csb,Closely related,74.0,78.0,4.0,CMU-03,0.34,0.34,0.0,CMU-03
 pol,chu,Closely related,40.0,58.0,18.0,CMU-03,1.22,0.96,-0.26,CMU-03
 por,rus,Distantly related,27.5,76.3,48.8,CMU-03,1.7,1.16,-0.54,CMU-03
-ron,lat,Closely related,6.7,41.3,34.599999999999994,CMU-03,3.05,1.35,-1.6999999999999997,CMU-03
-rus,chu,Closely related,34.0,64.0,30.0,CMU-03,1.33,0.86,-0.4700000000000001,CMU-03
-rus,por,Distantly related,50.5,88.4,37.900000000000006,CMU-03,1.04,0.66,-0.38,CMU-03
-san,ben,Closely related,33.0,65.0,32.0,CMU-03,1.79,1.13,-0.6600000000000001,CMU-03
+ron,lat,Closely related,6.7,41.3,34.6,CMU-03,3.05,1.35,-1.7,CMU-03
+rus,chu,Closely related,34.0,64.0,30.0,CMU-03,1.33,0.86,-0.47,CMU-03
+rus,por,Distantly related,50.5,88.4,37.9,CMU-03,1.04,0.66,-0.38,CMU-03
+san,ben,Closely related,33.0,65.0,32.0,CMU-03,1.79,1.13,-0.66,CMU-03
 san,pst,Distantly related,34.0,43.0,9.0,CMU-03,1.54,1.27,-0.27,it-ist-02
-slk,csb,Closely related,54.0,76.0,22.0,CMU-03,0.6,0.34,-0.25999999999999995,CMU-03
+slk,csb,Closely related,54.0,76.0,22.0,CMU-03,0.6,0.34,-0.26,CMU-03
 slv,Old Saxon,Distantly related,10.6,53.2,42.6,CMU-03,2.23,1.14,-1.09,CMU-03
-ckb,gle,Distantly related,27.6,66.3,38.699999999999996,CMU-03,2.4,0.99,-1.41,CMU-03
+ckb,gle,Distantly related,27.6,66.3,38.7,CMU-03,2.4,0.99,-1.41,CMU-03
 spa,fur,Closely related,53.0,81.0,28.0,CMU-03,1.01,0.61,-0.4,CMU-03
 spa,oci,Closely related,57.0,78.0,21.0,CMU-03,1.14,0.57,-0.57,it-ist-01
-swh,qvi,Unrelated,13.9,92.1,78.19999999999999,CMU-03,3.9,0.56,-3.34,CMU-03
-tur,azj,Closely related,80.0,87.0,7.0,it-ist-02,0.35,0.22,-0.12999999999999998,it-ist-01
-tur,crh,Distantly related,83.0,89.0,6.0,CMU-03/it-ist-02,0.24,0.14,-0.09999999999999998,CMU-03
-tur,kaz,Distantly related,76.0,86.0,10.0,it-ist-02,0.34,0.16,-0.18000000000000002,it-ist-02
+swh,qvi,Unrelated,13.9,92.1,78.2,CMU-03,3.9,0.56,-3.34,CMU-03
+tur,azj,Closely related,80.0,87.0,7.0,it-ist-02,0.35,0.22,-0.13,it-ist-01
+tur,crh,Distantly related,83.0,89.0,6.0,CMU-03/it-ist-02,0.24,0.14,-0.1,CMU-03
+tur,kaz,Distantly related,76.0,86.0,10.0,it-ist-02,0.34,0.16,-0.18,it-ist-02
 tur,kjh,Distantly related,76.0,94.0,18.0,it-ist-01,0.8,0.06,-0.74,it-ist-01
 tur,tat,Distantly related,73.0,83.0,10.0,it-ist-02,0.37,0.21,-0.16,it-ist-02
 tur,tuk,Closely related,86.0,98.0,12.0,it-ist-01,0.24,0.02,-0.22,it-ist-01
-urd,ben,Closely related,49.0,67.0,18.0,CMU-03,1.12,0.98,-0.14000000000000012,CMU-03
-urd,Old English,Distantly related,20.8,40.3,19.499999999999996,CMU-03,1.72,1.2,-0.52,CMU-03
+urd,ben,Closely related,49.0,67.0,18.0,CMU-03,1.12,0.98,-0.14,CMU-03
+urd,Old English,Distantly related,20.8,40.3,19.5,CMU-03,1.72,1.2,-0.52,CMU-03
 uzn,azj,Distantly related,57.0,70.0,13.0,CMU-03,1.23,0.7,-0.53,CMU-03
-uzn,crh,Distantly related,67.0,67.0,0.0,CMU-03,0.49,0.45,-0.03999999999999998,CMU-03
+uzn,crh,Distantly related,67.0,67.0,0.0,CMU-03,0.49,0.45,-0.04,CMU-03
 uzn,kaz,Distantly related,84.0,72.0,-12.0,CMU-03,0.2,0.32,0.12,CMU-03
 uzn,kjh,Distantly related,86.0,92.0,6.0,it-ist-01,0.24,0.18,-0.06,it-ist-01
 uzn,tat,Distantly related,69.0,72.0,3.0,CMU-03,0.48,0.35,-0.13,CMU-03
-uzn,tuk,Distantly related,80.0,78.0,-2.0,CMU-03,0.32,0.42,0.09999999999999998,CMU-03
-cym,bre,Closely related,45.0,86.0,41.0,CMU-03,0.9,0.31,-0.5900000000000001,CMU-03
+uzn,tuk,Distantly related,80.0,78.0,-2.0,CMU-03,0.32,0.42,0.1,CMU-03
+cym,bre,Closely related,45.0,86.0,41.0,CMU-03,0.9,0.31,-0.59,CMU-03
 cym,cor,Closely related,22.0,42.0,20.0,it-ist-01,2.44,1.5,-0.94,it-ist-01
-cym,Old Irish,Closely related,6.0,6.0,0.0,CMU-03,3.36,3.08,-0.2799999999999998,CMU-03
-cym,gla,Closely related,40.0,64.0,24.0,CMU-03,1.22,1.08,-0.1399999999999999,CMU-03
-zul,swh,Distantly related,44.0,81.0,37.0,CMU-03,1.24,0.33,-0.9099999999999999,CMU-03
+cym,Old Irish,Closely related,6.0,6.0,0.0,CMU-03,3.36,3.08,-0.28,CMU-03
+cym,gla,Closely related,40.0,64.0,24.0,CMU-03,1.22,1.08,-0.14,CMU-03
+zul,swh,Distantly related,44.0,81.0,37.0,CMU-03,1.24,0.33,-0.91,CMU-03

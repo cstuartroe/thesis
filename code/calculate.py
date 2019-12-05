@@ -43,8 +43,10 @@ def calculate_distance():
 
 
 def calculate_improvements():
+    global SIGMORPHON_2019_results
     SIGMORPHON_2019_results["Accuracy Improvement"] = SIGMORPHON_2019_results["Best Transfer Accuracy"] - SIGMORPHON_2019_results["Baseline Accuracy"]
     SIGMORPHON_2019_results["Levenshtein Improvement"] = SIGMORPHON_2019_results["Best Transfer Levenshtein"] - SIGMORPHON_2019_results["Baseline Levenshtein"]
+    SIGMORPHON_2019_results = SIGMORPHON_2019_results.round({"Accuracy Improvement": 1, "Levenshtein Improvement": 2})
 
 
 def calculate():
