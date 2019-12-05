@@ -7,3 +7,4 @@
 *.sav
 *.bak
 .idea
+__pycache__

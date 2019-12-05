@@ -1,9 +1,9 @@
 Source Language,Target Language,Baseline Accuracy,Best Transfer Accuracy,Best Accuracy Team,Baseline Levenshtein,Best Transfer Levenshtein,Best Levenshtein Team
 ady,kbd,96,97,Tuebingen-02,0.04,0.03,Tuebingen-02
-sqi,bre,40,81,CMU-03,1.3,0.44,it-ist-02
-ara,syc,66,92,CMU-03,0.46,0.1,CMU-03
-ara,mlt,31,41,CMU-03,1.42,1.37,CMU-03
-ara,tuk,74,84,CMU-03,0.46,0.32,CMU-03
+aln,bre,40,81,CMU-03,1.3,0.44,it-ist-02
+arb,syc,66,92,CMU-03,0.46,0.1,CMU-03
+arb,mlt,31,41,CMU-03,1.42,1.37,CMU-03
+arb,tuk,74,84,CMU-03,0.46,0.32,CMU-03
 hye,kbd,83,87,it-ist-01,0.21,0.14,CMU-03/it-ist-01
 ast,oci,48,77,CMU-03,1.74,0.8,it-ist-01
 bak,azj,39,69,it-ist-02,1.64,0.69,it-ist-02
@@ -22,12 +22,12 @@ dan,Middle High German,72,82,it-ist-02,0.5,0.38,it-ist-02
 dan,Middle Low German,36,44,it-ist-01,1.44,1.26,it-ist-01
 dan,frr,28,46,CMU-03,2.78,2.11,CMU-03
 dan,fry,42,43,CMU-03,1.57,1.27,it-ist-02
-dan,yid,76,67,it-ist-01,0.91,0.72,Tuebingen-01
+dan,ydd,76,67,it-ist-01,0.91,0.72,Tuebingen-01
 nld,Middle High German,76,78,it-ist-01/it-ist-02,0.44,0.36,it-ist-02
 nld,Middle Low German,42,52,it-ist-02,1.34,1.16,it-ist-02
 nld,frr,32,46,CMU-03,2.67,1.99,CMU-03
 nld,fry,38,51,it-ist-02,2.18,1.18,it-ist-02
-nld,yid,78,64,it-ist-01,0.53,0.72,Tuebingen-01
+nld,ydd,78,64,it-ist-01,0.53,0.72,Tuebingen-01
 eng,mwf,22,42,it-ist-02,1.68,1.1,it-ist-02
 eng,frr,31,42,CMU-03,2.73,2.22,it-ist-02
 eng,fry,35,43,CMU-03,1.48,1.26,it-ist-02
@@ -42,7 +42,7 @@ fin,vot,42,40,it-ist-02,1.25,1.02,it-ist-02
 fra,oci,50,80,CMU-03,1.22,0.69,it-ist-01
 deu,Middle High German,72,82,CMU-03,0.44,0.32,it-ist-02
 deu,Middle Low German,42,52,it-ist-02,1.24,1.16,it-ist-02
-deu,yid,77,68,it-ist-01,0.46,0.72,Tuebingen-01
+deu,ydd,77,68,it-ist-01,0.46,0.72,Tuebingen-01
 ell,ben,51,67,CMU-03,1.21,1.02,CMU-03
 heb,syc,89,95,CMU-03,0.14,0.06,CMU-03
 heb,mlt,37,47,CMU-03,1.24,1.1,CMU-03
@@ -64,8 +64,8 @@ kmr,ckb,15,69,CMU-03,2.56,0.65,CMU-03
 lat,ces,20.1,71.4,CMU-03,2.77,1.14,CMU-03
 lav,lit,17.1,48.4,CMU-03,2.21,1.69,CMU-03
 lav,gla,48,68,CMU-03,1.16,1,CMU-03
-fas,azj,46,69,CMU-03,1.35,0.74,CMU-03
-fas,pus,27,48,CMU-03,1.7,1.54,CMU-03
+pes,azj,46,69,CMU-03,1.35,0.74,CMU-03
+pes,pst,27,48,CMU-03,1.7,1.54,CMU-03
 pol,csb,74,78,CMU-03,0.34,0.34,CMU-03
 pol,chu,40,58,CMU-03,1.22,0.96,CMU-03
 por,rus,27.5,76.3,CMU-03,1.7,1.16,CMU-03
@@ -73,13 +73,13 @@ ron,lat,6.7,41.3,CMU-03,3.05,1.35,CMU-03
 rus,chu,34,64,CMU-03,1.33,0.86,CMU-03
 rus,por,50.5,88.4,CMU-03,1.04,0.66,CMU-03
 san,ben,33,65,CMU-03,1.79,1.13,CMU-03
-san,pus,34,43,CMU-03,1.54,1.27,it-ist-02
+san,pst,34,43,CMU-03,1.54,1.27,it-ist-02
 slk,csb,54,76,CMU-03,0.6,0.34,CMU-03
 slv,Old Saxon,10.6,53.2,CMU-03,2.23,1.14,CMU-03
 ckb,gle,27.6,66.3,CMU-03,2.4,0.99,CMU-03
 spa,fur,53,81,CMU-03,1.01,0.61,CMU-03
 spa,oci,57,78,CMU-03,1.14,0.57,it-ist-01
-swa,que,13.9,92.1,CMU-03,3.9,0.56,CMU-03
+swh,qvi,13.9,92.1,CMU-03,3.9,0.56,CMU-03
 tur,azj,80,87,it-ist-02,0.35,0.22,it-ist-01
 tur,crh,83,89,CMU-03/it-ist-02,0.24,0.14,CMU-03
 tur,kaz,76,86,it-ist-02,0.34,0.16,it-ist-02
@@ -88,14 +88,14 @@ tur,tat,73,83,it-ist-02,0.37,0.21,it-ist-02
 tur,tuk,86,98,it-ist-01,0.24,0.02,it-ist-01
 urd,ben,49,67,CMU-03,1.12,0.98,CMU-03
 urd,Old English,20.8,40.3,CMU-03,1.72,1.2,CMU-03
-uzb,azj,57,70,CMU-03,1.23,0.7,CMU-03
-uzb,crh,67,67,CMU-03,0.49,0.45,CMU-03
-uzb,kaz,84,72,CMU-03,0.2,0.32,CMU-03
-uzb,kjh,86,92,it-ist-01,0.24,0.18,it-ist-01
-uzb,tat,69,72,CMU-03,0.48,0.35,CMU-03
-uzb,tuk,80,78,CMU-03,0.32,0.42,CMU-03
+uzn,azj,57,70,CMU-03,1.23,0.7,CMU-03
+uzn,crh,67,67,CMU-03,0.49,0.45,CMU-03
+uzn,kaz,84,72,CMU-03,0.2,0.32,CMU-03
+uzn,kjh,86,92,it-ist-01,0.24,0.18,it-ist-01
+uzn,tat,69,72,CMU-03,0.48,0.35,CMU-03
+uzn,tuk,80,78,CMU-03,0.32,0.42,CMU-03
 cym,bre,45,86,CMU-03,0.9,0.31,CMU-03
 cym,cor,22,42,it-ist-01,2.44,1.5,it-ist-01
 cym,Old Irish,6,6,CMU-03,3.36,3.08,CMU-03
 cym,gla,40,64,CMU-03,1.22,1.08,CMU-03
-zul,swa,44,81,CMU-03,1.24,0.33,CMU-03
+zul,swh,44,81,CMU-03,1.24,0.33,CMU-03

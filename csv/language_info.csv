@@ -1,0 +1,80 @@
+ISO 639-2,Name,Language family,Subfamily,Fusion of Selected Inflectional Formatives,Exponence of Selected Inflectional Formatives,Exponence of Tense-Aspect-Mood Inflection,Inflectional Synthesis of the Verb,Locus of Marking in the Clause,Locus of Marking in Possessive Noun Phrases,Locus of Marking: Whole-language Typology,Zero Marking of A and P Arguments,Prefixing vs. Suffixing in Inflectional Morphology,Reduplication,Case Syncretism,Syncretism in Verbal Person/Number Marking
+ady,Adyghe,Northwest Caucasian,-,-,-,-,8-9 categories per word,-,-,-,-,-,-,-,-
+aln,Albanian,Indo-European,Albanian,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+arb,Arabic,Afroasiatic,Semitic,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+ast,Asturian,Indo-European,Romance,-,-,-,-,-,-,-,-,-,-,-,-
+azj,Azeri,Turkic,Oghuz,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+bak,Bashkir,Turkic,Kipchak,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+bel,Belarusian,Indo-European,Slavic,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+ben,Bengali,Indo-European,Indo-Aryan,-,-,-,-,-,-,-,-,-,-,-,-
+bre,Breton,Indo-European,Celtic,-,-,-,-,-,-,-,-,Weakly suffixing,-,-,-
+bul,Bulgarian,Indo-European,Slavic,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+ces,Czech,Indo-European,Slavic,-,-,-,-,-,-,-,-,Weakly suffixing,-,-,-
+chu,Old Church Slavonic,Indo-European,Slavic,-,-,-,-,-,-,-,-,-,-,-,-
+ckb,Sorani,Indo-European,Iranian,-,-,-,-,-,-,-,-,Weakly suffixing,-,-,-
+cor,Cornish,Indo-European,Celtic,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+crh,Crimean Tatar,Turkic,Kipchak,-,-,-,-,-,-,-,-,-,-,-,-
+csb,Kashubian,Indo-European,Slavic,-,-,-,-,-,-,-,-,-,-,-,-
+cym,Welsh,Indo-European,Celtic,-,-,-,-,-,-,-,-,Strongly suffixing,No productive reduplication,-,-
+dan,Danish,Indo-European,Germanic,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+deu,German,Indo-European,Germanic,Exclusively concatenative,Case + number,monoexponential TAM,2-3 categories per word,Dependent marking,Dependent marking,Dependent-marking,Non-zero marking,Strongly suffixing,No productive reduplication,Core and non-core,Syncretic
+ell,Greek,Indo-European,Greek,Exclusively concatenative,Case + number,TAM+agreement+diathesis,4-5 categories per word,Double marking,Double marking,Double-marking,Non-zero marking,Strongly suffixing,No productive reduplication,Core and non-core,Not syncretic
+eng,English,Indo-European,Germanic,Exclusively concatenative,No case,monoexponential TAM,2-3 categories per word,Dependent marking,Dependent marking,Dependent-marking,Non-zero marking,Strongly suffixing,No productive reduplication,Core cases only,Syncretic
+est,Estonian,Uralic,Finnic,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+eus,Basque,Vasconic,-,Exclusively concatenative,Monoexponential case,monoexponential TAM,4-5 categories per word,Double marking,Dependent marking,Inconsistent or other,Non-zero marking,Equal prefixing and suffixing,Productive full and partial reduplication,Core cases only,Not syncretic
+fin,Finnish,Uralic,Finnic,Exclusively concatenative,Case + number,monoexponential TAM,2-3 categories per word,Dependent marking,Double marking,Inconsistent or other,Non-zero marking,Strongly suffixing,No productive reduplication,Core and non-core,Not syncretic
+fra,French,Indo-European,Romance,Exclusively concatenative,No case,TAM+agreement,4-5 categories per word,No marking,Dependent marking,Inconsistent or other,Non-zero marking,Strongly suffixing,No productive reduplication,Core and non-core,Syncretic
+frr,Northern Frisian,Indo-European,Germanic,-,-,-,-,-,-,-,-,-,-,-,-
+fry,Western Frisian,Indo-European,Germanic,-,-,-,-,-,-,-,-,-,-,-,-
+fur,Friulian,Indo-European,Romance,-,-,-,-,-,-,-,-,-,-,-,-
+gla,Scottish Gaelic,Indo-European,Celtic,-,-,-,-,-,-,-,-,Weakly suffixing,No productive reduplication,-,-
+gle,Irish,Indo-European,Celtic,-,-,-,-,-,-,-,-,Equal prefixing and suffixing,No productive reduplication,Core and non-core,Syncretic
+heb,Hebrew,Afroasiatic,Semitic,Ablaut/concatenative,No case,TAM+agreement+diathesis,4-5 categories per word,Dependent marking,Dependent marking,Inconsistent or other,Non-zero marking,Weakly suffixing,Productive full and partial reduplication,No case marking,Syncretic
+hin,Hindi,Indo-European,Indo-Aryan,Exclusively concatenative,Monoexponential case,TAM+agreement,2-3 categories per word,Double marking,Dependent marking,Inconsistent or other,Non-zero marking,Strongly suffixing,Productive full and partial reduplication,Core and non-core,Syncretic
+hun,Hungarian,Uralic,Hungarian,Exclusively concatenative,Monoexponential case,monoexponential TAM,4-5 categories per word,Dependent marking,Head marking,Inconsistent or other,Non-zero marking,Strongly suffixing,Productive full and partial reduplication,No syncretism,Not syncretic
+hye,Armenian,Indo-European,Armenian,-,-,-,2-3 categories per word,-,-,-,-,Strongly suffixing,Full reduplication only,Core and non-core,Not syncretic
+ita,Italian,Indo-European,Romance,-,-,-,-,-,-,-,-,Strongly suffixing,No productive reduplication,-,-
+izh,Ingrian,Uralic,Finnic,-,-,-,-,-,-,-,-,-,-,-,-
+kan,Kannada,Dravidian,-,Exclusively concatenative,Monoexponential case,monoexponential TAM,2-3 categories per word,Dependent marking,Dependent marking,Dependent-marking,Non-zero marking,Strongly suffixing,Productive full and partial reduplication,No syncretism,Syncretic
+kaz,Kazakh,Turkic,Kipchak,-,-,-,-,-,-,-,-,-,-,-,-
+kbd,Kabardian,Northwest Caucasian,-,-,-,-,-,-,-,-,-,Equal prefixing and suffixing,-,-,-
+kjh,Khakas,Turkic,Siberian,-,-,-,-,-,-,-,-,-,-,-,-
+kmr,Kurmanji,Indo-European,Iranian,-,-,-,-,-,-,-,-,-,-,-,-
+krl,Karelian,Uralic,Finnic,-,-,-,-,-,-,-,-,-,-,-,-
+lat,Latin,Indo-European,Romance,-,-,-,-,-,-,-,-,-,-,-,-
+lav,Latvian,Indo-European,Baltic,-,-,-,-,-,-,-,-,Weakly suffixing,-,Core and non-core,Syncretic
+lit,Lithuanian,Indo-European,Baltic,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+liv,Livonian,Uralic,Finnic,-,-,-,-,-,-,-,-,-,-,-,-
+lld,Ladin,Indo-European,Romance,-,-,-,-,-,-,-,-,-,-,-,-
+mlt,Maltese,Afroasiatic,Semitic,-,-,-,-,-,-,-,-,-,-,-,-
+mwf,Murrinh-patha,Southern Daly,-,-,-,-,-,Double marking,No marking,Inconsistent or other,Non-zero marking,-,Productive full and partial reduplication,-,-
+nap,Neapolitan,Indo-European,Romance,-,-,-,-,-,-,-,-,-,-,-,-
+nld,Dutch,Indo-European,Germanic,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+oci,Occitan,Indo-European,Romance,-,-,-,-,-,-,-,-,-,-,-,-
+pes,Persian,Indo-European,Iranian,Exclusively concatenative,Monoexponential case,monoexponential TAM,4-5 categories per word,Double marking,Head marking,Inconsistent or other,Non-zero marking,Weakly suffixing,Productive full and partial reduplication,No case marking,Not syncretic
+pol,Polish,Indo-European,Slavic,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+por,Portuguese,Indo-European,Romance,-,-,-,-,-,-,-,-,Strongly suffixing,No productive reduplication,-,-
+pst,Pashto,Indo-European,Iranian,-,-,-,-,-,-,-,-,Strongly suffixing,Productive full and partial reduplication,-,-
+qvi,Quechua,Quechua,-,Exclusively concatenative,Monoexponential case,monoexponential TAM,8-9 categories per word,Dependent marking,Dependent marking,Dependent-marking,Non-zero marking,Strongly suffixing,Full reduplication only,No syncretism,Not syncretic
+ron,Romanian,Indo-European,Romance,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+rus,Russian,Indo-European,Slavic,Exclusively concatenative,Case + number,monoexponential TAM,4-5 categories per word,Dependent marking,Dependent marking,Dependent-marking,Non-zero marking,Strongly suffixing,No productive reduplication,Core and non-core,Not syncretic
+san,Sanskrit,Indo-European,Indo-Aryan,-,-,-,-,-,-,-,-,-,-,-,-
+slk,Slovak,Indo-European,Slavic,-,-,-,-,-,-,-,-,-,-,-,-
+slv,Slovene,Indo-European,Slavic,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+spa,Spanish,Indo-European,Romance,Exclusively concatenative,Monoexponential case,TAM+agreement,4-5 categories per word,Double marking,Dependent marking,Inconsistent or other,Non-zero marking,Strongly suffixing,No productive reduplication,Core and non-core,Syncretic
+swh,Swahili,Niger-Congo,Northeast Coast Bantu,Exclusively concatenative,No case,monoexponential TAM,4-5 categories per word,Head marking,Dependent marking,Inconsistent or other,Non-zero marking,Weakly prefixing,Productive full and partial reduplication,No case marking,Syncretic
+syc,Classical Syriac,Afroasiatic,Semitic,-,-,-,-,-,-,-,-,-,-,-,-
+tat,Tatar,Turkic,Kipchak,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+tel,Telugu,Dravidian,-,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+tuk,Turkmen,Turkic,Oghuz,-,-,-,-,-,-,-,-,-,Productive full and partial reduplication,-,-
+tur,Turkish,Turkic,Oghuz,Exclusively concatenative,Monoexponential case,monoexponential TAM,6-7 categories per word,Dependent marking,Double marking,Inconsistent or other,Non-zero marking,Strongly suffixing,Productive full and partial reduplication,No syncretism,Not syncretic
+urd,Urdu,Indo-European,Indo-Aryan,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+uzn,Uzbek,Turkic,Karluk,-,-,-,-,-,-,-,-,Strongly suffixing,-,-,-
+vot,Votic,Uralic,Finnic,-,-,-,-,-,-,-,-,-,-,-,-
+ydd,Yiddish,Indo-European,Germanic,-,-,-,-,-,-,-,-,-,-,-,-
+zul,Zulu,Niger-Congo,Southern Bantu,Exclusively concatenative,No case,monoexponential TAM,4-5 categories per word,Head marking,Dependent marking,Inconsistent or other,Non-zero marking,Strong prefixing,Full reduplication only,No case marking,Syncretic
+-,Middle High German,Indo-European,Germanic,-,-,-,-,-,-,-,-,-,-,-,-
+-,Middle Low German,Indo-European,Germanic,-,-,-,-,-,-,-,-,-,-,-,-
+-,Old English,Indo-European,Germanic,-,-,-,-,-,-,-,-,-,-,-,-
+-,Old Irish,Indo-European,Celtic,-,-,-,-,-,-,-,-,-,-,-,-
+-,Old Saxon,Indo-European,Germanic,-,-,-,-,-,-,-,-,-,-,-,-
