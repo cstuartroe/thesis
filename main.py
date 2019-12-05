@@ -1,9 +1,10 @@
 import sys
 
-from code import WALS
+from code import WALS, calculate
 
 DISPATCH = {
-    "WALS": WALS.pull
+    "WALS": WALS.pull,
+    "calculate": calculate.calculate
 }
 
 if __name__ == "__main__":

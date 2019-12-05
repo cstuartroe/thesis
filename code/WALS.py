@@ -1,10 +1,8 @@
 import json
 from urllib import request as ur
-import pandas as pd
 from tqdm import tqdm
 
-
-language_info = pd.read_csv("csv/language_info.csv")
+from .general import *
 
 
 FEATURES = ["20A", "21A", "21B", "22A", "23A", "24A", "25A", "25B", "26A", "27A", "28A", "29A"]
@@ -41,4 +39,4 @@ def pull():
     for feature in tqdm(FEATURES):
         pull_feature(feature)
 
-    language_info.to_csv("csv/language_info.csv", index=False)
+    language_info.to_csv(language_info_filename, index=False)
