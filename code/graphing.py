@@ -45,14 +45,14 @@ def graph():
                     xs.append(x)
                     ys.append(y)
 
-            print(np.corrcoef(ys, xs)[0][1])
+            r = np.corrcoef(ys, xs)[0][1]
 
             plt.plot(xs, ys, '.', color=dot_color)
 
             m, b = np.polyfit(xs, ys, 1)
             plt.plot([0, max(xs)], [b, b + m*max(xs)], '-', color=line_color)
 
-            plt.figtext(.9, .01, f"p={round(permutation_test(xs, ys), 3)}")
+            plt.figtext(.8, .01, f"r={round(r, 2)} p={round(permutation_test(xs, ys), 3)}")
 
             plt.savefig(f"images/generated/{metric} vs {explanatory}.png")
             plt.close()
