@@ -1,3 +1,5 @@
+import numpy as np
+
 from .general import *
 from .unimorph import POS
 
@@ -54,7 +56,7 @@ def calculate_category_overlap(pos):
         try:
             overlap = len(source_categories & target_categories)/len(source_categories | target_categories)
         except ZeroDivisionError:
-            overlap = 0
+            overlap = np.nan
 
         category_overlaps.append(round(overlap, 2))
 

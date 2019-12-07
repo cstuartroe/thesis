@@ -1,0 +1,104 @@
+Language,High-resource accuracy,Best high-resource team,Medium-resource accuracy,Best medium-resource team,Low-resource accuracy,Best low-resource team
+Adyghe,100.00,uzh-2,94.40,uzh-1,90.60,ua-8
+Albanian,98.90,bme-2,88.80,iitbhu-iiith-2,36.40,uzh-1
+Arabic,93.70,uzh-1,79.40,uzh-1,45.20,uzh-1
+Armenian,96.90,bme-2,92.80,uzh-1,64.90,uzh-1
+Asturian,98.70,uzh-1,92.40,iitbhu-iiith-2,74.60,uzh-2
+Azeri,100.00,axsemantics-2,96.00,iitbhu-iiith-2,65.00,iitbhu-iiith-2
+Bashkir,99.90,uzh-2,97.30,uzh-2,77.80,iitbhu-iiith-1
+Basque,98.90,bme-2,88.10,iitbhu-iiith-2,13.30,uzh-1
+Belarusian,94.90,uzh-1,70.40,uzh-1,33.40,ua-8
+Bengali,99.00,bme-3,99.00,uzh-2,72.00,uzh-2
+Breton,100.00,waseda-1,96.00,uzh-2,72.00,uzh-1
+Bulgarian,98.30,uzh-2,83.80,uzh-2,62.90,ua-8
+Catalan,98.90,uzh-2,92.80,waseda-1,72.50,ua-8
+Classical Syriac,100.00,axsemantics-1,100.00,axsemantics-2,96.00,uzh-2
+Cornish,,-,70.00,uzh-1,40.00,ua-4
+Crimean Tatar,100.00,iit-varanasi-1,98.00,uzh-2,91.00,iitbhu-iiith-2
+Czech,94.70,uzh-1,87.20,uzh-1,46.50,uzh-2
+Danish,95.50,uzh-1,80.40,uzh-1,87.70,ua-6
+Dutch,97.90,uzh-1,85.70,uzh-1,69.30,ua-6
+English,97.10,uzh-2,94.50,uzh-1,91.80,ua-8
+Estonian,98.40,uzh-2,81.60,uzh-1,35.20,uzh-1
+Faroese,87.10,bme-2,72.60,uzh-1,49.80,ua-8
+Finnish,95.40,uzh-1,82.80,uzh-1,25.70,uzh-1
+French,90.40,uzh-2,80.90,uzh-2,66.60,uzh-2
+Friulian,99.00,axsemantics-2,97.00,iitbhu-iiith-1,79.00,uzh-2
+Galician,99.50,uzh-1,90.80,uzh-1,61.10,uzh-2
+Georgian,99.10,uzh-1,94.00,uzh-2,88.20,ua-8
+German,90.20,uzh-2,80.10,uzh-1,67.10,ua-3
+Greek,91.70,uzh-1,75.50,uzh-2,32.30,uzh-1
+Greenlandic,,-,98.00,uzh-2,80.00,iitbhu-iiith-1
+Haida,100.00,axsemantics-2,94.00,uzh-2,63.00,uzh-2
+Hebrew,99.50,uzh-1,85.40,uzh-1,56.70,ua-8
+Hindi,100.00,axsemantics-1,97.60,uzh-2,78.00,uzh-2
+Hungarian,87.20,uzh-1,74.50,iitbhu-iiith-2,48.20,ua-8
+Icelandic,91.30,uzh-1,73.80,uzh-1,56.20,ua-8
+Ingrian,,-,92.00,uzh-2,46.00,iitbhu-iiith-2
+Irish,91.50,uzh-2,77.10,uzh-1,37.70,uzh-1
+Italian,98.00,uzh-2,95.10,uzh-2,57.40,uzh-2
+Kabardian,100.00,hamburg-1,100.00,bme-2,92.00,uzh-1
+Kannada,100.00,bme-3,94.00,uzh-2,61.00,uzh-1
+Karelian,,-,100.00,uzh-2,94.00,ua-5
+Kashubian,,-,88.00,bme-2,68.00,ua-5
+Kazakh,,-,88.00,iitbhu-iiith-2,86.00,uzh-2
+Khakas,,-,98.00,bme-3,86.00,iitbhu-iiith-2
+Khaling,99.70,uzh-1,86.00,iitbhu-iiith-1,33.80,ua-8
+Kurmanji,94.60,uzh-1,93.20,uzh-1,87.40,uzh-2
+Ladin,99.00,uzh-2,95.00,uzh-2,72.00,uzh-1
+Latin,78.90,bme-2,53.30,uzh-1,33.10,ua-6
+Latvian,98.20,uzh-2,90.60,uzh-1,57.30,ua-6
+Lithuanian,95.50,uzh-2,63.90,uzh-1,32.60,ua-6
+Livonian,100.00,uzh-2,82.00,uzh-1,35.00,ua-8
+Lower Sorbian,97.80,uzh-1,85.10,uzh-1,54.30,ua-6
+Macedonian,97.40,uzh-1,91.60,uzh-1,68.80,ua-6
+Maltese,97.00,uzh-2,95.00,uzh-1,49.00,ua-6
+Mapudungun,,-,100.00,uzh-2,86.00,ua-4
+Middle French,99.30,uzh-2,94.50,uzh-2,84.50,uzh-2
+Middle High German,,-,100.00,uzh-2,84.00,uzh-2
+Middle Low German,,-,100.00,iitbhu-iiith-1,54.00,uzh-1
+Murrinhpatha,,-,96.00,uzh-2,38.00,ua-8
+Navajo,91.00,bme-2,54.30,uzh-1,20.80,uzh-1
+Neapolitan,99.00,uzh-2,99.00,uzh-2,89.00,uzh-2
+Norman,,-,88.00,iitbhu-iiith-1,66.00,ua-4
+North Frisian,96.00,bme-1,91.00,uzh-1,45.00,iitbhu-iiith-2
+Northern Sami,98.30,uzh-1,76.10,uzh-1,35.80,ua-8
+Norwegian Bokmaal,92.10,uzh-2,84.10,uzh-1,90.10,ua-6
+Norwegian Nynorsk,94.90,uzh-2,67.10,uzh-1,83.60,ua-8
+Occitan,99.00,bme-2,96.00,waseda-1,77.00,uzh-2
+Old Armenian,90.40,uzh-2,80.20,uzh-1,42.00,uzh-2
+Old Church Slavonic,97.00,uzh-2,93.00,uzh-2,53.00,iitbhu-iiith-2
+Old English,88.70,uzh-1,65.60,uzh-1,46.50,ua-8
+Old French,92.40,uzh-1,79.30,uzh-1,46.20,uzh-2
+Old Irish,,-,40.00,uzh-1,8.00,baseline
+Old Saxon,98.30,uzh-1,80.90,uzh-2,46.60,ua-6
+Pashto,100.00,waseda-1,85.00,uzh-1,48.00,uzh-2
+Persian,99.90,bme-2,93.40,uzh-2,67.60,uzh-2
+Polish,93.40,uzh-2,82.40,uzh-2,49.40,ua-6
+Portuguese,98.60,uzh-2,94.80,uzh-2,75.80,uzh-2
+Quechua,99.90,uzh-2,98.90,uzh-1,70.20,uzh-2
+Romanian,89.00,uzh-2,77.60,uzh-1,46.20,uzh-1
+Russian,94.40,uzh-2,86.90,uzh-1,53.50,uzh-1
+Sanskrit,96.50,uzh-1,85.90,uzh-2,58.00,uzh-1
+Scottish Gaelic,,-,94.00,iitbhu-iiith-1,74.00,iitbhu-iiith-2
+Serbo Croatian,92.40,uzh-2,86.10,uzh-1,44.80,ua-3
+Slovak,97.10,uzh-1,78.60,uzh-1,51.80,uzh-2
+Slovene,97.40,uzh-1,86.20,uzh-1,58.00,uzh-2
+Sorani,90.60,uzh-2,80.20,iitbhu-iiith-2,40.10,uzh-1
+Spanish,98.10,uzh-2,92.00,iitbhu-iiith-2,73.20,ua-8
+Swahili,100.00,bme-3,99.00,uzh-2,72.00,iitbhu-iiith-2
+Swedish,93.30,uzh-1,79.80,uzh-1,79.00,ua-8
+Tatar,99.00,axsemantics-1,98.00,uzh-2,90.00,ua-8
+Telugu,,-,,-,96.00,ua-8
+Tibetan,,-,56.00,uzh-2,58.00,iitbhu-iiith-1
+Turkish,98.50,uzh-2,90.70,uzh-1,39.50,iitbhu-iiith-2
+Turkmen,,-,98.00,iitbhu-iiith-1,90.00,uzh-2
+Ukrainian,96.20,uzh-2,81.40,uzh-1,57.10,ua-6
+Urdu,100.00,iitbhu-iiith-1,96.80,uzh-2,72.50,uzh-2
+Uzbek,100.00,axsemantics-1,100.00,axsemantics-2,92.00,uzh-1
+Venetian,99.20,uzh-2,95.10,uzh-2,78.80,uzh-2
+Votic,90.00,uzh-2,88.00,uzh-2,34.00,ua-7
+Welsh,95.00,bme-3,85.00,bme-2,55.00,uzh-2
+West Frisian,99.00,uzh-1,98.00,uzh-2,56.00,uzh-1
+Yiddish,100.00,uzh-2,94.00,uzh-2,87.00,ua-8
+Zulu,99.80,uzh-1,87.30,uzh-2,33.00,uzh-1

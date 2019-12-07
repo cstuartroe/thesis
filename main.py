@@ -1,11 +1,12 @@
 import sys
 
-from code import WALS, unimorph, calculate
+from code import WALS, unimorph, calculate, graphing
 
 DISPATCH = {
     "WALS": WALS.pull,
     "unimorph": unimorph.pull,
-    "calculate": calculate.calculate
+    "calculate": calculate.calculate,
+    "graph": graphing.graph
 }
 
 if __name__ == "__main__":

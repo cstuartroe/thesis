@@ -1,101 +1,101 @@
 Source Language,Target Language,Distance,Baseline Accuracy,Best Transfer Accuracy,Accuracy Improvement,Best Accuracy Team,Baseline Levenshtein,Best Transfer Levenshtein,Levenshtein Improvement,Best Levenshtein Team,N category overlap,V category overlap,ADJ category overlap,DET category overlap
-Adyghe,Kabardian,Closely related,96.0,97.0,1.0,Tuebingen-02,0.04,0.03,-0.01,Tuebingen-02,1.0,0.0,0.88,0.0
-Albanian,Breton,Distantly related,40.0,81.0,41.0,CMU-03,1.3,0.44,-0.86,it-ist-02,0.0,0.48,0.0,0.0
-Arabic,Classical Syriac,Closely related,66.0,92.0,26.0,CMU-03,0.46,0.1,-0.36,CMU-03,0.19,0.0,0.38,0.0
-Arabic,Maltese,Closely related,31.0,41.0,10.0,CMU-03,1.42,1.37,-0.05,CMU-03,0.0,0.52,0.0,0.0
-Arabic,Turkmen,Unrelated,74.0,84.0,10.0,CMU-03,0.46,0.32,-0.14,CMU-03,0.38,0.0,0.0,0.0
-Armenian,Kabardian,Unrelated,83.0,87.0,4.0,it-ist-01,0.21,0.14,-0.07,CMU-03/it-ist-01,0.29,0.0,0.21,0.0
-Asturian,Occitan,Closely related,48.0,77.0,29.0,CMU-03,1.74,0.8,-0.94,it-ist-01,0.0,0.64,0.0,0.0
-Bashkir,Azeri,Distantly related,39.0,69.0,30.0,it-ist-02,1.64,0.69,-0.95,it-ist-02,0.64,0.0,0.0,0.0
-Bashkir,Crimean Tatar,Closely related,70.0,70.0,0.0,CMU-03,0.39,0.42,0.03,CMU-03,0.67,0.0,0.22,0.0
-Bashkir,Kazakh,Closely related,80.0,90.0,10.0,it-ist-01,0.32,0.1,-0.22,it-ist-01,0.8,0.0,0.0,0.0
-Bashkir,Khakas,Distantly related,86.0,96.0,10.0,it-ist-02,0.18,0.04,-0.14,it-ist-02,0.58,0.0,0.0,0.0
-Bashkir,Tatar,Closely related,68.0,74.0,6.0,it-ist-02,0.46,0.33,-0.13,CMU-03,0.67,0.0,0.22,0.0
-Bashkir,Turkmen,Distantly related,94.0,88.0,-6.0,it-ist-01,0.1,0.12,0.02,it-ist-01,0.89,0.0,0.0,0.0
-Basque,Kashubian,Unrelated,40.0,76.0,36.0,CMU-03,1.16,0.42,-0.74,CMU-03,0.0,0.0,0.0,0.0
-Belarusian,Old Irish,Distantly related,2.0,10.0,8.0,CMU-03,3.9,3.14,-0.76,CMU-03,0.5,0.33,0.0,0.0
-Bengali,Greek,Distantly related,17.7,74.6,56.9,CMU-03,2.86,0.59,-2.27,CMU-03,0.56,0.29,0.0,0.0
-Bulgarian,Old Church Slavonic,Closely related,44.0,56.0,12.0,CMU-03,1.14,1.06,-0.08,CMU-03,0.42,0.0,0.0,0.0
-Czech,Kashubian,Closely related,52.0,78.0,26.0,CMU-03,0.84,0.36,-0.48,CMU-03,0.82,0.0,0.0,0.0
-Czech,Latin,Distantly related,8.4,42.0,33.6,CMU-03,2.95,1.36,-1.59,CMU-03,0.58,0.54,0.59,0.0
-Danish,Middle High German,Closely related,72.0,82.0,10.0,it-ist-02,0.5,0.38,-0.12,it-ist-02,0.5,0.43,0.0,0.0
-Danish,Middle Low German,Closely related,36.0,44.0,8.0,it-ist-01,1.44,1.26,-0.18,it-ist-01,0.38,0.4,0.0,0.0
-Danish,North Frisian,Closely related,28.0,46.0,18.0,CMU-03,2.78,2.11,-0.67,CMU-03,0.0,0.25,0.0,0.0
-Danish,West Frisian,Closely related,42.0,43.0,1.0,CMU-03,1.57,1.27,-0.3,it-ist-02,0.0,0.38,0.0,0.0
-Danish,Yiddish,Closely related,76.0,67.0,-9.0,it-ist-01,0.91,0.72,-0.19,Tuebingen-01,0.3,0.27,0.0,0.0
-Dutch,Middle High German,Closely related,76.0,78.0,2.0,it-ist-01/it-ist-02,0.44,0.36,-0.08,it-ist-02,0.0,1.0,0.0,0.0
-Dutch,Middle Low German,Closely related,42.0,52.0,10.0,it-ist-02,1.34,1.16,-0.18,it-ist-02,0.0,0.92,0.2,0.0
-Dutch,North Frisian,Closely related,32.0,46.0,14.0,CMU-03,2.67,1.99,-0.68,CMU-03,0.0,0.53,0.0,0.0
-Dutch,West Frisian,Closely related,38.0,51.0,13.0,it-ist-02,2.18,1.18,-1.0,it-ist-02,0.0,0.73,0.0,0.0
-Dutch,Yiddish,Closely related,78.0,64.0,-14.0,it-ist-01,0.53,0.72,0.19,Tuebingen-01,0.0,0.64,0.29,0.0
-English,Murrinhpatha,Unrelated,22.0,42.0,20.0,it-ist-02,1.68,1.1,-0.58,it-ist-02,0.0,0.23,0.0,0.0
-English,North Frisian,Closely related,31.0,42.0,11.0,CMU-03,2.73,2.22,-0.51,it-ist-02,0.0,0.28,0.0,0.0
-English,West Frisian,Closely related,35.0,43.0,8.0,CMU-03,1.48,1.26,-0.22,it-ist-02,0.0,0.43,0.0,0.0
-Estonian,Ingrian,Closely related,30.0,44.0,14.0,it-ist-02,1.56,1.24,-0.32,it-ist-02,0.67,0.0,0.0,0.0
-Estonian,Karelian,Closely related,74.0,68.0,-6.0,it-ist-01,0.52,0.62,0.1,it-ist-02,0.75,0.0,0.0,0.0
-Estonian,Livonian,Closely related,36.0,40.0,4.0,it-ist-02,1.87,1.47,-0.4,it-ist-02,0.4,0.64,0.0,0.0
-Estonian,Votic,Closely related,25.0,35.0,10.0,it-ist-01,1.55,1.17,-0.38,it-ist-02,0.78,0.0,0.0,0.0
-Finnish,Ingrian,Closely related,54.0,48.0,-6.0,it-ist-02,1.08,1.2,0.12,it-ist-02,0.67,0.0,0.22,0.0
-Finnish,Karelian,Closely related,70.0,78.0,8.0,it-ist-01,0.64,0.42,-0.22,it-ist-01,0.84,0.0,0.53,0.0
-Finnish,Livonian,Closely related,22.0,34.0,12.0,CMU-03/it-ist-01,2.48,1.71,-0.77,it-ist-01,0.47,0.58,0.35,0.0
-Finnish,Votic,Closely related,42.0,40.0,-2.0,it-ist-02,1.25,1.02,-0.23,it-ist-02,0.68,0.0,0.0,0.0
-French,Occitan,Closely related,50.0,80.0,30.0,CMU-03,1.22,0.69,-0.53,it-ist-01,0.0,0.89,0.0,0.0
-German,Middle High German,Closely related,72.0,82.0,10.0,CMU-03,0.44,0.32,-0.12,it-ist-02,1.0,1.0,0.0,0.0
-German,Middle Low German,Closely related,42.0,52.0,10.0,it-ist-02,1.24,1.16,-0.08,it-ist-02,0.83,0.92,0.0,0.0
-German,Yiddish,Closely related,77.0,68.0,-9.0,it-ist-01,0.46,0.72,0.26,Tuebingen-01,0.08,0.64,0.0,0.0
-Greek,Bengali,Distantly related,51.0,67.0,16.0,CMU-03,1.21,1.02,-0.19,CMU-03,0.56,0.29,0.0,0.0
-Hebrew,Classical Syriac,Closely related,89.0,95.0,6.0,CMU-03,0.14,0.06,-0.08,CMU-03,0.26,0.0,0.0,0.0
-Hebrew,Maltese,Closely related,37.0,47.0,10.0,CMU-03,1.24,1.1,-0.14,CMU-03,0.0,0.56,0.0,0.0
-Hindi,Bengali,Closely related,54.0,68.0,14.0,CMU-03,1.18,0.72,-0.46,UAlberta-02,0.0,0.38,0.0,0.0
-Hungarian,Ingrian,Distantly related,12.0,40.0,28.0,it-ist-01,2.6,1.46,-1.14,it-ist-01,0.45,0.0,0.0,0.0
-Hungarian,Karelian,Distantly related,62.0,70.0,8.0,it-ist-02,0.9,0.5,-0.4,it-ist-01,0.42,0.0,0.0,0.0
-Hungarian,Livonian,Distantly related,29.0,44.0,15.0,it-ist-01,2.56,1.81,-0.75,it-ist-02,0.3,0.39,0.0,0.0
-Hungarian,Votic,Distantly related,19.0,34.0,15.0,it-ist-01,2.47,1.11,-1.36,it-ist-01,0.48,0.0,0.0,0.0
-Irish,Breton,Closely related,39.0,79.0,40.0,CMU-03,1.57,0.38,-1.19,CMU-03,0.0,0.5,0.0,0.0
-Irish,Cornish,Closely related,24.0,34.0,10.0,it-ist-01,2.0,1.56,-0.44,it-ist-01,0.0,0.48,0.0,0.0
-Irish,Old Irish,Closely related,2.0,6.0,4.0,it-ist-02,3.3,3.12,-0.18,it-ist-02,0.55,0.52,0.0,0.0
-Irish,Scottish Gaelic,Closely related,64.0,66.0,2.0,CMU-03,0.96,1.06,0.1,CMU-03,0.0,0.26,0.53,0.0
-Italian,Friulian,Closely related,56.0,78.0,22.0,CMU-03,1.03,0.72,-0.31,it-ist-02,0.0,0.89,0.0,0.0
-Italian,Ladin,Closely related,55.0,74.0,19.0,CMU-03,0.79,0.6,-0.19,CMU-03,0.0,0.7,0.0,0.0
-Italian,Maltese,Unrelated,26.0,45.0,19.0,CMU-03,1.39,1.23,-0.16,CMU-03,0.0,0.35,0.0,0.0
-Italian,Neapolitan,Closely related,80.0,83.0,3.0,CMU-03,0.4,0.36,-0.04,it-ist-02,0.0,0.85,0.0,0.0
-Kannada,Telugu,Closely related,82.0,94.0,12.0,CMU-03,0.6,0.14,-0.46,CMU-03,0.0,0.41,0.0,0.0
+Adyghe,Kabardian,Closely related,96.0,97.0,1.0,Tuebingen-02,0.04,0.03,-0.01,Tuebingen-02,1.0,,0.88,
+Albanian,Breton,Distantly related,40.0,81.0,41.0,CMU-03,1.3,0.44,-0.86,it-ist-02,0.0,0.48,,
+Arabic,Classical Syriac,Closely related,66.0,92.0,26.0,CMU-03,0.46,0.1,-0.36,CMU-03,0.19,0.0,0.38,
+Arabic,Maltese,Closely related,31.0,41.0,10.0,CMU-03,1.42,1.37,-0.05,CMU-03,0.0,0.52,0.0,
+Arabic,Turkmen,Unrelated,74.0,84.0,10.0,CMU-03,0.46,0.32,-0.14,CMU-03,0.38,0.0,0.0,
+Armenian,Kabardian,Unrelated,83.0,87.0,4.0,it-ist-01,0.21,0.14,-0.07,CMU-03/it-ist-01,0.29,0.0,0.21,
+Asturian,Occitan,Closely related,48.0,77.0,29.0,CMU-03,1.74,0.8,-0.94,it-ist-01,,0.64,0.0,
+Bashkir,Azeri,Distantly related,39.0,69.0,30.0,it-ist-02,1.64,0.69,-0.95,it-ist-02,0.64,0.0,0.0,
+Bashkir,Crimean Tatar,Closely related,70.0,70.0,0.0,CMU-03,0.39,0.42,0.03,CMU-03,0.67,0.0,0.22,
+Bashkir,Kazakh,Closely related,80.0,90.0,10.0,it-ist-01,0.32,0.1,-0.22,it-ist-01,0.8,,0.0,
+Bashkir,Khakas,Distantly related,86.0,96.0,10.0,it-ist-02,0.18,0.04,-0.14,it-ist-02,0.58,,0.0,
+Bashkir,Tatar,Closely related,68.0,74.0,6.0,it-ist-02,0.46,0.33,-0.13,CMU-03,0.67,0.0,0.22,
+Bashkir,Turkmen,Distantly related,94.0,88.0,-6.0,it-ist-01,0.1,0.12,0.02,it-ist-01,0.89,,0.0,
+Basque,Kashubian,Unrelated,40.0,76.0,36.0,CMU-03,1.16,0.42,-0.74,CMU-03,0.0,0.0,,
+Belarusian,Old Irish,Distantly related,2.0,10.0,8.0,CMU-03,3.9,3.14,-0.76,CMU-03,0.5,0.33,0.0,
+Bengali,Greek,Distantly related,17.7,74.6,56.9,CMU-03,2.86,0.59,-2.27,CMU-03,0.56,0.29,0.0,
+Bulgarian,Old Church Slavonic,Closely related,44.0,56.0,12.0,CMU-03,1.14,1.06,-0.08,CMU-03,0.42,0.0,0.0,
+Czech,Kashubian,Closely related,52.0,78.0,26.0,CMU-03,0.84,0.36,-0.48,CMU-03,0.82,0.0,0.0,
+Czech,Latin,Distantly related,8.4,42.0,33.6,CMU-03,2.95,1.36,-1.59,CMU-03,0.58,0.54,0.59,
+Danish,Middle High German,Closely related,72.0,82.0,10.0,it-ist-02,0.5,0.38,-0.12,it-ist-02,0.5,0.43,,
+Danish,Middle Low German,Closely related,36.0,44.0,8.0,it-ist-01,1.44,1.26,-0.18,it-ist-01,0.38,0.4,0.0,
+Danish,North Frisian,Closely related,28.0,46.0,18.0,CMU-03,2.78,2.11,-0.67,CMU-03,0.0,0.25,,
+Danish,West Frisian,Closely related,42.0,43.0,1.0,CMU-03,1.57,1.27,-0.3,it-ist-02,0.0,0.38,,
+Danish,Yiddish,Closely related,76.0,67.0,-9.0,it-ist-01,0.91,0.72,-0.19,Tuebingen-01,0.3,0.27,0.0,
+Dutch,Middle High German,Closely related,76.0,78.0,2.0,it-ist-01/it-ist-02,0.44,0.36,-0.08,it-ist-02,0.0,1.0,0.0,
+Dutch,Middle Low German,Closely related,42.0,52.0,10.0,it-ist-02,1.34,1.16,-0.18,it-ist-02,0.0,0.92,0.2,
+Dutch,North Frisian,Closely related,32.0,46.0,14.0,CMU-03,2.67,1.99,-0.68,CMU-03,,0.53,0.0,
+Dutch,West Frisian,Closely related,38.0,51.0,13.0,it-ist-02,2.18,1.18,-1.0,it-ist-02,,0.73,0.0,
+Dutch,Yiddish,Closely related,78.0,64.0,-14.0,it-ist-01,0.53,0.72,0.19,Tuebingen-01,0.0,0.64,0.29,
+English,Murrinhpatha,Unrelated,22.0,42.0,20.0,it-ist-02,1.68,1.1,-0.58,it-ist-02,,0.23,,
+English,North Frisian,Closely related,31.0,42.0,11.0,CMU-03,2.73,2.22,-0.51,it-ist-02,,0.28,,
+English,West Frisian,Closely related,35.0,43.0,8.0,CMU-03,1.48,1.26,-0.22,it-ist-02,,0.43,,
+Estonian,Ingrian,Closely related,30.0,44.0,14.0,it-ist-02,1.56,1.24,-0.32,it-ist-02,0.67,0.0,0.0,
+Estonian,Karelian,Closely related,74.0,68.0,-6.0,it-ist-01,0.52,0.62,0.1,it-ist-02,0.75,0.0,0.0,
+Estonian,Livonian,Closely related,36.0,40.0,4.0,it-ist-02,1.87,1.47,-0.4,it-ist-02,0.4,0.64,0.0,
+Estonian,Votic,Closely related,25.0,35.0,10.0,it-ist-01,1.55,1.17,-0.38,it-ist-02,0.78,0.0,,
+Finnish,Ingrian,Closely related,54.0,48.0,-6.0,it-ist-02,1.08,1.2,0.12,it-ist-02,0.67,0.0,0.22,
+Finnish,Karelian,Closely related,70.0,78.0,8.0,it-ist-01,0.64,0.42,-0.22,it-ist-01,0.84,0.0,0.53,
+Finnish,Livonian,Closely related,22.0,34.0,12.0,CMU-03/it-ist-01,2.48,1.71,-0.77,it-ist-01,0.47,0.58,0.35,
+Finnish,Votic,Closely related,42.0,40.0,-2.0,it-ist-02,1.25,1.02,-0.23,it-ist-02,0.68,0.0,0.0,
+French,Occitan,Closely related,50.0,80.0,30.0,CMU-03,1.22,0.69,-0.53,it-ist-01,,0.89,,
+German,Middle High German,Closely related,72.0,82.0,10.0,CMU-03,0.44,0.32,-0.12,it-ist-02,1.0,1.0,,
+German,Middle Low German,Closely related,42.0,52.0,10.0,it-ist-02,1.24,1.16,-0.08,it-ist-02,0.83,0.92,0.0,
+German,Yiddish,Closely related,77.0,68.0,-9.0,it-ist-01,0.46,0.72,0.26,Tuebingen-01,0.08,0.64,0.0,
+Greek,Bengali,Distantly related,51.0,67.0,16.0,CMU-03,1.21,1.02,-0.19,CMU-03,0.56,0.29,0.0,
+Hebrew,Classical Syriac,Closely related,89.0,95.0,6.0,CMU-03,0.14,0.06,-0.08,CMU-03,0.26,0.0,0.0,
+Hebrew,Maltese,Closely related,37.0,47.0,10.0,CMU-03,1.24,1.1,-0.14,CMU-03,0.0,0.56,,
+Hindi,Bengali,Closely related,54.0,68.0,14.0,CMU-03,1.18,0.72,-0.46,UAlberta-02,0.0,0.38,,
+Hungarian,Ingrian,Distantly related,12.0,40.0,28.0,it-ist-01,2.6,1.46,-1.14,it-ist-01,0.45,0.0,0.0,
+Hungarian,Karelian,Distantly related,62.0,70.0,8.0,it-ist-02,0.9,0.5,-0.4,it-ist-01,0.42,0.0,0.0,
+Hungarian,Livonian,Distantly related,29.0,44.0,15.0,it-ist-01,2.56,1.81,-0.75,it-ist-02,0.3,0.39,0.0,
+Hungarian,Votic,Distantly related,19.0,34.0,15.0,it-ist-01,2.47,1.11,-1.36,it-ist-01,0.48,0.0,,
+Irish,Breton,Closely related,39.0,79.0,40.0,CMU-03,1.57,0.38,-1.19,CMU-03,0.0,0.5,0.0,
+Irish,Cornish,Closely related,24.0,34.0,10.0,it-ist-01,2.0,1.56,-0.44,it-ist-01,0.0,0.48,0.0,
+Irish,Old Irish,Closely related,2.0,6.0,4.0,it-ist-02,3.3,3.12,-0.18,it-ist-02,0.55,0.52,0.0,
+Irish,Scottish Gaelic,Closely related,64.0,66.0,2.0,CMU-03,0.96,1.06,0.1,CMU-03,0.0,0.26,0.53,
+Italian,Friulian,Closely related,56.0,78.0,22.0,CMU-03,1.03,0.72,-0.31,it-ist-02,,0.89,,
+Italian,Ladin,Closely related,55.0,74.0,19.0,CMU-03,0.79,0.6,-0.19,CMU-03,,0.7,,
+Italian,Maltese,Unrelated,26.0,45.0,19.0,CMU-03,1.39,1.23,-0.16,CMU-03,,0.35,,
+Italian,Neapolitan,Closely related,80.0,83.0,3.0,CMU-03,0.4,0.36,-0.04,it-ist-02,,0.85,,
+Kannada,Telugu,Closely related,82.0,94.0,12.0,CMU-03,0.6,0.14,-0.46,CMU-03,0.0,0.41,,
 Kurmanji,Sorani,Closely related,15.0,69.0,54.0,CMU-03,2.56,0.65,-1.91,CMU-03,0.0,0.58,0.25,0.36
-Latin,Czech,Distantly related,20.1,71.4,51.3,CMU-03,2.77,1.14,-1.63,CMU-03,0.58,0.54,0.59,0.0
-Latvian,Lithuanian,Closely related,17.1,48.4,31.3,CMU-03,2.21,1.69,-0.52,CMU-03,1.0,0.5,0.71,0.0
-Latvian,Scottish Gaelic,Distantly related,48.0,68.0,20.0,CMU-03,1.16,1.0,-0.16,CMU-03,0.0,0.28,0.64,0.0
-Persian,Azeri,Unrelated,46.0,69.0,23.0,CMU-03,1.35,0.74,-0.61,CMU-03,0.0,0.24,0.0,0.0
-Persian,Pashto,Closely related,27.0,48.0,21.0,CMU-03,1.7,1.54,-0.16,CMU-03,0.0,0.48,0.0,0.0
-Polish,Kashubian,Closely related,74.0,78.0,4.0,CMU-03,0.34,0.34,0.0,CMU-03,1.0,0.0,0.0,0.0
-Polish,Old Church Slavonic,Closely related,40.0,58.0,18.0,CMU-03,1.22,0.96,-0.26,CMU-03,0.9,0.0,0.0,0.0
-Portuguese,Russian,Distantly related,27.5,76.3,48.8,CMU-03,1.7,1.16,-0.54,CMU-03,0.0,0.38,0.0,0.0
-Romanian,Latin,Closely related,6.7,41.3,34.6,CMU-03,3.05,1.35,-1.7,CMU-03,0.25,0.75,0.29,0.0
-Russian,Old Church Slavonic,Closely related,34.0,64.0,30.0,CMU-03,1.33,0.86,-0.47,CMU-03,0.67,0.0,0.0,0.0
-Russian,Portuguese,Distantly related,50.5,88.4,37.9,CMU-03,1.04,0.66,-0.38,CMU-03,0.0,0.38,0.0,0.0
-Sanskrit,Bengali,Closely related,33.0,65.0,32.0,CMU-03,1.79,1.13,-0.66,CMU-03,0.46,0.0,0.0,0.0
-Sanskrit,Pashto,Distantly related,34.0,43.0,9.0,CMU-03,1.54,1.27,-0.27,it-ist-02,0.33,0.0,0.4,0.0
-Slovak,Kashubian,Closely related,54.0,76.0,22.0,CMU-03,0.6,0.34,-0.26,CMU-03,0.89,0.0,0.0,0.0
-Slovene,Old Saxon,Distantly related,10.6,53.2,42.6,CMU-03,2.23,1.14,-1.09,CMU-03,0.44,0.48,0.5,0.0
+Latin,Czech,Distantly related,20.1,71.4,51.3,CMU-03,2.77,1.14,-1.63,CMU-03,0.58,0.54,0.59,
+Latvian,Lithuanian,Closely related,17.1,48.4,31.3,CMU-03,2.21,1.69,-0.52,CMU-03,1.0,0.5,0.71,
+Latvian,Scottish Gaelic,Distantly related,48.0,68.0,20.0,CMU-03,1.16,1.0,-0.16,CMU-03,0.0,0.28,0.64,
+Persian,Azeri,Unrelated,46.0,69.0,23.0,CMU-03,1.35,0.74,-0.61,CMU-03,0.0,0.24,,
+Persian,Pashto,Closely related,27.0,48.0,21.0,CMU-03,1.7,1.54,-0.16,CMU-03,0.0,0.48,0.0,
+Polish,Kashubian,Closely related,74.0,78.0,4.0,CMU-03,0.34,0.34,0.0,CMU-03,1.0,0.0,0.0,
+Polish,Old Church Slavonic,Closely related,40.0,58.0,18.0,CMU-03,1.22,0.96,-0.26,CMU-03,0.9,0.0,0.0,
+Portuguese,Russian,Distantly related,27.5,76.3,48.8,CMU-03,1.7,1.16,-0.54,CMU-03,0.0,0.38,0.0,
+Romanian,Latin,Closely related,6.7,41.3,34.6,CMU-03,3.05,1.35,-1.7,CMU-03,0.25,0.75,0.29,
+Russian,Old Church Slavonic,Closely related,34.0,64.0,30.0,CMU-03,1.33,0.86,-0.47,CMU-03,0.67,0.0,0.0,
+Russian,Portuguese,Distantly related,50.5,88.4,37.9,CMU-03,1.04,0.66,-0.38,CMU-03,0.0,0.38,0.0,
+Sanskrit,Bengali,Closely related,33.0,65.0,32.0,CMU-03,1.79,1.13,-0.66,CMU-03,0.46,0.0,0.0,
+Sanskrit,Pashto,Distantly related,34.0,43.0,9.0,CMU-03,1.54,1.27,-0.27,it-ist-02,0.33,0.0,0.4,
+Slovak,Kashubian,Closely related,54.0,76.0,22.0,CMU-03,0.6,0.34,-0.26,CMU-03,0.89,,0.0,
+Slovene,Old Saxon,Distantly related,10.6,53.2,42.6,CMU-03,2.23,1.14,-1.09,CMU-03,0.44,0.48,0.5,
 Sorani,Irish,Distantly related,27.6,66.3,38.7,CMU-03,2.4,0.99,-1.41,CMU-03,0.0,0.48,0.07,0.0
-Spanish,Friulian,Closely related,53.0,81.0,28.0,CMU-03,1.01,0.61,-0.4,CMU-03,0.0,0.74,0.0,0.0
-Spanish,Occitan,Closely related,57.0,78.0,21.0,CMU-03,1.14,0.57,-0.57,it-ist-01,0.0,0.74,0.0,0.0
-Swahili,Quechua,Unrelated,13.9,92.1,78.2,CMU-03,3.9,0.56,-3.34,CMU-03,0.06,0.2,0.06,0.0
-Turkish,Azeri,Closely related,80.0,87.0,7.0,it-ist-02,0.35,0.22,-0.13,it-ist-01,0.52,0.29,0.0,0.0
-Turkish,Crimean Tatar,Distantly related,83.0,89.0,6.0,CMU-03/it-ist-02,0.24,0.14,-0.1,CMU-03,0.25,0.24,0.0,0.0
-Turkish,Kazakh,Distantly related,76.0,86.0,10.0,it-ist-02,0.34,0.16,-0.18,it-ist-02,0.32,0.0,0.0,0.0
-Turkish,Khakas,Distantly related,76.0,94.0,18.0,it-ist-01,0.8,0.06,-0.74,it-ist-01,0.26,0.0,0.0,0.0
-Turkish,Tatar,Distantly related,73.0,83.0,10.0,it-ist-02,0.37,0.21,-0.16,it-ist-02,0.25,0.21,0.0,0.0
-Turkish,Turkmen,Closely related,86.0,98.0,12.0,it-ist-01,0.24,0.02,-0.22,it-ist-01,0.33,0.0,0.0,0.0
-Urdu,Bengali,Closely related,49.0,67.0,18.0,CMU-03,1.12,0.98,-0.14,CMU-03,0.44,0.38,0.0,0.0
-Urdu,Old English,Distantly related,20.8,40.3,19.5,CMU-03,1.72,1.2,-0.52,CMU-03,0.43,0.44,0.0,0.0
-Uzbek,Azeri,Distantly related,57.0,70.0,13.0,CMU-03,1.23,0.7,-0.53,CMU-03,0.87,0.0,0.0,0.0
-Uzbek,Crimean Tatar,Distantly related,67.0,67.0,0.0,CMU-03,0.49,0.45,-0.04,CMU-03,0.43,0.0,0.0,0.0
-Uzbek,Kazakh,Distantly related,84.0,72.0,-12.0,CMU-03,0.2,0.32,0.12,CMU-03,0.53,0.0,0.0,0.0
-Uzbek,Khakas,Distantly related,86.0,92.0,6.0,it-ist-01,0.24,0.18,-0.06,it-ist-01,0.41,0.0,0.0,0.0
-Uzbek,Tatar,Distantly related,69.0,72.0,3.0,CMU-03,0.48,0.35,-0.13,CMU-03,0.43,0.0,0.0,0.0
-Uzbek,Turkmen,Distantly related,80.0,78.0,-2.0,CMU-03,0.32,0.42,0.1,CMU-03,0.57,0.0,0.0,0.0
-Welsh,Breton,Closely related,45.0,86.0,41.0,CMU-03,0.9,0.31,-0.59,CMU-03,0.0,0.44,0.0,0.0
-Welsh,Cornish,Closely related,22.0,42.0,20.0,it-ist-01,2.44,1.5,-0.94,it-ist-01,0.0,0.43,0.0,0.0
-Welsh,Old Irish,Closely related,6.0,6.0,0.0,CMU-03,3.36,3.08,-0.28,CMU-03,0.0,0.46,0.0,0.0
-Welsh,Scottish Gaelic,Closely related,40.0,64.0,24.0,CMU-03,1.22,1.08,-0.14,CMU-03,0.0,0.14,0.0,0.0
-Zulu,Swahili,Distantly related,44.0,81.0,37.0,CMU-03,1.24,0.33,-0.91,CMU-03,0.15,0.17,0.11,0.0
+Spanish,Friulian,Closely related,53.0,81.0,28.0,CMU-03,1.01,0.61,-0.4,CMU-03,,0.74,,
+Spanish,Occitan,Closely related,57.0,78.0,21.0,CMU-03,1.14,0.57,-0.57,it-ist-01,,0.74,,
+Swahili,Quechua,Unrelated,13.9,92.1,78.2,CMU-03,3.9,0.56,-3.34,CMU-03,0.06,0.2,0.06,
+Turkish,Azeri,Closely related,80.0,87.0,7.0,it-ist-02,0.35,0.22,-0.13,it-ist-01,0.52,0.29,0.0,
+Turkish,Crimean Tatar,Distantly related,83.0,89.0,6.0,CMU-03/it-ist-02,0.24,0.14,-0.1,CMU-03,0.25,0.24,0.0,
+Turkish,Kazakh,Distantly related,76.0,86.0,10.0,it-ist-02,0.34,0.16,-0.18,it-ist-02,0.32,0.0,0.0,
+Turkish,Khakas,Distantly related,76.0,94.0,18.0,it-ist-01,0.8,0.06,-0.74,it-ist-01,0.26,0.0,0.0,
+Turkish,Tatar,Distantly related,73.0,83.0,10.0,it-ist-02,0.37,0.21,-0.16,it-ist-02,0.25,0.21,0.0,
+Turkish,Turkmen,Closely related,86.0,98.0,12.0,it-ist-01,0.24,0.02,-0.22,it-ist-01,0.33,0.0,0.0,
+Urdu,Bengali,Closely related,49.0,67.0,18.0,CMU-03,1.12,0.98,-0.14,CMU-03,0.44,0.38,,
+Urdu,Old English,Distantly related,20.8,40.3,19.5,CMU-03,1.72,1.2,-0.52,CMU-03,0.43,0.44,0.0,
+Uzbek,Azeri,Distantly related,57.0,70.0,13.0,CMU-03,1.23,0.7,-0.53,CMU-03,0.87,0.0,,
+Uzbek,Crimean Tatar,Distantly related,67.0,67.0,0.0,CMU-03,0.49,0.45,-0.04,CMU-03,0.43,0.0,0.0,
+Uzbek,Kazakh,Distantly related,84.0,72.0,-12.0,CMU-03,0.2,0.32,0.12,CMU-03,0.53,,,
+Uzbek,Khakas,Distantly related,86.0,92.0,6.0,it-ist-01,0.24,0.18,-0.06,it-ist-01,0.41,,,
+Uzbek,Tatar,Distantly related,69.0,72.0,3.0,CMU-03,0.48,0.35,-0.13,CMU-03,0.43,0.0,0.0,
+Uzbek,Turkmen,Distantly related,80.0,78.0,-2.0,CMU-03,0.32,0.42,0.1,CMU-03,0.57,,,
+Welsh,Breton,Closely related,45.0,86.0,41.0,CMU-03,0.9,0.31,-0.59,CMU-03,,0.44,,
+Welsh,Cornish,Closely related,22.0,42.0,20.0,it-ist-01,2.44,1.5,-0.94,it-ist-01,,0.43,,
+Welsh,Old Irish,Closely related,6.0,6.0,0.0,CMU-03,3.36,3.08,-0.28,CMU-03,0.0,0.46,,
+Welsh,Scottish Gaelic,Closely related,40.0,64.0,24.0,CMU-03,1.22,1.08,-0.14,CMU-03,,0.14,0.0,
+Zulu,Swahili,Distantly related,44.0,81.0,37.0,CMU-03,1.24,0.33,-0.91,CMU-03,0.15,0.17,0.11,
