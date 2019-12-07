@@ -9,10 +9,6 @@ dot_color = '#3f6fcf'
 line_color = '#ffdd22'
 
 
-def get_2018_low_acc(lang_name):
-    return SIGMORPHON_2018_results.loc[lang_name]["Low-resource accuracy"]
-
-
 def permutation_test(list1, list2):
     """Performs a permutation test to assess confidence of correlation"""
     r = np.corrcoef(list1, list2)[0, 1]
@@ -29,9 +25,9 @@ def permutation_test(list1, list2):
 def graph():
     distant_langs = SIGMORPHON_2019_results[SIGMORPHON_2019_results["Distance"] != "Closely related"]
 
-    for metric in "Accuracy Improvement", "Levenshtein Improvement":
+    for metric in ["Accuracy Improvement vs. 2018"]:
         for explanatory in "N category overlap", "V category overlap":
-            title = f"{metric} vs. {explanatory}\nin distantly related and unrelated languages"
+            title = f"Accuracy Improvement vs. {explanatory}\nin distantly related and unrelated languages"
             plt.title(title)
             plt.xlabel(explanatory)
             plt.ylabel(metric)

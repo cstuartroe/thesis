@@ -10,6 +10,7 @@ COLUMN_ORDER = [
     "Baseline Accuracy",
     "Best Transfer Accuracy",
     "Accuracy Improvement",
+    "Accuracy Improvement vs. 2018",
     "Best Accuracy Team",
     "Baseline Levenshtein",
     "Best Transfer Levenshtein",
@@ -65,9 +66,23 @@ def calculate_category_overlap(pos):
 
 def calculate_improvements():
     global SIGMORPHON_2019_results
-    SIGMORPHON_2019_results["Accuracy Improvement"] = SIGMORPHON_2019_results["Best Transfer Accuracy"] - SIGMORPHON_2019_results["Baseline Accuracy"]
-    SIGMORPHON_2019_results["Levenshtein Improvement"] = SIGMORPHON_2019_results["Best Transfer Levenshtein"] - SIGMORPHON_2019_results["Baseline Levenshtein"]
-    SIGMORPHON_2019_results = SIGMORPHON_2019_results.round({"Accuracy Improvement": 1, "Levenshtein Improvement": 2})
+
+    SIGMORPHON_2019_results["Accuracy Improvement"] = SIGMORPHON_2019_results["Best Transfer Accuracy"] \
+                                                      - SIGMORPHON_2019_results["Baseline Accuracy"]
+    SIGMORPHON_2019_results["Levenshtein Improvement"] = SIGMORPHON_2019_results["Best Transfer Levenshtein"] \
+                                                         - SIGMORPHON_2019_results["Baseline Levenshtein"]
+
+    accuracy_improvement_vs_2018 = []
+    for row in SIGMORPHON_2019_results.iterrows():
+        accuracy_2018 = SIGMORPHON_2018_results.loc[row[1]["Target Language"]]["Low-resource accuracy"]
+        accuracy_improvement_vs_2018.append(row[1]["Best Transfer Accuracy"] - accuracy_2018)
+    SIGMORPHON_2019_results["Accuracy Improvement vs. 2018"] = accuracy_improvement_vs_2018
+
+    SIGMORPHON_2019_results = SIGMORPHON_2019_results.round({
+        "Accuracy Improvement": 1,
+        "Accuracy Improvement vs. 2018": 1,
+        "Levenshtein Improvement": 2
+    })
 
 
 def calculate():
