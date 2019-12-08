@@ -4,6 +4,8 @@ import random
 
 from .general import *
 
+random.seed(2019)
+
 
 dot_color = '#3f6fcf'
 line_color = '#ffdd22'
@@ -26,7 +28,7 @@ def graph():
     distant_langs = SIGMORPHON_2019_results[SIGMORPHON_2019_results["Distance"] != "Closely related"]
 
     for metric in ["Accuracy Improvement vs. 2018"]:
-        for explanatory in "N category overlap", "V category overlap":
+        for explanatory in ["POS distribution overlap"]:
             title = f"Accuracy Improvement vs. {explanatory}\nin distantly related and unrelated languages"
             plt.title(title)
             plt.xlabel(explanatory)
@@ -47,6 +49,8 @@ def graph():
 
             m, b = np.polyfit(xs, ys, 1)
             plt.plot([0, max(xs)], [b, b + m*max(xs)], '-', color=line_color)
+
+            print(f"{metric} ~= {round(m,2)}*({explanatory}) + {round(b,2)}")
 
             plt.figtext(.8, .01, f"r={round(r, 2)} p={round(permutation_test(xs, ys), 3)}")
 

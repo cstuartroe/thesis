@@ -15,7 +15,8 @@ COLUMN_ORDER = [
     "Baseline Levenshtein",
     "Best Transfer Levenshtein",
     "Levenshtein Improvement",
-    "Best Levenshtein Team"
+    "Best Levenshtein Team",
+    "POS distribution overlap"
 ] + [f"{pos} category overlap" for pos in POS]
 
 
@@ -85,9 +86,30 @@ def calculate_improvements():
     })
 
 
+def calculate_proportions(d):
+    total = sum(d.values())
+    return dict([(key, value/total) for key, value in d.items()])
+
+
+def calculate_POS_distribution_overlaps():
+    POS_distribution_overlaps = []
+    for row in SIGMORPHON_2019_results.iterrows():
+        source = get_language_by_name(row[1]["Source Language"])
+        target = get_language_by_name(row[1]["Target Language"])
+
+        source_POS = calculate_proportions(dict([(pos, source[f"{pos} examples"]) for pos in POS]))
+        target_POS = calculate_proportions(dict([(pos, target[f"{pos} examples"]) for pos in POS]))
+
+        distribution_overlap = sum(min(source_POS[pos], target_POS[pos]) for pos in POS)
+        POS_distribution_overlaps.append(distribution_overlap)
+
+    SIGMORPHON_2019_results["POS distribution overlap"] = POS_distribution_overlaps
+
+
 def calculate():
     calculate_distance()
     calculate_improvements()
     for pos in POS:
         calculate_category_overlap(pos)
+    calculate_POS_distribution_overlaps()
     SIGMORPHON_2019_results[COLUMN_ORDER].to_csv(SIGMORPHON_2019_results_filename, index=False)
