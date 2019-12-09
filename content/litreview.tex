@@ -2,29 +2,117 @@
 
 \section{Natural language morphology and typology}
 
+\subsection{What is natural language morphology?}
+
+One way that human languages express grammatical or semantic meaning is by altering individual words; this process is called \textbf{morphology}. Linguistic morphology is split into two major categories: \textbf{inflectional} and \textbf{derivational}. Inflectional morphology comprises alterations to words that reflect \textit{grammatical} meaning, that is, it indicates which of a determined subset of grammatical categories is at work in a particular phrase. For example, the verb \textit{paint} is grammatically inflected in the sentence \textit{"He paints."} to indicate agreement with a third-person singular subject. Derivational morphology applies \textit{semantic} alterations, that is, it shifts the fundamental meaning of a word, often switching its part of speech. For example, the verb \textit{paint} can become the noun \textit{painter}, denoting a person characterized by performing the action of the verb \parencite{Hogan2010}. 
+
+The concept of \textbf{part of speech} refers to high-level groupings of words within a language according to what inflectional morphology they may undergo. Common parts of speech include nouns, verbs, and adjectives, although the exact division of parts of speech is language-specific. Within a given language and part of speech, there is typically a well-defined, finite set of \textbf{forms} that a given word may take; that abstract set of forms is called a \textbf{paradigm}. In particular, there is typically a set of \textbf{morphological categories} associated with a given part of speech in a given language. Common examples of morphological categories include number (e.g., singular vs. plural), verb tense, and noun or pronoun case (English exhibits case only in pronouns: I, me, my). Inflection is then used to assign a value to some or all of the morphological categories for a given word \parencite{Hogan2010}. For example, Spanish adjectives such as \textit{pequeño} "small" inflect for gender and number:
+
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+& singular & plural \\
+\hline \hline
+masculine & \textit{pequeño} & \textit{pequeños} \\
+\hline 
+feminine & \textit{pequeña} & \textit{pequeñas} \\
+\hline
+\end{tabular}
+\end{center}
+
+ The term "word" can be ambiguous when speaking of linguistic morphology. To be more specific, a \textbf{form} is a word with a specific spelling or pronunciation and corresponding to a specific set of grammatical values, e.g., a single cell in the above table. The set of forms across an entire inflectional paradigm are said to belong to the same \textbf{lexeme}. A lexeme can be identified by its \textbf{lemma} - a citation or dictionary form, a particular cell in the paradigm that is chosen to represent the entire lexeme. Spanish adjectives are usually cited in the masculine singular, so the above forms may be said to belong to the Spanish lexeme that has the lemma \textit{pequeño} \parencite{Hogan2010}.
+
+In contrast, derivational morphology is applied in a less systematic manner, and constraints on its application are as often semantic or idiosyncratic as determined by part of speech or other formal categories. For example, the English verb \textit{like} may become the common derived term \textit{likeable}, but an analogous term \textit{hateable} is much less often seen. For this reason, derivational morphology is more difficult to systematically study; this paper is only concerned with inflectional morphology.
+
+An important concept in morphology is that of \textbf{inflection classes} - subgroupings of parts of speech in a given language that exhibit similar patterns of inflection to one another. An example the division of Spanish verbs into \textit{-ar}, \textit{-er}, and \textit{-ir} classes:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+infinitive & 3rd person sg. imperfect indicative & gerund \\
+\hline \hline
+\textit{bailar} & \textit{bailaba} & \textit{bailando} \\
+\hline 
+\textit{comer} & \textit{comía} & \textit{comiendo} \\
+\hline 
+\textit{partir} & \textit{partía} & \textit{partiendo} \\
+\hline 
+\end{tabular}
+\end{center}
+
+Many types of grammatical categories commonly appear cross-linguistically, such as number, gender, animacy, case, politeness, tense, aspect, mood, and definiteness. The values that these categories may take often differ somewhat in meaning from language to language (for instance, English only has one inflected past tense while Spanish has two), but the parallels between them are typically enough that it's possible to make general characterizations of the degree of similarity of inflection systems between to languages. English and Spanish both inflect nouns for singular and plural number, and neither inflects nouns for case, but Spanish can inflect some human nouns for gender as well, and inflects adjectives for number and gender where English adjectives are not \parencite{Hogan2010}. A related notion is that of paradigm size. English nouns only ever take two forms - singular and plural - while Finnish nouns may take about 28 \parencite{Wiktionary}.
+
+\subsection{Types of inflection}
+
+There are many \textbf{inflection shapes} seen in natural languages. The most basic is \textbf{affixation}: the addition of sounds to the beginning, middle, or end of a word. Affixation can be broadly divided into prefixation (addition of an affix to the beginning of a word), suffixation (to the end), infixation (in the middle), circumfixation (at both ends). Other designations for affixation shapes include ablaut (alteration or replacement of a sound in the middle of a word) and templatic morphology. Templatic morphology is a complex process by which certain elements of a stem are distributed throughout a form, interwoven with elements indicating grammatical value. 
+
+\textbf{Fusion} refers to the marking of multiple categories at once with a single indivisible morpheme, e.g., the Spanish verb \textit{hablé} "I spoke" marks tense and subject person and number with the suffix \textit{-é}, lacking separable morphemes to indicate the preterite tense and first person singular subject (cf. \textit{hablo} "I speak", \textit{habló} "he/she spoke"). 
+
+\textbf{Reduplication} is the repetition of all or part of a word. Reduplication may be full, as in Indonesian \textit{orang} "person" vs. \textit{orang-orang} "people", or partial, as in the formation of the contemplative aspect of the Tagalog word \textit{bili} "buy" by repeating the first syllable: \textit{bibili}. 
+
+\textbf{Long-distance morphophonological processes} are those by which the surface form of an affix depends on the phonological properties of a segment at some distance from the affixation site. For instance, Finnish exhibits vowel harmony, a process by which the vowels present in affixes depend on the set of vowels in the stem. The Finnish inessive singular suffix \textit{-ssa/-ssä} looks different on the nouns \textit{puku} "suit" and \textit{kenkä} "shoe", with the final vowel of the suffix dependent on the set of vowels in the rest of the word. 
+
+Lastly, \textbf{irregularity} is a concept with familarity to anyone who's ever tried to learn a foreign language. Forms or entire lexemes are said to be irregular if they are aberrant from the normal patterns of morphology. For example, almost all English verbs only mark a third person singular subject differently from others, with a suffix \textit{-s}: \textit{I run} but \textit{she runs}. However, \textit{to be} marks the first person singular subject differently as well, and the third person singular subject marking bears no resemblance to the normal affixation process: \textit{I am}, \textit{you are}, \textit{she is}. It can be said that \textit{be} is a highly irregular verb.
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+nominative singular & inessive singular \\
+\hline \hline
+\textit{puku} & \textit{puvussa} \\
+\hline 
+\textit{kenkä} & \textit{kengässä} \\
+\hline
+\end{tabular} \\
+\vspace{.3cm}
+\parencite{Wiktionary}
+\end{center}
+
+\subsection{Linguistic typology}
+
+\textbf{Linguistic typology} refers to the classification of languages into different categories depending on their structure. The major categories of morphological typology are \textbf{isolating}, \textbf{agglutinating}, and \textbf{fusional}. Languages are considered to be more isolating if they have little grammatical inflection, smaller inflection paradigms, and a smaller number of affixes per word on average \parencite{Hogan2010}. English is a fairly isolating language, likely a factor in the lack of computational morphology research \parencite{Cotterell2017}. Languages are considered to be more agglutinating if they exhibit more extensive inflection but do not typically exhibit fusion; agglutination is also associated with greater morphological regularity. Fusional languages are simply those that exhibit relatively more fusion. Like many typological distinctions, there is no strict assignment of languages into one or another of these categories; rather, they are ends of a spectrum that languages may be placed along \parencite{Hogan2010}.
+
+Other typological labels may be applied depending on the set and shape of morphological inflection. Languages may be considered \textbf{highly inflecting} or \textbf{polysynthetic} if they have very large morphological paradigms. Languages may be typified by the presence of grammatical gender, vowel harmony, or other morphological characteristics. In general, this study is not concerned with defining specific labels for languages so much as computationally measuring the structural similarity of their morphological systems.
+
+\subsection{Linguistic genealogy}
+
+\begin{figure}[hp]
+\includegraphics[width=13cm]{images/1280px-UralicTree.png}
+\centering
+\caption{The entire Uralic language family. \\ (commons.wikimedia.org/wiki/File:UralicTree.svg)}
+\end{figure}
+
+Languages change and diverge over time, and their development tends to follow genealogical patterns analogous to species descent and divergence. They are commonly grouped into \textbf{language families}, described with genealogical trees, and genealogical distance can be measured between them.
+
+Language relationships are ascertained via historical comparison, and language families are simply the largest possible groupings that can be supported with certainty by available evidence. As such, they are not alike in historical timescale or internal diversity; more well-studied or attested families, and those with more historical written material, are likely to be larger because there is information available with which to make inferences about language descent in the distant past.
+
+For this reason, a simple measure of genealogical separation cannot easily be come by. Relative location in a language family tree may not be informative, since the number of members and the density of branching differs between families. Another strategy is to measure \textbf{lexical similarity}: the proportion of words between two languages which are obviously similar due to shared origin.
+
+However, lexical similarity is a measure of the similarity of vocabulary items and is not a good proxy for the grammatical similarity of languages. English has borrowed a very large amount of vocabulary from various historical varieties of French, yet their morphological systems remain fairly faithful to their respective origins in different branches of the Indo-European family. French in particular bears substantial morphological similarity to other Western Romance languages like Spanish and Portuguese. Even languages with no known genealogical relationship and extremely different grammatical systems may have non-zero lexical similarity: Turkish and Urdu have both borrowed heavily from Arabic, yet the grammatical systems of the three languages are quite distinct.
+
 \section{LSTM and GRU neural modeling}
+
+\begin{figure}[p]
+\includegraphics[width=6cm]{images/1000px-Colored_neural_network.png}
+\centering
+\caption{The structure of a feed-forward neural network with three inputs, four hidden cells, and two outputs. \\ (commons.wikimedia.org/wiki/File:Colored\_neural\_network.svg)}
+\end{figure}
+
+\begin{figure}[p]
+\includegraphics[width=12cm]{images/RNN.png}
+\centering
+\caption{The generalized structure of a recurrent neural network. \\ (commons.wikimedia.org/wiki/File:Recurrent\_neural\_network\_unfold.svg)}
+\end{figure}
+
+\begin{figure}[p]
+\includegraphics[width=12cm]{images/The_LSTM_cell.png}
+\centering
+\caption{The state cell of an LSTM model. \\ (commons.wikimedia.org/wiki/File:The\_LSTM\_cell.png)}
+\end{figure}
 
 Neural networks are a type of function approximation model inspired by the connection of neurons in animal brains. They have come to be implemented in a variety of forms, and underlie state of the art machine learning models in a variety of applications. The common feature of neural models is repeated matrix multiplication followed by the application of a non-linear "activation" function. Figure 2.4 illustrates a simple feed-forward network, in which a vector of three inputs is multiplied by some $3 \times 4$ matrix and activated to produce a vector of four intermediate values, which are again multiplied by some $4 \times 2$ matrix and activated to produce a vector of two outputs.
 
 An RNN is a type of neural network that operates over sequences of inputs, typically with unknown length. Figure 2.5 illustrates the general structure: each input is represented by a vector, which is multiplied by a vector $U$ to modify state, and the modified state is then multiplied by a vector $W$ to produce an output vector and a matrix $V$ to produce the next state. An LSTM network utilizes a specific means of using the inputs to modify state, represented by Figure 2.6, which includes the ability to modify the rate at which information is forgotten. LSTMs are intended to solve the forgetfulness of earlier RNN types, which tend to be unable to recall information from more than a few iterations prior \parencite{Hochreiter1997}.
-
-\begin{figure}[ht]
-\includegraphics[width=6cm]{images/1000px-Colored_neural_network.png}
-\centering
-\caption{The structure of a feed-forward neural network with three inputs, four hidden cells, and two outputs. (commons.wikimedia.org/wiki/File:Colored\_neural\_network.svg)}
-\end{figure}
-
-\begin{figure}[ht]
-\includegraphics[width=12cm]{images/RNN.png}
-\centering
-\caption{The generalized structure of a recurrent neural network. (commons.wikimedia.org/wiki/File:Recurrent\_neural\_network\_unfold.svg)}
-\end{figure}
-
-\begin{figure}[ht]
-\includegraphics[width=12cm]{images/The_LSTM_cell.png}
-\centering
-\caption{The state cell of an LSTM model. (commons.wikimedia.org/wiki/File:The\_LSTM\_cell.png)}
-\end{figure}
 
 LSTMs have become the dominant model type in a variety of language tasks, including syntactic and morphological tasks. They significantly outperformed other types of models in SIGMORPHON 2016, since which time they have come to underlie nearly all morphology prediction models (\cite{Cotterell2016}, \cite{Cotterell2017a}).
 
@@ -34,13 +122,13 @@ LSTMs have become the dominant model type in a variety of language tasks, includ
 \caption{A stacked RNN architecture, in which there are two layers of hidden state. In this architecture, hidden states in the second layer are exclusively derived from the aligned cell of the first layer. \parencite{Luong2015}}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[p]
 \includegraphics[width=10cm]{images/global.png}
 \centering
 \caption{An RNN architecture with global attention: all first-layer hidden states are used to construct an output. \parencite{Luong2015}}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[p]
 \includegraphics[width=10cm]{images/local.png}
 \centering
 \caption{An RNN architecture with local attention: only a subset of hidden states, not necessarily contiguous, are used to construct an output. \parencite{Luong2015}}
@@ -52,13 +140,13 @@ The main contrasting terminologies for attention are \textbf{hard} vs. \textbf{s
 
 \section{Transfer learning}
 
+Transfer learning is a high-level term for any machine learning process for which either the domain or the distribution of some or all training data inputs is different from that of the inputs to which a model will ultimately be applied. Such techniques arise in response to the conundrum that many real-world machine learning problems face: a lack of data that looks like the system that one wishes to predict or understand, either due to insufficient available quantity, or altogether lack in the case of seeking to predict the outcome of future events of which no past equivalents exist. The machine learning problem for which a model is initially trained is called the \textbf{source task}; the problem which the model is being constructed to solve is called the \textbf{target task}. Typically, the source model is not the only component of the eventual target model - manual output transformations or additional machine learning is usually applied \parencite{Pan2010}.
+
 \begin{figure}[t]
 \includegraphics[width=12cm]{images/transfer_learning.png}
 \centering
 \caption{An abstract characterization of traditional ML vs. transfer learning}
 \end{figure}
-
-Transfer learning is a high-level term for any machine learning process for which either the domain or the distribution of some or all training data inputs is different from that of the inputs to which a model will ultimately be applied. Such techniques arise in response to the conundrum that many real-world machine learning problems face: a lack of data that looks like the system that one wishes to predict or understand, either due to insufficient available quantity, or altogether lack in the case of seeking to predict the outcome of future events of which no past equivalents exist. The machine learning problem for which a model is initially trained is called the \textbf{source task}; the problem which the model is being constructed to solve is called the \textbf{target task}. Typically, the source model is not the only component of the eventual target model - manual output transformations or additional machine learning is usually applied \parencite{Pan2010}.
 
 Some examples are provided by Pan and Yang 2010. One is the problem of seeking to classify web documents by topic. If a significant portion of the documents that will need to be classified bear on topics rarely covered in an existing corpus of web documents, this is an example where the training and test domains are roughly similar but their distribution is different; it is perhaps a less obvious transfer learning problem. Another example is that of attempting to gauge sentiment of reviews of cameras, when the only available data is a corpus of reviews of other types of products. In this case, knowledge of many domains, none of which is equal to the target domain, must be transferred to attempt to make predictions about the target domain.
 
