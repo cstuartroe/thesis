@@ -8,8 +8,6 @@ SIGMORPHON 2018 task 1 used a string transduction model as a baseline, and recei
 
 The goal of the SIGMORPHON 2019 task 1 was the same as SIGMORPHON 2018 - morphological inflection - but it was specifically a transfer learning task. For the source language, a high-resource data set was provided, and for the target language a low-resource data set; these data sets are identical in size and format to the 2018 high- and low-resource training sets, but they were resampled and so don't contain exactly the same data. SIGMORPHON 2019 provided four baseline models for task 1, all of which were purely neural and differed by attention mechanism, and all submissions were neural models \parencite{McCarthy2019}. 
 
-Given the similarity of data and goals between SIGMORPHON 2018 and 2019, it may be surprising that, for 50 of the 100 training pairs, higher accuracy was achieved on the target language in low-resource settings by the best model of 2018 than by any submission in 2019. It might have been expected that with access to additional data, as well as information from the previous year about which models were successful, models in 2019 should have avoided declining performance. The reason for the performance declines may be that in 2018, the models that performed best in low-resource settings were actually quite different than those that scored well in high-resource settings. Models adapted to low-resource settings tended to avoid pure reliance on neural encoder-decoder models and used techniques such as using string transduction to learn edit sequences and string alignments, and biasing toward copying characters. With the task refocused on neural transfer learning in 2019, many of these techniques might have been dropped. It also may be the case that, since training sets were resampled from 2018 to 2019, the languages that saw worsened performance in 2019 simply had by random chance less useful training sets that year. The low-resource training sets in 2018 and 2019 were relatively small with at most 100 examples, making for greater likelihood of chance sampling effects (\cite{McCarthy2019}, \cite{Cotterell2018b}).
-
 Despite the many confounding factors between the 2018 and 2019 best model performances, some suggestive results are yielded by comparing the best performance of any submission on each pair in 2019 to the best performance of any 2018 submission on the comparable task of modeling the pair's target language in a low-resource setting. Barring differences in modeling technique and data sampling, the two problems are essentially equivalent - using about 100 examples of a language to predict any other inflected form from that language - with the major difference being the transfer learning data, about 10,000 examples of a different language, that was made available in 2019. 
 
 I looked at rudimentary typological, genealogical, and sampling metrics of the languages and training pairs to find correlations with model improvements between 2018 and 2019. The methods of generation of this data, and statistical analysis of it, are presented in this section; potential interpretations and implications are discussed in the next section.
@@ -50,7 +48,11 @@ It is not uncommon for one or both languages in a pair to lack any morphological
 
 \subsection{Correlation with model performance}
 
-Overall, verbal category overlap was much more predictive than nominal category overlap of performance changes between 2018 and 2019. In particular, the verbal category overlap of a transfer learning pair had a highly significant (p<.01) relationship with year over year accuracy improvement, with an additional .1 verbal category overlap score predicting a 3.7\% jump in absolute model accuracy between the two years. The relationship of nominal category overlap to model improvement did not rise to any significance threshold.
+Overall, verbal category overlap was much more predictive than nominal category overlap of performance changes between 2018 and 2019. In particular, the verbal category overlap of a transfer learning pair had a highly significant (p<.01) relationship with year over year accuracy improvement, with an additional .1 verbal category overlap score predicting a 3.7\% jump in absolute model accuracy between the two years. I used randomized permutation testing to approximate the significance level of the correlation.
+
+Many of the pairs concentrated in the lower left of the above plot are pairs of Turkic languages, raising the possibility that language pair sampling is confounding the outcome. However, the same result is present and statistically significant when all Turkic pairs are removed.  
+
+The relationship of nominal category overlap to model improvement did not rise to any significance threshold.
 
 \begin{figure}[ht]
 \includegraphics[width=12cm]{images/generated/significant/Accuracy_Improvement_vs_2018_vs_V_category_overlap_distantly_related_and_unrelated_language_pairs.png}
@@ -58,13 +60,19 @@ Overall, verbal category overlap was much more predictive than nominal category 
 \caption{The relationship between a pair's verbal category overlap and the best team's performance in 2019 relative to 2018.}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[p]
+\includegraphics[width=12cm]{images/generated/significant/Accuracy_Improvement_vs_2018_vs_V_category_overlap_non-Turkic_distantly_related_and_unrelated_language_pairs.png}
+\centering
+\caption{The relationship between a non-Turkic pair's verbal category overlap and the best team's performance in 2019 relative to 2018.}
+\end{figure}
+
+\begin{figure}[p]
 \includegraphics[width=12cm]{images/generated/insignificant/Accuracy_Improvement_vs_2018_vs_N_category_overlap_distantly_related_and_unrelated_language_pairs.png}
 \centering
 \caption{The relationship between a pair's nominal category overlap and the best team's performance in 2019 relative to 2018.}
 \end{figure}
 
-I used randomized permutation testing to approximate the significance level of the correlation.
+\newpage
 
 \section{Part of speech distribution similarity}
 

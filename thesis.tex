@@ -30,10 +30,11 @@
 % **************************************************
 % Information and Commands for Reuse
 % **************************************************
-\newcommand{\thesisTitle}{The Effect of Linguistic Typology on \\Transfer Learning of Morphological Paradigms}
+\newcommand{\thesisTitle}{The Effect of Linguistic Typology on \\Transfer Learning of Morphology}
 \newcommand{\thesisName}{Conor Stuart Roe}
 \newcommand{\thesisDate}{\today}
-\newcommand{\thesisVersion}{Draft 2\\Advisor: Jane Chandlee}
+\newcommand{\thesisVersion}{Final\\Advisor: Jane Chandlee}
+\newcommand{\thesisLink}{https://github.com/cstuartroe/thesis}
 
 
 % **************************************************
@@ -71,7 +72,7 @@
  \usepackage{algorithm}
  \usepackage{algpseudocode}
  \usepackage{mathtools}
- \usepackage{amsmath}
+ \usepackage[fleqn]{amsmath}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \hypersetup{					% setup the hyperref-package options
@@ -88,6 +89,8 @@
 %	bookmarksnumbered=true,		%
 %	bookmarksopen=true			%
 }
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 
 \urlstyle{same}
 
@@ -113,12 +116,12 @@
 \input{content/titlepages}		% INCLUDE: all titlepages
  \cleardoublepage
 
-%\pagestyle{plain}				% display just page numbers
-% \input{content/abstract}		% INCLUDE: the abstracts (english and german)
-% \cleardoublepage
+\pagestyle{plain}				% display just page numbers
+\input{content/abstract}		% INCLUDE: the abstracts (english and german)
+\cleardoublepage
 
-% \input{content/acknowledgement} % INCLUDE: acknowledgement
-% \cleardoublepage
+\input{content/acknowledgement} % INCLUDE: acknowledgement
+\cleardoublepage
 
 \setcounter{tocdepth}{2}		% define depth of toc
 \tableofcontents				% display table of contents
@@ -133,9 +136,10 @@
 
 \input{content/introduction.tex}
 \input{content/litreview.tex}
-\input{content/problem.tex}
 \input{content/data.tex}
-% \input{content/conclusion.tex}
+\input{content/problem.tex}
+\input{content/conclusion.tex}
+\input{content/future.tex}
 %\input{content/append.tex}
 
 %\cleardoublepage
