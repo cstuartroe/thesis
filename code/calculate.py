@@ -9,14 +9,15 @@ COLUMN_ORDER = [
     "Distance",
     "Baseline Accuracy",
     "Best Transfer Accuracy",
-    "Accuracy Improvement",
-    "Accuracy Improvement vs. 2018",
+    "Accuracy Improvement vs Baseline",
+    "Best 2018 Accuracy",
+    "Accuracy Improvement vs 2018",
     "Best Accuracy Team",
     "Baseline Levenshtein",
     "Best Transfer Levenshtein",
     "Levenshtein Improvement",
     "Best Levenshtein Team",
-    "POS distribution overlap"
+    "POS distribution similarity"
 ] + [f"{pos} category overlap" for pos in POS]
 
 
@@ -68,20 +69,23 @@ def calculate_category_overlap(pos):
 def calculate_improvements():
     global SIGMORPHON_2019_results
 
-    SIGMORPHON_2019_results["Accuracy Improvement"] = SIGMORPHON_2019_results["Best Transfer Accuracy"] \
-                                                      - SIGMORPHON_2019_results["Baseline Accuracy"]
+    SIGMORPHON_2019_results["Accuracy Improvement vs Baseline"] = SIGMORPHON_2019_results["Best Transfer Accuracy"] \
+                                                                  - SIGMORPHON_2019_results["Baseline Accuracy"]
     SIGMORPHON_2019_results["Levenshtein Improvement"] = SIGMORPHON_2019_results["Best Transfer Levenshtein"] \
                                                          - SIGMORPHON_2019_results["Baseline Levenshtein"]
 
+    accuracy_2018_list = []
     accuracy_improvement_vs_2018 = []
     for row in SIGMORPHON_2019_results.iterrows():
         accuracy_2018 = SIGMORPHON_2018_results.loc[row[1]["Target Language"]]["Low-resource accuracy"]
+        accuracy_2018_list.append(accuracy_2018)
         accuracy_improvement_vs_2018.append(row[1]["Best Transfer Accuracy"] - accuracy_2018)
-    SIGMORPHON_2019_results["Accuracy Improvement vs. 2018"] = accuracy_improvement_vs_2018
+    SIGMORPHON_2019_results["Best 2018 Accuracy"] = accuracy_2018_list
+    SIGMORPHON_2019_results["Accuracy Improvement vs 2018"] = accuracy_improvement_vs_2018
 
     SIGMORPHON_2019_results = SIGMORPHON_2019_results.round({
-        "Accuracy Improvement": 1,
-        "Accuracy Improvement vs. 2018": 1,
+        "Accuracy Improvement vs Baseline": 1,
+        "Accuracy Improvement vs 2018": 1,
         "Levenshtein Improvement": 2
     })
 
@@ -100,10 +104,10 @@ def calculate_POS_distribution_overlaps():
         source_POS = calculate_proportions(dict([(pos, source[f"{pos} examples"]) for pos in POS]))
         target_POS = calculate_proportions(dict([(pos, target[f"{pos} examples"]) for pos in POS]))
 
-        distribution_overlap = sum(min(source_POS[pos], target_POS[pos]) for pos in POS)
+        distribution_overlap = round(sum(min(source_POS[pos], target_POS[pos]) for pos in POS), 3)
         POS_distribution_overlaps.append(distribution_overlap)
 
-    SIGMORPHON_2019_results["POS distribution overlap"] = POS_distribution_overlaps
+    SIGMORPHON_2019_results["POS distribution similarity"] = POS_distribution_overlaps
 
 
 def calculate():

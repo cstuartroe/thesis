@@ -8,3 +8,4 @@
 *.bak
 .idea
 __pycache__
+images/generated

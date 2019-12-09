@@ -25,34 +25,73 @@ def permutation_test(list1, list2):
 
 
 def graph():
-    distant_langs = SIGMORPHON_2019_results[SIGMORPHON_2019_results["Distance"] != "Closely related"]
+    metrics = [
+        "Accuracy Improvement vs 2018",
+        "Accuracy Improvement vs Baseline",
+        "Levenshtein Improvement",
+        "Best Transfer Accuracy",
+        "Best 2018 Accuracy"
+    ]
 
-    for metric in ["Accuracy Improvement vs. 2018"]:
-        for explanatory in ["POS distribution overlap"]:
-            title = f"Accuracy Improvement vs. {explanatory}\nin distantly related and unrelated languages"
-            plt.title(title)
-            plt.xlabel(explanatory)
-            plt.ylabel(metric)
+    explanatories = [
+        "N category overlap",
+        "V category overlap",
+        "ADJ category overlap",
+        "POS distribution similarity",
+        "Genealogical distance"
+    ]
 
-            xs = []
-            ys = []
-            for row in distant_langs.iterrows():
-                x = row[1][explanatory]
-                y = row[1][metric]
-                if (not pd.isna(x)) and not (pd.isna(y)):
-                    xs.append(x)
-                    ys.append(y)
+    turkic_languages = list(language_info[language_info["Language family"] == "Turkic"]["Name"])
 
-            r = np.corrcoef(ys, xs)[0][1]
+    langsets = {
+        "all language pairs": SIGMORPHON_2019_results,
+        "distantly related and unrelated language pairs": SIGMORPHON_2019_results[SIGMORPHON_2019_results["Distance"] != "Closely related"],
+        "Turkic languages": SIGMORPHON_2019_results[SIGMORPHON_2019_results["Target Language"].isin(turkic_languages)],
+        "non-Turkic languages": SIGMORPHON_2019_results[~SIGMORPHON_2019_results["Target Language"].isin(turkic_languages)]
+    }
 
-            plt.plot(xs, ys, '.', color=dot_color)
+    langsets["non-Turkic distantly related and unrelated language pairs"] = langsets["non-Turkic languages"][langsets["non-Turkic languages"]["Distance"] != "Closely related"]
 
-            m, b = np.polyfit(xs, ys, 1)
-            plt.plot([0, max(xs)], [b, b + m*max(xs)], '-', color=line_color)
+    genealogical_numeric = {
+        "Closely related": 2,
+        "Distantly related": 1,
+        "Unrelated": 0
+    }
 
-            print(f"{metric} ~= {round(m,2)}*({explanatory}) + {round(b,2)}")
+    for metric in metrics:
+        for explanatory in explanatories:
+            for langset_name, langset in langsets.items():
+                title = f"{metric} vs. {explanatory}\nin {langset_name}"
+                plt.title(title)
+                plt.xlabel(explanatory)
+                plt.ylabel(metric)
 
-            plt.figtext(.8, .01, f"r={round(r, 2)} p={round(permutation_test(xs, ys), 3)}")
+                xs = []
+                ys = []
+                for row in langset.iterrows():
+                    if explanatory == "Genealogical distance":
+                        x = genealogical_numeric[row[1]["Distance"]]
+                    else:
+                        x = row[1][explanatory]
+                    y = row[1][metric]
+                    if (not pd.isna(x)) and not (pd.isna(y)):
+                        xs.append(x)
+                        ys.append(y)
 
-            plt.savefig(f"images/generated/{metric} vs {explanatory}.png")
-            plt.close()
+                r = np.corrcoef(ys, xs)[0][1]
+
+                plt.plot(xs, ys, '.', color=dot_color)
+
+                m, b = np.polyfit(xs, ys, 1)
+                plt.plot([0, max(xs)], [b, b + m*max(xs)], '-', color=line_color)
+
+                print(f"{metric} ~= {round(m,2)}*({explanatory}) + {round(b,2)}")
+
+                p = permutation_test(xs, ys)
+
+                plt.figtext(.7, .01, f"n={len(xs)} r={round(r, 2)} p={round(p, 3)}")
+
+                plt.savefig(f"images/generated/{'in' if p>.05 else ''}significant"
+                            f"/{metric.replace(' ', '_')}_vs_{explanatory.replace(' ', '_')}"
+                            f"_{langset_name.replace(' ', '_')}.png")
+                plt.close()

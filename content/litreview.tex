@@ -1,6 +1,76 @@
-\chapter{Literature Review}
+\chapter{Theoretical background}
 
-\section{Machine learning of morphology: sub-problems and related problems}
+\section{Natural language morphology and typology}
+
+\section{LSTM and GRU neural modeling}
+
+Neural networks are a type of function approximation model inspired by the connection of neurons in animal brains. They have come to be implemented in a variety of forms, and underlie state of the art machine learning models in a variety of applications. The common feature of neural models is repeated matrix multiplication followed by the application of a non-linear "activation" function. Figure 2.4 illustrates a simple feed-forward network, in which a vector of three inputs is multiplied by some $3 \times 4$ matrix and activated to produce a vector of four intermediate values, which are again multiplied by some $4 \times 2$ matrix and activated to produce a vector of two outputs.
+
+An RNN is a type of neural network that operates over sequences of inputs, typically with unknown length. Figure 2.5 illustrates the general structure: each input is represented by a vector, which is multiplied by a vector $U$ to modify state, and the modified state is then multiplied by a vector $W$ to produce an output vector and a matrix $V$ to produce the next state. An LSTM network utilizes a specific means of using the inputs to modify state, represented by Figure 2.6, which includes the ability to modify the rate at which information is forgotten. LSTMs are intended to solve the forgetfulness of earlier RNN types, which tend to be unable to recall information from more than a few iterations prior \parencite{Hochreiter1997}.
+
+\begin{figure}[ht]
+\includegraphics[width=6cm]{images/1000px-Colored_neural_network.png}
+\centering
+\caption{The structure of a feed-forward neural network with three inputs, four hidden cells, and two outputs. (commons.wikimedia.org/wiki/File:Colored\_neural\_network.svg)}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=12cm]{images/RNN.png}
+\centering
+\caption{The generalized structure of a recurrent neural network. (commons.wikimedia.org/wiki/File:Recurrent\_neural\_network\_unfold.svg)}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=12cm]{images/The_LSTM_cell.png}
+\centering
+\caption{The state cell of an LSTM model. (commons.wikimedia.org/wiki/File:The\_LSTM\_cell.png)}
+\end{figure}
+
+LSTMs have become the dominant model type in a variety of language tasks, including syntactic and morphological tasks. They significantly outperformed other types of models in SIGMORPHON 2016, since which time they have come to underlie nearly all morphology prediction models (\cite{Cotterell2016}, \cite{Cotterell2017a}).
+
+\begin{figure}[ht]
+\includegraphics[width=10cm]{images/stacked.png}
+\centering
+\caption{A stacked RNN architecture, in which there are two layers of hidden state. In this architecture, hidden states in the second layer are exclusively derived from the aligned cell of the first layer. \parencite{Luong2015}}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=10cm]{images/global.png}
+\centering
+\caption{An RNN architecture with global attention: all first-layer hidden states are used to construct an output. \parencite{Luong2015}}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=10cm]{images/local.png}
+\centering
+\caption{An RNN architecture with local attention: only a subset of hidden states, not necessarily contiguous, are used to construct an output. \parencite{Luong2015}}
+\end{figure}
+
+The main differences between the LSTM architectures used in state of the art applications now, as evidenced by the four architectures used as baselines in the SIGMORPHON 2019 transfer learning task, are in their \textbf{attention mechanism}, the means by which hidden states are combined to generate sequential output \parencite{Cotterell2019}. 
+
+The main contrasting terminologies for attention are \textbf{hard} vs. \textbf{soft}, and \textbf{global} vs. \textbf{local}. In soft attention models, hidden states are all considered, weighted using an additional layer. In hard attention models, only a limited subset of hidden states are considered, the selection of hidden states may be chosen by the model at each stage or consist of a single sliding window of attention. Soft attention models are straightforward to apply backpropagation to, since each hidden state has a differentiable relationship to the output, while hard attention models that select which hidden states are used at a particular time step are not. A \textbf{monotonic} hard attention model is one in which the window of attention moves through the input at the same rate that the output is generated, which is applicable in scenarios when corresponding positions in input and output are expected to be strictly related. \textbf{Global} vs. \textbf{local} attention refers to whether all or only a narrow range of hidden states contribute to a hard attentional layer, as depicted in Figs. 2.8 and 2.9 \parencite{Luong2015}. 
+
+\section{Transfer learning}
+
+\begin{figure}[t]
+\includegraphics[width=12cm]{images/transfer_learning.png}
+\centering
+\caption{An abstract characterization of traditional ML vs. transfer learning}
+\end{figure}
+
+Transfer learning is a high-level term for any machine learning process for which either the domain or the distribution of some or all training data inputs is different from that of the inputs to which a model will ultimately be applied. Such techniques arise in response to the conundrum that many real-world machine learning problems face: a lack of data that looks like the system that one wishes to predict or understand, either due to insufficient available quantity, or altogether lack in the case of seeking to predict the outcome of future events of which no past equivalents exist. The machine learning problem for which a model is initially trained is called the \textbf{source task}; the problem which the model is being constructed to solve is called the \textbf{target task}. Typically, the source model is not the only component of the eventual target model - manual output transformations or additional machine learning is usually applied \parencite{Pan2010}.
+
+Some examples are provided by Pan and Yang 2010. One is the problem of seeking to classify web documents by topic. If a significant portion of the documents that will need to be classified bear on topics rarely covered in an existing corpus of web documents, this is an example where the training and test domains are roughly similar but their distribution is different; it is perhaps a less obvious transfer learning problem. Another example is that of attempting to gauge sentiment of reviews of cameras, when the only available data is a corpus of reviews of other types of products. In this case, knowledge of many domains, none of which is equal to the target domain, must be transferred to attempt to make predictions about the target domain.
+
+There are three broad categories of transfer learning that Pan and Yang identify, which differ in their intrinsic difficulty. \textbf{Inductive transfer learning} describes a modeling scenario in which the domains of source and target are identical, but the target task is different, that is, the codomain of the model differs. In inductive transfer learning, output from the source model is used to inform a model of the target task. \textbf{Transductive transfer learning} describes the scenario that the task is the same but the source and target domains are in some way different, either differing in feature space, or having the same feature space but differing in distribution over that space. The two examples above are both instances of transductive transfer learning; the web document categorization problem is an example of differing distribution while the review sentiment analysis problem is an example of differing feature space. \textbf{Unsupervised transfer learning} describes the scenario that source and target differ in both domain and codomain. 
+
+An example of unsupervised transfer learning is the morphology transfer learning problem that this thesis undertakes: labeled training inputs and outputs from the source (one language) are used to inform a model of the target task (a different language), and the feature spaces of both domain (lexemes and morphological categories) and codomain (inflected forms) differ between the two. After all, no two languages share the same set of words, and only in the case of very closely related languages or extreme coincidence will all grammatical paradigms inflect for the same set of morphological categories (one language is likely to have a grammatical gender, a verb tense, or some other category that the other language lacks).
+
+There is precedent for transfer learning on LSTMs for language technology tasks, typically with the explicit goal of dealing with low data volume in the target task due to sparse language resources. The baseline for SIGMORPHON 2019 was based on the LSTM transfer learning architecture introduced in Zoph et al. 2016 \parencite{McCarthy2019}, which was applied there to a transductive machine translation task. Their approach is relatively straightforward - they use an LSTM encoder-decoder model to train a machine translation system from French to English on a high data volume, then use that model as the initialization of an architecturally identical Uzbek-English model, holding the decoder fixed and simply allowing the encoder to learn encodings for Uzbek with quite a small dataset. Their results showed considerable improvements over similarly low-data machine translation techniques \parencite{Zoph2016}.
+
+\chapter{Machine learning of morphology: existing work}
+
+\section{Sub-problems and related problems}
 
 Within the realm of machine understanding of morphology, there are many sub-problems and related problems. The most basic areas of research involve predicting the morphology of words in isolation - transforming a word into a specific morphological form, or the inverse, tagging a form with its morphological categories. Typically, this has been done with words in regular grammatical paradigms, such as number and case marking on nouns, or tense, aspect, mood, and/or argument agreement patterns on verbs. 
 
@@ -40,7 +110,7 @@ Regularities in the relative location of semantically related words have been ex
 
 Vector embedding has the limitation that it cannot extend to words for which a vector representation has not been trained, and so it cannot directly provide understanding of the many OOV forms encountered in test data of highly inflected languages (\cite{Soricut2015}, \cite{Cotterell2019}). However, it can be a means to discover relationships between words in an unsupervised manner, which may support labeling tasks in support of computational morphology and other tasks.
 
-\begin{figure}[t]
+\begin{figure}[ht]
 \includegraphics[width=12cm]{images/semantic_transform.png}
 \centering
 \caption{Regular spatial transformations encode semantic or grammatical content \parencite{Mikolov2013}}
@@ -50,13 +120,13 @@ Vector embedding has the limitation that it cannot extend to words for which a v
 
 Earlier work specifically focused on the problem of morphology prediction made use of iteratively improving methods of string transduction - in essence, pattern matching on the written representations of words (\cite{Durrett2013}, \cite{Hulden2014}, \cite{Nicolai2015}, \cite{Ahlberg2015}). Typical steps of string transduction methods include character alignment (depicted in Figure 2.2), identification of characters that are inserted or deleted based on grammatical form, and generalization of lexemes which are inflected by the same sets of insertions or deletions (depicted in Figure 2.3). 
 
-\begin{figure}[t]
+\begin{figure}[ht]
 \includegraphics[width=12cm]{images/Nicolai2015_schleichen.png}
 \centering
 \caption{Character alignment for various forms of the German verb \textit{schleichen} \parencite{Nicolai2015}.}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[ht]
 \includegraphics[width=12cm]{images/Hulden2014_diagram.png}
 \centering
 \caption{Conceptual depiction of a typical example of a string transduction method of morphology learning \parencite{Hulden2014}.}
@@ -72,69 +142,4 @@ The poorer performance of string transduction relative to neural models has led 
 
 Since 2016, almost all work on paradigm completion has made use of long short-term memory (LSTM) or related gated recurrent network (GRU) models (\cite{Faruqui2015}, \cite{Cotterell2016}, \cite{Cotterell2017a}, \cite{Cotterell2018b}, \cite{McCarthy2019}). An LSTM network is a variation on a recurrent neural network (RNN), a variant of neural network \parencite{Hochreiter1997}.
 
-Neural networks are a type of function approximation model inspired by the connection of neurons in animal brains. They have come to be implemented in a variety of forms, and underlie state of the art machine learning models in a variety of applications. The common feature of neural models is repeated matrix multiplication followed by the application of a non-linear "activation" function. Figure 2.4 illustrates a simple feed-forward network, in which a vector of three inputs is multiplied by some $3 \times 4$ matrix and activated to produce a vector of four intermediate values, which are again multiplied by some $4 \times 2$ matrix and activated to produce a vector of two outputs.
-
-An RNN is a type of neural network that operates over sequences of inputs, typically with unknown length. Figure 2.5 illustrates the general structure: each input is represented by a vector, which is multiplied by a vector $U$ to modify state, and the modified state is then multiplied by a vector $W$ to produce an output vector and a matrix $V$ to produce the next state. An LSTM network utilizes a specific means of using the inputs to modify state, represented by Figure 2.6, which includes the ability to modify the rate at which information is forgotten. LSTMs are intended to solve the forgetfulness of earlier RNN types, which tend to be unable to recall information from more than a few iterations prior \parencite{Hochreiter1997}.
-
-\begin{figure}[t]
-\includegraphics[width=6cm]{images/1000px-Colored_neural_network.png}
-\centering
-\caption{The structure of a feed-forward neural network with three inputs, four hidden cells, and two outputs. (commons.wikimedia.org/wiki/File:Colored\_neural\_network.svg)}
-\end{figure}
-
-\begin{figure}[t]
-\includegraphics[width=12cm]{images/RNN.png}
-\centering
-\caption{The generalized structure of a recurrent neural network. (commons.wikimedia.org/wiki/File:Recurrent\_neural\_network\_unfold.svg)}
-\end{figure}
-
-\begin{figure}[t]
-\includegraphics[width=12cm]{images/The_LSTM_cell.png}
-\centering
-\caption{The state cell of an LSTM model. (commons.wikimedia.org/wiki/File:The\_LSTM\_cell.png)}
-\end{figure}
-
-LSTMs have become the dominant model type in a variety of language tasks, including syntactic and morphological tasks. They significantly outperformed other types of models in SIGMORPHON 2016, since which time they have come to underlie nearly all morphology prediction models (\cite{Cotterell2016}, \cite{Cotterell2017a}).
-
-\begin{figure}[t]
-\includegraphics[width=10cm]{images/stacked.png}
-\centering
-\caption{A stacked RNN architecture, in which there are two layers of hidden state. In this architecture, hidden states in the second layer are exclusively derived from the aligned cell of the first layer. \parencite{Luong2015}}
-\end{figure}
-
-\begin{figure}[t]
-\includegraphics[width=10cm]{images/global.png}
-\centering
-\caption{An RNN architecture with global attention: all first-layer hidden states are used to construct an output. \parencite{Luong2015}}
-\end{figure}
-
-\begin{figure}[t]
-\includegraphics[width=10cm]{images/local.png}
-\centering
-\caption{An RNN architecture with local attention: only a subset of hidden states, not necessarily contiguous, are used to construct an output. \parencite{Luong2015}}
-\end{figure}
-
-The main differences between the LSTM architectures used in state of the art applications now, as evidenced by the four architectures used as baselines in the SIGMORPHON 2019 transfer learning task, are in their \textbf{attention mechanism}, the means by which hidden states are combined to generate sequential output \parencite{Cotterell2019}. 
-
-The main contrasting terminologies for attention are \textbf{hard} vs. \textbf{soft}, and \textbf{global} vs. \textbf{local}. In soft attention models, hidden states are all considered, weighted using an additional layer. In hard attention models, only a limited subset of hidden states are considered, the selection of hidden states may be chosen by the model at each stage or consist of a single sliding window of attention. Soft attention models are straightforward to apply backpropagation to, since each hidden state has a differentiable relationship to the output, while hard attention models that select which hidden states are used at a particular time step are not. A \textbf{monotonic} hard attention model is one in which the window of attention moves through the input at the same rate that the output is generated, which is applicable in scenarios when corresponding positions in input and output are expected to be strictly related. \textbf{Global} vs. \textbf{local} attention refers to whether all or only a narrow range of hidden states contribute to a hard attentional layer, as depicted in Figs. 2.8 and 2.9 \parencite{Luong2015}. 
-
 The SIGMORPHON 2019 transfer learning task used a diverse set of architectures as baselines, including a soft attention, a non-monotonic hard attention, and two monotonic hard attention models, reflecting a diversity of strategies employed by the best current models. Soft attention has dominated prior morphology learning work, but Wu and Cotterell (2019) demonstrate that hard monotonic models may be more appropriate for morphology tasks, where string transductions are mostly monotonic - that is, (except for in instances of reduplication or metathesis) characters in an input word correspond to characters in the same order in the output (\cite{McCarthy2019}, \cite{Wu2019}).
-
-\section{Transfer learning}
-
-\begin{figure}[t]
-\includegraphics[width=12cm]{images/transfer_learning.png}
-\centering
-\caption{An abstract characterization of traditional ML vs. transfer learning}
-\end{figure}
-
-Transfer learning is a high-level term for any machine learning process for which either the domain or the distribution of some or all training data inputs is different from that of the inputs to which a model will ultimately be applied. Such techniques arise in response to the conundrum that many real-world machine learning problems face: a lack of data that looks like the system that one wishes to predict or understand, either due to insufficient available quantity, or altogether lack in the case of seeking to predict the outcome of future events of which no past equivalents exist. The machine learning problem for which a model is initially trained is called the \textbf{source task}; the problem which the model is being constructed to solve is called the \textbf{target task}. Typically, the source model is not the only component of the eventual target model - manual output transformations or additional machine learning is usually applied \parencite{Pan2010}.
-
-Some examples are provided by Pan and Yang 2010. One is the problem of seeking to classify web documents by topic. If a significant portion of the documents that will need to be classified bear on topics rarely covered in an existing corpus of web documents, this is an example where the training and test domains are roughly similar but their distribution is different; it is perhaps a less obvious transfer learning problem. Another example is that of attempting to gauge sentiment of reviews of cameras, when the only available data is a corpus of reviews of other types of products. In this case, knowledge of many domains, none of which is equal to the target domain, must be transferred to attempt to make predictions about the target domain.
-
-There are three broad categories of transfer learning that Pan and Yang identify, which differ in their intrinsic difficulty. \textbf{Inductive transfer learning} describes a modeling scenario in which the domains of source and target are identical, but the target task is different, that is, the codomain of the model differs. In inductive transfer learning, output from the source model is used to inform a model of the target task. \textbf{Transductive transfer learning} describes the scenario that the task is the same but the source and target domains are in some way different, either differing in feature space, or having the same feature space but differing in distribution over that space. The two examples above are both instances of transductive transfer learning; the web document categorization problem is an example of differing distribution while the review sentiment analysis problem is an example of differing feature space. \textbf{Unsupervised transfer learning} describes the scenario that source and target differ in both domain and codomain. 
-
-An example of unsupervised transfer learning is the morphology transfer learning problem that this thesis undertakes: labeled training inputs and outputs from the source (one language) are used to inform a model of the target task (a different language), and the feature spaces of both domain (lexemes and morphological categories) and codomain (inflected forms) differ between the two. After all, no two languages share the same set of words, and only in the case of very closely related languages or extreme coincidence will all grammatical paradigms inflect for the same set of morphological categories (one language is likely to have a grammatical gender, a verb tense, or some other category that the other language lacks).
-
-There is precedent for transfer learning on LSTMs for language technology tasks, typically with the explicit goal of dealing with low data volume in the target task due to sparse language resources. The baseline for SIGMORPHON 2019 was based on the LSTM transfer learning architecture introduced in Zoph et al. 2016 \parencite{McCarthy2019}, which was applied there to a transductive machine translation task. Their approach is relatively straightforward - they use an LSTM encoder-decoder model to train a machine translation system from French to English on a high data volume, then use that model as the initialization of an architecturally identical Uzbek-English model, holding the decoder fixed and simply allowing the encoder to learn encodings for Uzbek with quite a small dataset. Their results showed considerable improvements over similarly low-data machine translation techniques \parencite{Zoph2016}.
-
