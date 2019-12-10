@@ -48,11 +48,21 @@ There are many \textbf{inflection shapes} seen in natural languages. The most ba
 
 \textbf{Fusion} refers to the marking of multiple categories at once with a single indivisible morpheme, e.g., the Spanish verb \textit{hablé} "I spoke" marks tense and subject person and number with the suffix \textit{-é}, lacking separable morphemes to indicate the preterite tense and first person singular subject (cf. \textit{hablo} "I speak", \textit{habló} "he/she spoke"). 
 
-\textbf{Reduplication} is the repetition of all or part of a word. Reduplication may be full, as in Indonesian \textit{orang} "person" vs. \textit{orang-orang} "people", or partial, as in the formation of the contemplative aspect of the Tagalog word \textit{bili} "buy" by repeating the first syllable: \textit{bibili}. 
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+& 1st person singular & 3rd person singular \\
+\hline \hline
+present & \textit{hablo} & \textit{habla} \\
+\hline 
+preterite & \textit{hablé} & \textit{habló} \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Reduplication} is the repetition of all or part of a word. Reduplication may be full, as in Indonesian \textit{orang} "person" vs. \textit{orang-orang} "people", or partial, as in the formation of the contemplative aspect of the Tagalog word \textit{bili} "buy" by repeating the first syllable: \textit{bibili} (examples from Wiktionary). 
 
 \textbf{Long-distance morphophonological processes} are those by which the surface form of an affix depends on the phonological properties of a segment at some distance from the affixation site. For instance, Finnish exhibits vowel harmony, a process by which the vowels present in affixes depend on the set of vowels in the stem. The Finnish inessive singular suffix \textit{-ssa/-ssä} looks different on the nouns \textit{puku} "suit" and \textit{kenkä} "shoe", with the final vowel of the suffix dependent on the set of vowels in the rest of the word. 
-
-Lastly, \textbf{irregularity} is a concept with familarity to anyone who's ever tried to learn a foreign language. Forms or entire lexemes are said to be irregular if they are aberrant from the normal patterns of morphology. For example, almost all English verbs only mark a third person singular subject differently from others, with a suffix \textit{-s}: \textit{I run} but \textit{she runs}. However, \textit{to be} marks the first person singular subject differently as well, and the third person singular subject marking bears no resemblance to the normal affixation process: \textit{I am}, \textit{you are}, \textit{she is}. It can be said that \textit{be} is a highly irregular verb.
 
 \begin{center}
 \begin{tabular}{|c|c|}
@@ -68,6 +78,8 @@ nominative singular & inessive singular \\
 \parencite{Wiktionary}
 \end{center}
 
+Lastly, \textbf{irregularity} is a concept with familarity to anyone who's ever tried to learn a foreign language. Forms or entire lexemes are said to be irregular if they are aberrant from the normal patterns of morphology. For example, almost all English verbs only mark a third person singular subject differently from others, with a suffix \textit{-s}: \textit{I run} but \textit{she runs}. However, \textit{to be} marks the first person singular subject differently as well, and the third person singular subject marking bears no resemblance to the normal affixation process: \textit{I am}, \textit{you are}, \textit{she is}. It can be said that \textit{be} is a highly irregular verb.
+
 \subsection{Linguistic typology}
 
 \textbf{Linguistic typology} refers to the classification of languages into different categories depending on their structure. The major categories of morphological typology are \textbf{isolating}, \textbf{agglutinating}, and \textbf{fusional}. Languages are considered to be more isolating if they have little grammatical inflection, smaller inflection paradigms, and a smaller number of affixes per word on average \parencite{Hogan2010}. English is a fairly isolating language, likely a factor in the lack of computational morphology research \parencite{Cotterell2017}. Languages are considered to be more agglutinating if they exhibit more extensive inflection but do not typically exhibit fusion; agglutination is also associated with greater morphological regularity. Fusional languages are simply those that exhibit relatively more fusion. Like many typological distinctions, there is no strict assignment of languages into one or another of these categories; rather, they are ends of a spectrum that languages may be placed along \parencite{Hogan2010}.
@@ -76,7 +88,7 @@ Other typological labels may be applied depending on the set and shape of morpho
 
 \subsection{Linguistic genealogy}
 
-\begin{figure}[hp]
+\begin{figure}[ht]
 \includegraphics[width=13cm]{images/1280px-UralicTree.png}
 \centering
 \caption{The entire Uralic language family. \\ (commons.wikimedia.org/wiki/File:UralicTree.svg)}
@@ -91,28 +103,34 @@ For this reason, a simple measure of genealogical separation cannot easily be co
 However, lexical similarity is a measure of the similarity of vocabulary items and is not a good proxy for the grammatical similarity of languages. English has borrowed a very large amount of vocabulary from various historical varieties of French, yet their morphological systems remain fairly faithful to their respective origins in different branches of the Indo-European family. French in particular bears substantial morphological similarity to other Western Romance languages like Spanish and Portuguese. Even languages with no known genealogical relationship and extremely different grammatical systems may have non-zero lexical similarity: Turkish and Urdu have both borrowed heavily from Arabic, yet the grammatical systems of the three languages are quite distinct.
 
 \section{LSTM and GRU neural modeling}
+\label{sec:LSTM}
 
 \begin{figure}[p]
 \includegraphics[width=6cm]{images/1000px-Colored_neural_network.png}
 \centering
 \caption{The structure of a feed-forward neural network with three inputs, four hidden cells, and two outputs. \\ (commons.wikimedia.org/wiki/File:Colored\_neural\_network.svg)}
+\label{fig:NN}
 \end{figure}
 
 \begin{figure}[p]
 \includegraphics[width=12cm]{images/RNN.png}
 \centering
 \caption{The generalized structure of a recurrent neural network. \\ (commons.wikimedia.org/wiki/File:Recurrent\_neural\_network\_unfold.svg)}
+\label{fig:RNN}
 \end{figure}
 
 \begin{figure}[p]
 \includegraphics[width=12cm]{images/The_LSTM_cell.png}
 \centering
 \caption{The state cell of an LSTM model. \\ (commons.wikimedia.org/wiki/File:The\_LSTM\_cell.png)}
+\label{fig:LSTM}
 \end{figure}
 
-Neural networks are a type of function approximation model inspired by the connection of neurons in animal brains. They have come to be implemented in a variety of forms, and underlie state of the art machine learning models in a variety of applications. The common feature of neural models is repeated matrix multiplication followed by the application of a non-linear "activation" function. Figure 2.4 illustrates a simple feed-forward network, in which a vector of three inputs is multiplied by some $3 \times 4$ matrix and activated to produce a vector of four intermediate values, which are again multiplied by some $4 \times 2$ matrix and activated to produce a vector of two outputs.
+\textbf{Neural networks} are a type of function approximation model inspired by the connection of neurons in animal brains. They have come to be implemented in a variety of forms, and underlie state of the art machine learning models in a variety of applications. The common feature of neural models is repeated matrix multiplication followed by the application of a non-linear "activation" function. Fig. \ref{fig:NN} illustrates a simple feed-forward network, in which a vector of three inputs is multiplied by some $3 \times 4$ matrix and activated to produce a vector of four intermediate values, which are again multiplied by some $4 \times 2$ matrix and activated to produce a vector of two outputs.
 
-An RNN is a type of neural network that operates over sequences of inputs, typically with unknown length. Figure 2.5 illustrates the general structure: each input is represented by a vector, which is multiplied by a vector $U$ to modify state, and the modified state is then multiplied by a vector $W$ to produce an output vector and a matrix $V$ to produce the next state. An LSTM network utilizes a specific means of using the inputs to modify state, represented by Figure 2.6, which includes the ability to modify the rate at which information is forgotten. LSTMs are intended to solve the forgetfulness of earlier RNN types, which tend to be unable to recall information from more than a few iterations prior \parencite{Hochreiter1997}.
+A \textbf{recurrent neural network (RNN)} is a type of neural network that operates over sequences of inputs, typically with unknown length. Fig. \ref{fig:RNN} illustrates the general structure: each input is represented by a vector, which is multiplied by a vector $U$ to modify state, and the modified state is then multiplied by a vector $W$ to produce an output vector and a matrix $V$ to produce the next state. 
+
+\textbf{Long short-term memory (LSTM)} neural networks are a variant of RNNs which use a more complex sequence of computations to update state, and maintain a separate piece of state \textit{c} that controls rate of forgetting. LSTMs are intended to solve the forgetfulness of more basic RNN types, which tend to be unable to recall information from more than a few iterations prior \parencite{Hochreiter1997}. LSTM architecture is described in Fig. \ref{fig:LSTM}: the input $x_i$ and the previous state $h_{i-1}$ are linearly transformed, added, and activated, as in a simple RNN, before interacting via a series of operations with the previous cell $c_{i-1}$, producing the next state $h_i$ and cell $c_i$. \textbf{Gated recurrent units} (GRU) are slightly simplified models that do not include separate parameterization of the output gate (not pictured).
 
 LSTMs have become the dominant model type in a variety of language tasks, including syntactic and morphological tasks. They significantly outperformed other types of models in SIGMORPHON 2016, since which time they have come to underlie nearly all morphology prediction models (\cite{Cotterell2016}, \cite{Cotterell2017a}).
 
@@ -126,17 +144,19 @@ LSTMs have become the dominant model type in a variety of language tasks, includ
 \includegraphics[width=10cm]{images/global.png}
 \centering
 \caption{An RNN architecture with global attention: all first-layer hidden states are used to construct an output. \parencite{Luong2015}}
+\label{fig:global}
 \end{figure}
 
 \begin{figure}[p]
 \includegraphics[width=10cm]{images/local.png}
 \centering
 \caption{An RNN architecture with local attention: only a subset of hidden states, not necessarily contiguous, are used to construct an output. \parencite{Luong2015}}
+\label{fig:local}
 \end{figure}
 
 The main differences between the LSTM architectures used in state of the art applications now, as evidenced by the four architectures used as baselines in the SIGMORPHON 2019 transfer learning task, are in their \textbf{attention mechanism}, the means by which hidden states are combined to generate sequential output \parencite{Cotterell2019}. 
 
-The main contrasting terminologies for attention are \textbf{hard} vs. \textbf{soft}, and \textbf{global} vs. \textbf{local}. In soft attention models, hidden states are all considered, weighted using an additional layer. In hard attention models, only a limited subset of hidden states are considered, the selection of hidden states may be chosen by the model at each stage or consist of a single sliding window of attention. Soft attention models are straightforward to apply backpropagation to, since each hidden state has a differentiable relationship to the output, while hard attention models that select which hidden states are used at a particular time step are not. A \textbf{monotonic} hard attention model is one in which the window of attention moves through the input at the same rate that the output is generated, which is applicable in scenarios when corresponding positions in input and output are expected to be strictly related. \textbf{Global} vs. \textbf{local} attention refers to whether all or only a narrow range of hidden states contribute to a hard attentional layer, as depicted in Figs. 2.8 and 2.9 \parencite{Luong2015}. 
+The main contrasting terminologies for attention are \textbf{hard} vs. \textbf{soft}, and \textbf{global} vs. \textbf{local}. In soft attention models, hidden states are all considered, weighted using an additional layer. In hard attention models, only a limited subset of hidden states are considered, the selection of hidden states may be chosen by the model at each stage or consist of a single sliding window of attention. Soft attention models are straightforward to apply backpropagation to, since each hidden state has a differentiable relationship to the output, while hard attention models that select which hidden states are used at a particular time step are not. A \textbf{monotonic} hard attention model is one in which the window of attention moves through the input at the same rate that the output is generated, which is applicable in scenarios when corresponding positions in input and output are expected to be strictly related. \textbf{Global} vs. \textbf{local} attention refers to whether all or only a narrow range of hidden states contribute to a hard attentional layer, as depicted in Figs. \ref{fig:global} and \ref{fig:local} \parencite{Luong2015}. 
 
 \section{Transfer learning}
 
@@ -154,13 +174,19 @@ There are three broad categories of transfer learning that Pan and Yang identify
 
 An example of unsupervised transfer learning is the morphology transfer learning problem that this thesis undertakes: labeled training inputs and outputs from the source (one language) are used to inform a model of the target task (a different language), and the feature spaces of both domain (lexemes and morphological categories) and codomain (inflected forms) differ between the two. After all, no two languages share the same set of words, and only in the case of very closely related languages or extreme coincidence will all grammatical paradigms inflect for the same set of morphological categories (one language is likely to have a grammatical gender, a verb tense, or some other category that the other language lacks).
 
-There is precedent for transfer learning on LSTMs for language technology tasks, typically with the explicit goal of dealing with low data volume in the target task due to sparse language resources. The baseline for SIGMORPHON 2019 was based on the LSTM transfer learning architecture introduced in Zoph et al. 2016 \parencite{McCarthy2019}, which was applied there to a transductive machine translation task. Their approach is relatively straightforward - they use an LSTM encoder-decoder model to train a machine translation system from French to English on a high data volume, then use that model as the initialization of an architecturally identical Uzbek-English model, holding the decoder fixed and simply allowing the encoder to learn encodings for Uzbek with quite a small dataset. Their results showed considerable improvements over similarly low-data machine translation techniques \parencite{Zoph2016}.
+There is precedent for transfer learning on LSTMs for language technology tasks, typically with the explicit goal of dealing with low data volume in the target task due to sparse language resources. The baseline for SIGMORPHON 2019 was based on the LSTM transfer learning architecture introduced in Zoph et al. 2016 \parencite{McCarthy2019}, which was applied there to a transductive machine translation task. Their approach is relatively straightforward - they use an LSTM encoder-decoder model to train a machine translation system from French to English on a high data volume, then use that model as the initialization of an architecturally identical Uzbek-English model, holding the decoder fixed and simply allowing the encoder to learn encodings for Uzbek with quite a small dataset. Their results showed considerable improvements over similarly low-data machine translation techniques \parencite{Zoph2016}, suggesting that transfer learning may be a promising strategy for computational linguistics tasks.
+
+\section{Ensembling}
+
+\textbf{Ensembling} is another core ML concept that arises in explaining the differences in structure and performance of computational morphology models. It is a generic term for combining the outputs of multiple models which operate over the same domain and codomain. That is, ensembled models receive the same input, and produce outputs of the same form; their outputs are typically combined by vote in classification tasks or weighted or unweighted averaging in regression tasks. Ensembling among neural and non-neural models has been used to improve outcomes in a variety of tasks \parencite{Krogh1995}.
 
 \chapter{Machine learning of morphology: existing work}
 
 \section{Sub-problems and related problems}
 
-Within the realm of machine understanding of morphology, there are many sub-problems and related problems. The most basic areas of research involve predicting the morphology of words in isolation - transforming a word into a specific morphological form, or the inverse, tagging a form with its morphological categories. Typically, this has been done with words in regular grammatical paradigms, such as number and case marking on nouns, or tense, aspect, mood, and/or argument agreement patterns on verbs. 
+Within the realm of machine understanding of morphology, there are many sub-problems and related problems. The most basic areas of research involve predicting the inflection morphology of words in isolation - transforming a word into a specific morphological form, or the inverse, tagging a form with its morphological categories. 
+
+In this section, I used the machine learning terms \textbf{supervised} and \textbf{unsupervised}. Supervised learning is that conducted with labeled input-output sets, in which a model attempts to produce outputs similar to those it's seen. Unsupervised learning is that which attempts to find patterns in data sets with no output, such as finding clusters in a scatter plot of points. Note that this definition of \textbf{unsupervised} differs from the sense specific to transfer learning. The transfer learning task in SIGMORPHON 2019 is an example of an \textit{unsupervised} transfer learning problem in that the source domain and codomain are both different from target domain and codomain, yet it is \textit{supervised} in a general ML sense in that the triples included in the training data include output values which the model attempts to mimic.
 
 \subsection{Core supervised learning problems}
 
@@ -168,25 +194,19 @@ Some of the earliest work in computational morphology involves making specific m
 
 The natural extension of this is aiming to be able to predict any inflected form given one specific form of a lexeme and an arbitrary set of morphological categories. For instance, given a lexeme \textit{see} and the categories \texttt{3rd person singular, simple present}, generating the correct form \textit{sees}. Generally speaking, a citation form has been used as input (\cite{Durrett2013}, \cite{Faruqui2015}, \cite{Cotterell2017a}). The related "reinflection" problem involves being given any inflected form as input, and transforming it into any other \parencite{Cotterell2016}.
 
-A further extension of the morphology generation problem is the generation of complete inflection tables. The exact nature of this problem depends on the type of training and test data used. If a model is only trained on a sparse, random sampling of forms for each lexeme, then a task may consist of filling out the rest of an inflection table for those lexemes. For instance, a model may be given the forms \textit{sees} and \textit{seeing} among its training data, and be required to fill out the remaining forms of that paradigm, including \textit{see} and \textit{saw}. 
-
-If a model is instead trained using entire inflection tables, e.g., all forms of the verb \textit{see}, then test data must consist of new lexemes. Another dimension along which paradigm completion tasks differ is whether only a single citation form is provided as a prompt, or whether any form or even multiple forms may be provided as a prompt for producing a single table (\cite{Hulden2014}, \cite{Ahlberg2015}, \cite{Cotterell2017a}).
+A further extension of the morphology generation problem is the generation of complete inflection tables. The exact nature of this problem depends on the type of training and test data used. If a model is only trained on a sparse, random sampling of forms for each lexeme, then a task may consist of filling out the rest of an inflection table for those lexemes. For instance, a model may be given the forms \textit{sees} and \textit{seeing} among its training data, and be required to fill out the remaining forms of that paradigm, including \textit{see} and \textit{saw}. If a model is instead trained using entire inflection tables, e.g., all forms of the verb \textit{see}, then test data must consist of new lexemes (\cite{Hulden2014}, \cite{Ahlberg2015}, \cite{Cotterell2017a}).
 
 \subsection{Inflection types}
 
 Overall, a diverse set of inflection shapes have been worked with in the most recent efforts of this subfield. Since 2016, the Special Interest Group on Computational Morphology and Phonology (SIGMORPHON), a research collective focused on computational morphology and related problems, has fielded "shared tasks" in which several research teams globally are given training data and a task definition, and attempt to create models which are subsequently compared. The SIGMORPHON shared task 2018 included training data from 103 typologically diverse languages, and paradigms using suffixing, prefixing, infixing, reduplication, and non-concatenative morphology. 
 
-However, all SIGMORPHON work has been with well-defined, tabular paradigms of grammatical inflection of fairly moderate size ($\leq 200$ forms) \parencite{Cotterell2018b}. Other types of morphology such as derivational morphology and cliticization, which have the potential to greatly expand the number of possible forms and in a less organized fashion, have been less well explored. What \cite{Mattissen2004} calls "compositionally polysynthetic" languages, those which make extensive use of more expansive types of word building including incorporation and productive derivational morphology, are ripe for future work \parencite{Cotterell2016}. Such languages include Chukchi, Cherokee, Ainu, Nahuatl, and others \parencite{Mattissen2004}.
-
-The chief challenges with approaching these less paradigmatic types of inflection are data procurement and structuring. For grammatical inflection paradigms, the set of potential forms is simply combinatorial from the set of grammatical categories, and can be specifically enumerated. Concretely, the vast majority of grammatical paradigm data used in SIGMORPHON comes from Wiktionary, a free and collaborative online multilingual dictionary which provides full or partial tables of grammatical inflection along with lexeme definitions; these tables define the space of inflected forms for the task. In contrast, with derivational morphology, noun incorporation, and other less paradigmatic types of inflection, the possibility space is considerably less well-defined. How can a model know a priori that \textit{likeable} is a valid word of English but \textit{hateable} is not, or that the opposite of \textit{accessible} is \textit{inaccessible} and not \textit{unaccessable}? There are no tables for the set of, e.g., derivational forms that a lexeme may take on, since it is constrained by semantics and idiosyncratic usage, and there is considerably more variability among lexemes of the same category (say, verbs) in which derivational categories they may take on than which grammatical categories. Consequently, labeled data is much harder to come by, and it is harder to demonstrate that a dataset of derivational forms is truly exhaustive.
-
 \subsection{Related problems}
 
 Within only the last two or so years, there has been work on predicting morphology in context. In the 2018 and 2019 SIGMORPHON shared tasks, to which several teams of researchers submitted solutions, a sub-task was dedicated to cloze challenges, a type of test in which one word in a sentence, given in citation form, was to be inflected based on context (\cite{Cotterell2018b}, \cite{McCarthy2019}). This work is essentially a synthesis of morphology generation and morphosyntactic modeling.
 
-Since 2017, there has been some work done on learning curves for computational morphology. The datasets published for SIGMORPHON 2017 and 2018 include partitions into low ($\sim$100 forms), medium ($\sim$1000 forms), and high ($\sim$10,000 forms) data training sets for the express purpose of assessing the learning curve of different models. Evidence suggests that learning curve varies by model type; LSTM neural models, a type of model generally considered to be state of the art, despite being the most successful models with high-data training sets, often fare worse than more baseline string transduction models with low data training sets (\cite{Cotterell2017a}, \cite{Cotterell2018b}). Improving performance with small training sets is of interest, as much of the applicability of computational morphology models is to languages which don't already have high-quality technical tools or datasets. 
+Since 2017, there has been some work done on learning curves for computational morphology. The datasets published for SIGMORPHON 2017 and 2018 include partitions into low ($\sim$100 forms), medium ($\sim$1000 forms), and high ($\sim$10,000 forms) data training sets for the express purpose of assessing the learning curve of different models. Evidence suggests that learning curve varies by model type. LSTMs are generally the most accurate morphology models with high-data training sets and are considered state of the art. However, LSTMs and related neural model types often fare worse than more baseline string transduction models with small training sets, likely due to the very gradual gradient descent process used to fine-tune them (\cite{Cotterell2017a}, \cite{Cotterell2018b}). Improving performance with small training sets is of interest, as much of the applicability of computational morphology models is to languages which don't already have high-quality technical tools or datasets. 
 
-The most recent new challenge that SIGMORPHON has tried to address is that of transfer learning of morphology, in the shared task earlier this year. Given a state of the art model trained on a language with a high volume of training data, teams were asked to alter it into a model that would perform well on a new language, given a smaller amount of training data for that language. 80\% of the pairs of languages were closely related, while 20\% were distantly or not at all related. Gains of transfer learning models between closely related languages generally performed better than transfer learning models between more distant languages \parencite{McCarthy2019}.
+The most recent new challenge that SIGMORPHON has tried to address is that of transfer learning of morphology, in the shared task earlier this year. Given a state of the art model trained on a language with a high volume of training data, teams were asked to alter it into a model that would perform well on a new language, given a smaller amount of training data for that language. 80\% of the pairs of languages were closely related, while 20\% were distantly or not at all related. Gains of transfer learning models between closely related languages were said to have generally performed better than transfer learning models between more distant languages \parencite{McCarthy2019}, although that conclusion is be examined more closely in this study.
 
 \section{Non-neural approaches}
 
@@ -194,30 +214,33 @@ The most recent new challenge that SIGMORPHON has tried to address is that of tr
 
 A technique that has found success in a variety of computational linguistics tasks is that of representing words in relatively low-dimensional vector spaces. That is, words are represented as a vector, a series of numbers of fixed length; the length of the vector is typically much smaller than the number of total known words. This has the intention of capturing semantic and syntactic content in a principled way - similarities between the numbers representing two words are expected to signify actual similarity in their meaning, and regular linear transformations between vectors should roughly correspond to specific semantic or grammatical changes. These vector representations can be generated via various unsupervised learning methods (\cite{Bilmes2003}, \cite{Alexandrescu2006}).
 
-Regularities in the relative location of semantically related words have been exploited for semantic analysis tasks \parencite{Alexandrescu2006}. Similarly, morphological changes may appear as spatial transformations in vector space, and work has been done on discovering morphological relationships between in-vocabulary words based on their relative spatial locations (\cite{Mikolov2013}, \cite{Soricut2015}, \cite{DosSantos2014}). Figure 2.1 illustrates this idea in a slightly simplified way: once a vector embedding model has been trained on English, it can be discovered that semantic transformations (male to female) and grammatical transformations (singular to plural) roughly correspond to regular spatial translations in vector space.
-
-Vector embedding has the limitation that it cannot extend to words for which a vector representation has not been trained, and so it cannot directly provide understanding of the many OOV forms encountered in test data of highly inflected languages (\cite{Soricut2015}, \cite{Cotterell2019}). However, it can be a means to discover relationships between words in an unsupervised manner, which may support labeling tasks in support of computational morphology and other tasks.
-
 \begin{figure}[ht]
 \includegraphics[width=12cm]{images/semantic_transform.png}
 \centering
 \caption{Regular spatial transformations encode semantic or grammatical content \parencite{Mikolov2013}}
+\label{fig:vectors}
 \end{figure}
+
+Regularities in the relative location of semantically related words have been exploited for semantic analysis tasks \parencite{Alexandrescu2006}. Similarly, morphological changes may appear as spatial transformations in vector space, and work has been done on discovering morphological relationships between in-vocabulary words based on their relative spatial locations (\cite{Mikolov2013}, \cite{Soricut2015}, \cite{DosSantos2014}). Fig. \ref{fig:vectors}  illustrates this idea in a slightly simplified way: once a vector embedding model has been trained on English, it can be discovered that semantic transformations (male to female) and grammatical transformations (singular to plural) roughly correspond to regular spatial translations in vector space.
+
+Vector embedding has the limitation that it cannot extend to words for which a vector representation has not been trained, and so it cannot directly provide understanding of the many OOV forms encountered in test data of highly inflected languages (\cite{Soricut2015}, \cite{Cotterell2019}). However, it can be a means to discover relationships between words in an unsupervised manner, which may support labeling tasks in support of computational morphology and other tasks.
 
 \subsection{String transduction}
 
-Earlier work specifically focused on the problem of morphology prediction made use of iteratively improving methods of string transduction - in essence, pattern matching on the written representations of words (\cite{Durrett2013}, \cite{Hulden2014}, \cite{Nicolai2015}, \cite{Ahlberg2015}). Typical steps of string transduction methods include character alignment (depicted in Figure 2.2), identification of characters that are inserted or deleted based on grammatical form, and generalization of lexemes which are inflected by the same sets of insertions or deletions (depicted in Figure 2.3). 
+Earlier work specifically focused on the problem of morphology prediction made use of iteratively improving methods of string transduction - in essence, pattern matching on the written representations of words (\cite{Durrett2013}, \cite{Hulden2014}, \cite{Nicolai2015}, \cite{Ahlberg2015}). Typical steps of string transduction methods include character alignment (depicted in Fig. \ref{fig:chalign}), identification of characters that are inserted or deleted based on grammatical form, and generalization of lexemes which are inflected by the same sets of insertions or deletions (depicted in Fig. \ref{fig:transduction}). 
 
 \begin{figure}[ht]
 \includegraphics[width=12cm]{images/Nicolai2015_schleichen.png}
 \centering
 \caption{Character alignment for various forms of the German verb \textit{schleichen} \parencite{Nicolai2015}.}
+\label{fig:chalign}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=12cm]{images/Hulden2014_diagram.png}
 \centering
 \caption{Conceptual depiction of a typical example of a string transduction method of morphology learning \parencite{Hulden2014}.}
+\label{fig:transduction}
 \end{figure}
 
 A crucial limitation of string transduction methods are their general assumption that most lexemes have exactly the same set of characterwise transformations as a large group of other lexemes, and that a manageably small number of such inflection classes exist. There are paradigms with such a limited set of inflection classes, such as Spanish \textit{-ar}, \textit{-er}, and \textit{-ir} verbs. However, when multiple morpholonological processes are at play, individual lexemes may be nearly unique in their exact set of transformations.
@@ -231,3 +254,16 @@ The poorer performance of string transduction relative to neural models has led 
 Since 2016, almost all work on paradigm completion has made use of long short-term memory (LSTM) or related gated recurrent network (GRU) models (\cite{Faruqui2015}, \cite{Cotterell2016}, \cite{Cotterell2017a}, \cite{Cotterell2018b}, \cite{McCarthy2019}). An LSTM network is a variation on a recurrent neural network (RNN), a variant of neural network \parencite{Hochreiter1997}.
 
 The SIGMORPHON 2019 transfer learning task used a diverse set of architectures as baselines, including a soft attention, a non-monotonic hard attention, and two monotonic hard attention models, reflecting a diversity of strategies employed by the best current models. Soft attention has dominated prior morphology learning work, but Wu and Cotterell (2019) demonstrate that hard monotonic models may be more appropriate for morphology tasks, where string transductions are mostly monotonic - that is, (except for in instances of reduplication or metathesis) characters in an input word correspond to characters in the same order in the output (\cite{McCarthy2019}, \cite{Wu2019}).
+
+\section{Ensembling approaches}
+
+\begin{figure}[ht]
+\includegraphics[width=7cm]{images/Najafi_accuracy.png}
+\centering
+\caption{The low-resource accuracy scores of the various University of Alberta models submitted to SIGMORPHON 2018 \parencite{Najafi2018}.}
+\label{fig:Najafi}
+\end{figure}
+
+Ensembling was used in SIGMORPHON 2018 by various groups between neural and non-neural methods, specifically to ameliorate the poor performance of neural models in low-data settings \parencite{Cotterell2018b}. For example, the University of Alberta submission \texttt{UA-05} uses weighted voting to combine the 2019 baseline, a hard-attention LSTM model, a soft-attention LSTM model, and a string transduction model, favoring the output of generally more accurate models unless other models can agree on a different output. The \texttt{UA-08} system submitted by the same team combines the output of a string transduction and a soft-attention LSTM in a totally different way, by linear combination of their self-determined confidence scores \parencite{Najafi2018}.
+
+Fig. \ref{fig:Najafi} shows the accuracy scores of the UA models averaged over all 103 languages of SIGMORPHON 2018 in the low-resource setting. \textsc{DirecTL+} and \textsc{DTLM} are string transduction models, \textsc{Baseline}, HAEM, AC-RNN, and AC-RNN + WL are LSTM models, and the two combinations are \texttt{UA-05} and \texttt{UA-08}, respectively; notice that the string transduction models score higher accuracy than neural models, but both ensembling methods have the highest accuracy of all.
