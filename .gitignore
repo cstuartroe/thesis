@@ -7,5 +7,6 @@
 *.sav
 *.bak
 .idea
+venv
 __pycache__
 images/generated
