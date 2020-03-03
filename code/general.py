@@ -22,19 +22,14 @@ def get_language_by_iso(iso_code):
 def get_language_training_file(lang_name):
     lang_name_formatted = lang_name.replace(" ", "-").lower()
 
-    pair_dirs = next(os.walk("sigmorphon2019/task1"))[1]
+    levels = ["high", "medium", "low"]
 
-    source_dirs = [dirname for dirname in pair_dirs if dirname.startswith(lang_name_formatted)]
-    target_dirs = [dirname for dirname in pair_dirs if dirname.endswith(lang_name_formatted)]
+    for level in levels:
+        filename = f"conll2018/task1/all/{lang_name_formatted}-train-{level}"
+        if os.path.exists(filename):
+            return filename
 
-    if len(source_dirs) > 0:
-        return f"sigmorphon2019/task1/{source_dirs[0]}/{lang_name_formatted}-train-high"
-
-    elif len(target_dirs) > 0:
-        return f"sigmorphon2019/task1/{target_dirs[0]}/{lang_name_formatted}-train-low"
-
-    else:
-        raise ValueError(f"No file for language: {lang_name}")
+    raise ValueError("No such language found: " + lang_name)
 
 
 def get_language_training_data(lang_name):
@@ -43,8 +38,12 @@ def get_language_training_data(lang_name):
         lines = fh.readlines()
 
     data = []
-    for line in lines:
-        lemma, inflected_form, unimorph_tags = line.replace("\n", "").split("\t")
+    for i, line in enumerate(lines):
+        try:
+            lemma, inflected_form, unimorph_tags = line.replace("\n", "").split("\t")
+        except ValueError as e:
+            print(lang_name, "line", i)
+            raise e
         data.append({"lemma":lemma, "inflected_form": inflected_form, "unimorph_tags": unimorph_tags})
 
     return data
