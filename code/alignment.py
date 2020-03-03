@@ -26,7 +26,7 @@ def sigmorphon2016align(s1, s2):
     return min_align
 
 
-def levenshtein_align(s1, s2):
+def levenshtein_diffs(s1, s2, sub_penalty=1.5):
     diffs = [[(0, 0, 0)]]
 
     for j in range(1, len(s2)+1):
@@ -40,12 +40,17 @@ def levenshtein_align(s1, s2):
             if diffs[i - 1][j][2] + 1 < d:
                 x, y, d = -1, 0, diffs[i - 1][j][2] + 1
 
-            sub_cost = 0 if s1[i-1] == s2[j-1] else 1.5
+            sub_cost = 0 if s1[i-1] == s2[j-1] else sub_penalty
             if diffs[i - 1][j - 1][2] + sub_cost < d:
                 x, y, d = -1, -1, diffs[i-1][j-1][2] + sub_cost
 
             diffs[-1].append((x, y, d))
 
+    return diffs
+
+
+def levenshtein_align(s1, s2):
+    diffs = levenshtein_diffs(s1, s2)
     i, j = len(s1) - 1, len(s2) - 1
     s1pad, s2pad = "", ""
     while i > -1 or j > -1:

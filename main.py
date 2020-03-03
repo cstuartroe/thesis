@@ -1,11 +1,13 @@
 import sys
 
-from code import WALS, unimorph, calculate, graphing, alignment
+from code import WALS, unimorph, calculate, graphing, alignment, taginfo, fusion
 
 DISPATCH = {
     "WALS": WALS.pull,
     "unimorph": unimorph.pull,
     "align": alignment.pull,
+    "fusion": fusion.pull,
+    "knowntags": taginfo.print_knowns,
     "calculate": calculate.calculate,
     "graph": graphing.graph
 }

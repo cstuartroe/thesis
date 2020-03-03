@@ -16,12 +16,7 @@ def language_unimorph_sets(lang_name):
         pos_examples[pos] = 0
 
     for triplet in get_language_training_data(lang_name):
-        unimorph_tags = triplet["unimorph_tags"]
-
-        if ";" in unimorph_tags:
-            tags = unimorph_tags.split(";")
-        else:
-            tags = [unimorph_tags]
+        tags = triplet["unimorph_tags"].split(";")
 
         if tags[0] in POS:
             d[tags[0]] = d[tags[0]] | set(tags[1:])
