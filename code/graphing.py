@@ -1,11 +1,14 @@
 from matplotlib import pyplot as plt
 import numpy as np
 import random
+from tqdm import tqdm
 
 from .general import *
+from .timer import Timer
 
 random.seed(2019)
 
+GRAPH_TIMER = Timer.get("graph")
 
 dot_color = '#3f6fcf'
 line_color = '#ffdd22'
@@ -58,9 +61,11 @@ def graph():
         "Unrelated": 0
     }
 
-    for metric in metrics:
-        for explanatory in explanatories:
+    for i, metric in enumerate(metrics):
+        print(f"{i+1}/{len(metrics)} {metric}")
+        for explanatory in tqdm(explanatories):
             for langset_name, langset in langsets.items():
+                GRAPH_TIMER.task("Setup")
                 title = f"{metric} vs. {explanatory}\nin {langset_name}"
                 plt.title(title)
                 plt.xlabel(explanatory)
@@ -78,20 +83,28 @@ def graph():
                         xs.append(x)
                         ys.append(y)
 
+                GRAPH_TIMER.task("corrcoef")
                 r = np.corrcoef(ys, xs)[0][1]
 
+                GRAPH_TIMER.task("Plotting")
                 plt.plot(xs, ys, '.', color=dot_color)
 
+                GRAPH_TIMER.task("polyfit")
                 m, b = np.polyfit(xs, ys, 1)
                 plt.plot([0, max(xs)], [b, b + m*max(xs)], '-', color=line_color)
 
-                print(f"{metric} ~= {round(m,2)}*({explanatory}) + {round(b,2)}")
+                # print(f"{metric} ~= {round(m,2)}*({explanatory}) + {round(b,2)}")
 
+                GRAPH_TIMER.task("permtest")
                 p = permutation_test(xs, ys)
 
+                GRAPH_TIMER.task("Saving")
                 plt.figtext(.7, .01, f"n={len(xs)} r={round(r, 2)} p={round(p, 3)}")
+                plt.figtext(.1, .01, f"y = {round(m, 2)}x + {round(b, 2)}")
 
                 plt.savefig(f"images/generated/{'in' if p>.05 else ''}significant"
                             f"/{metric.replace(' ', '_')}_vs_{explanatory.replace(' ', '_')}"
                             f"_{langset_name.replace(' ', '_')}.png")
                 plt.close()
+
+    GRAPH_TIMER.report()

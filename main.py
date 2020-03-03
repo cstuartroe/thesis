@@ -12,6 +12,19 @@ DISPATCH = {
     "graph": graphing.graph
 }
 
+
+def all():
+    WALS.pull()
+    unimorph.pull()
+    alignment.pull()
+    fusion.pull()
+    calculate.calculate()
+    graphing.graph()
+
+
+DISPATCH["all"] = all
+
+
 if __name__ == "__main__":
     for command in sys.argv[1:]:
         if command in DISPATCH:

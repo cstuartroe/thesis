@@ -111,6 +111,6 @@ def pull():
     for index, row in tqdm(list(language_info.iterrows())):
         prevs = get_inflection_shape_prevalences(row["Name"])
         for i in range(len(prevs)):
-            language_info.loc[index, f"{InflectionShapes._fields[i]} prevalence"] = prevs[i]
+            language_info.loc[index, f"{InflectionShapes._fields[i]} prevalence"] = round(prevs[i], 3)
 
     language_info.to_csv(language_info_filename, index=False)
