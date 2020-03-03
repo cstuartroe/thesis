@@ -1,7 +1,7 @@
-[submodule "sigmorphon2019"]
-	path = sigmorphon2019
-	url = https://github.com/sigmorphon/2019.git
 [submodule "crosslingual-inflection-baseline"]
 	path = crosslingual-inflection-baseline
 	url = https://github.com/cstuartroe/crosslingual-inflection-baseline.git
 	branch = master
+[submodule "conll2018"]
+	path = conll2018
+	url = https://github.com/sigmorphon/conll2018
