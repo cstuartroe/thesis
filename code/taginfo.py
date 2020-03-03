@@ -104,7 +104,6 @@ for s in UNIMORPH_CATEGORIES.values():
 
 def get_tags(lang_name):
     triplets = get_language_training_data(lang_name)
-    by_lemma = {}
     alltags = {}
 
     for triplet in triplets:
@@ -112,10 +111,6 @@ def get_tags(lang_name):
         tags = set(triplet["unimorph_tags"].split(";"))
         for tag in tags:
             alltags[tag] = alltags.get(tag, 0) + 1
-
-        if lemma not in by_lemma:
-            by_lemma[lemma] = []
-        by_lemma[lemma].append(triplet)
 
     return alltags
 
