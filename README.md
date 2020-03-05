@@ -9,6 +9,8 @@ My Haverford senior thesis, for the linguistics and computer science departments
 
 ### Presentation
 
+[Google Slides link](https://drive.google.com/file/d/1xtdSY_7c6q7Ed0N5lbc7zmsLSLnTA8yb/view?usp=sharing) to the research poster I presented on 06 Mar, at the [Mid-Atlantic Student Colloquium on Speech, Language and Learning](http://www.mascsll.org/).
+
 [Google Slides link](https://docs.google.com/presentation/d/1ZJ5U0rtgXXkWPtZDAl0yCemlQ7uknwvqKLJFP7EsjNw/edit?usp=sharing) to the research poster I presented on 20 Dec.
 
 [Google Slides link](https://docs.google.com/presentation/d/1oS3cGQ_itKyxFzSd9rEZpu6cVv-jZwUu7vg5gabs_60/edit?usp=sharing) to the presentation I gave on 15 Nov.
