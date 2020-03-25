@@ -2,6 +2,7 @@ import numpy as np
 
 from .general import *
 from .unimorph import POS
+from .alignment import InflectionShapes
 
 COLUMN_ORDER = [
     "Source Language",
@@ -18,7 +19,9 @@ COLUMN_ORDER = [
     "Levenshtein Improvement",
     "Best Levenshtein Team",
     "POS distribution similarity"
-] + [f"{pos} category overlap" for pos in POS]
+] + [f"{pos} category overlap" for pos in POS] + [
+    "Inflection shape similarity"
+]
 
 
 def calculate_distance():
@@ -110,10 +113,26 @@ def calculate_POS_distribution_overlaps():
     SIGMORPHON_2019_results["POS distribution similarity"] = POS_distribution_overlaps
 
 
+def calculate_inflection_shape_similarity():
+    inflection_shape_similarities = []
+    for row in SIGMORPHON_2019_results.iterrows():
+        source = get_language_by_name(row[1]["Source Language"])
+        target = get_language_by_name(row[1]["Target Language"])
+
+        source_prevs = [source[f"{shape} prevalence"] for shape in InflectionShapes._fields]
+        target_prevs = [target[f"{shape} prevalence"] for shape in InflectionShapes._fields]
+
+        inflection_shape_similarity = 1 - sum([abs(sp-tp) for sp, tp in zip(source_prevs, target_prevs)])/(sum(source_prevs) + sum(target_prevs))
+        inflection_shape_similarities.append(round(inflection_shape_similarity, 3))
+
+    SIGMORPHON_2019_results["Inflection shape similarity"] = inflection_shape_similarities
+
+
 def calculate():
     calculate_distance()
     calculate_improvements()
     for pos in POS:
         calculate_category_overlap(pos)
     calculate_POS_distribution_overlaps()
+    calculate_inflection_shape_similarity()
     SIGMORPHON_2019_results[COLUMN_ORDER].to_csv(SIGMORPHON_2019_results_filename, index=False)

@@ -167,15 +167,15 @@ def get_fusion(lang_name):
 
     FUSION_TIMER.task("Constructing fusion grid")
 
-    fusion_grid = []
+    fusion_grid = [[''] + list(UNIMORPH_CATEGORIES.keys())]
     for tagtype1 in UNIMORPH_CATEGORIES:
-        fusion_grid.append([])
+        fusion_grid.append([tagtype1])
         for tagtype2 in UNIMORPH_CATEGORIES:
             if (tagtype1, tagtype2) in double_diff_distance_averages \
               and tagtype1 in single_diff_distance_averages and tagtype2 in single_diff_distance_averages:
                 ddd = double_diff_distance_averages[(tagtype1, tagtype2)]
                 sda_sum = single_diff_distance_averages[tagtype1] + single_diff_distance_averages[tagtype2]
-                fusion_coefficient = round(1 - (ddd / sda_sum), 3)
+                fusion_coefficient = round(2 - (2*ddd / sda_sum), 3)
             else:
                 fusion_coefficient = 0
             fusion_grid[-1].append(fusion_coefficient)

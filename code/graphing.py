@@ -41,7 +41,8 @@ def graph():
         "V category overlap",
         "ADJ category overlap",
         "POS distribution similarity",
-        "Genealogical distance"
+        "Genealogical distance",
+        "Inflection shape similarity"
     ]
 
     turkic_languages = list(language_info[language_info["Language family"] == "Turkic"]["Name"])
@@ -60,6 +61,16 @@ def graph():
         "Distantly related": 1,
         "Unrelated": 0
     }
+
+    for polarity in ['', 'in']:
+        folder = f"images/generated/{polarity}significant/"
+        for filename in os.listdir(folder):
+            file_path = os.path.join(folder, filename)
+            try:
+                if filename != ".gitkeep" and (os.path.isfile(file_path) or os.path.islink(file_path)):
+                    os.unlink(file_path)
+            except Exception as e:
+                print('Failed to delete %s. Reason: %s' % (file_path, e))
 
     for i, metric in enumerate(metrics):
         print(f"{i+1}/{len(metrics)} {metric}")

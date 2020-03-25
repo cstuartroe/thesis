@@ -67,15 +67,18 @@ def get_inflection_shapes(lemma, form):
 
     prefix, infix, alternation, suffix = False, False, False, False
     z = list(zip(lemmapad, formpad))
+    if all(c1 != c2 for c1, c2 in z):
+        # if the entire word is completely different, is any inflection shape being employed?
+        return InflectionShapes(prefix=False, suffix=False, infix=False, alternation=True)
 
     i = 0
-    while PAD_CHR in z[i]:
+    while z[i][0] != z[i][1]:
         prefix = True
         i += 1
     z = z[i:]
 
     i = -1
-    while PAD_CHR in z[i]:
+    while z[i][0] != z[i][1]:
         suffix = True
         i -= 1
     if i != -1:
@@ -114,3 +117,23 @@ def pull():
             language_info.loc[index, f"{InflectionShapes._fields[i]} prevalence"] = round(prevs[i], 3)
 
     language_info.to_csv(language_info_filename, index=False)
+
+
+def print_alignment_graphic(s1, s2):
+    """Generate a latex chart of Levenshtein diffing and alignment
+    """
+    tab = levenshtein_diffs(s1, s2)
+
+    print(f"\\begin{{tabular}}{{c|{'l'*(len(s2)+1)}}}")
+    print(f"  & & {' & '.join(list(s2))} \\\\")
+    print("\\hline")
+    for i in range(len(s1)+1):
+        cells = [f"\\tikzmark{{{i}x{j}l}}{float(tab[i][j][-1])}\\tikzmark{{{i}x{j}r}}" for j in range(len(s2)+1)]
+        print(f"  {s1[i-1] if i > 0 else ''} & {' & '.join(cells)} \\\\")
+    print(f"\\end{{tabular}}")
+    print("\\begin{tikzpicture}[overlay, remember picture, yshift=.25\\baselineskip, shorten >=.5pt, shorten <=.5pt]")
+    for i in range(len(s1)+1):
+        for j in range(len(s2)+1):
+            x, y, _ = tab[i][j]
+            print(f"\\draw [->] ([yshift=.1cm]{{pic cs:{i}x{j}{'r' if y == 0 else 'l'}}}) -- ([yshift=.1cm]{{pic cs:{i+x}x{j+y}r}});")
+    print("\\end{tikzpicture}")
