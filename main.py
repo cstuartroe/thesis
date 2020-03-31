@@ -1,6 +1,7 @@
 import sys
 
 from code import WALS, unimorph, calculate, graphing, alignment, taginfo, fusion
+from crosslingual_inflection_baseline.src import train
 
 DISPATCH = {
     "WALS": WALS.pull,
@@ -30,7 +31,8 @@ if __name__ == "__main__":
         if command in DISPATCH:
             DISPATCH[command]()
         else:
-            print(f"Unknown command: {command}")
+            # print(f"Unknown command: {command}")
+            train.main()
 
     if len(sys.argv) == 1:
         print("Usage: python main.py <command>")

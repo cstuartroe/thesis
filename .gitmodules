@@ -1,7 +1,6 @@
-[submodule "crosslingual-inflection-baseline"]
-	path = crosslingual-inflection-baseline
-	url = https://github.com/cstuartroe/crosslingual-inflection-baseline.git
-	branch = master
 [submodule "conll2018"]
 	path = conll2018
 	url = https://github.com/cstuartroe/conll2018
+[submodule "crosslingual_inflection_baseline"]
+	path = crosslingual_inflection_baseline
+	url = https://github.com/cstuartroe/crosslingual_inflection_baseline
