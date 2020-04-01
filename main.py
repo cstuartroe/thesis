@@ -10,7 +10,7 @@ DISPATCH = {
     "fusion": fusion.pull,
     "knowntags": taginfo.print_knowns,
     "calculate": calculate.calculate,
-    "graph": graphing.graph
+    "graph": graphing.graph,
 }
 
 
