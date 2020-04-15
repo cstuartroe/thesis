@@ -1,6 +1,6 @@
 import sys
 
-from code import WALS, unimorph, calculate, graphing, alignment, taginfo, fusion
+from code import WALS, unimorph, calculate, graphing, alignment, taginfo, fusion, modeling
 from crosslingual_inflection_baseline.src import train
 
 DISPATCH = {
@@ -11,6 +11,7 @@ DISPATCH = {
     "knowntags": taginfo.print_knowns,
     "calculate": calculate.calculate,
     "graph": graphing.graph,
+    "model": modeling.main
 }
 
 
@@ -21,6 +22,7 @@ def all():
     fusion.pull()
     calculate.calculate()
     graphing.graph()
+    modeling.main
 
 
 DISPATCH["all"] = all
@@ -31,8 +33,7 @@ if __name__ == "__main__":
         if command in DISPATCH:
             DISPATCH[command]()
         else:
-            # print(f"Unknown command: {command}")
-            train.main()
+            print(f"Unknown command: {command}")
 
     if len(sys.argv) == 1:
         print("Usage: python main.py <command>")
