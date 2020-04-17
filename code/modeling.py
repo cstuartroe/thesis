@@ -1,6 +1,8 @@
 import sys
 import os
+import re
 
+from .general import flatten
 from crosslingual_inflection_baseline.src import train, sigmorphon19_task1_decode
 
 language_groups = [
@@ -16,10 +18,6 @@ language_groups = [
     ["zulu"],
     ["basque"]
 ]
-
-
-def flatten(l):
-    return [item for sublist in l for item in sublist]
 
 
 def get_target_languages(source_language):
@@ -68,3 +66,13 @@ def main():
 
     for source_lang, target_lang, correct_guesses, total_guesses in pairs:
         print(f"{source_lang} -> {target_lang}: {correct_guesses}/{total_guesses} ({round(correct_guesses*100/total_guesses)}%)")
+
+
+def flush():
+    for tagdir in os.listdir("model"):
+        for pairdir in os.listdir(os.path.join("model", tagdir)):
+            model_files = [f for f in os.listdir(os.path.join("model", tagdir, pairdir))
+                           if re.fullmatch(r"model.nll_.+epoch_\d+", f)]
+            model_files.sort(key=lambda f: int(f.split("_")[-1]))
+            for model in model_files[:-1]:
+                os.remove(os.path.join("model", tagdir, pairdir, model))

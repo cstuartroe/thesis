@@ -5,14 +5,22 @@ import os
 language_info_filename = "csv/language_info.csv"
 SIGMORPHON_2018_results_filename = "csv/SIGMORPHON_2018_results.csv"
 SIGMORPHON_2019_results_filename = "csv/SIGMORPHON_2019_results.csv"
+my_results_filename = "csv/my_results.csv"
 
 language_info = pd.read_csv(language_info_filename)
-SIGMORPHON_2018_results = pd.read_csv(SIGMORPHON_2018_results_filename, index_col="Language")
-SIGMORPHON_2019_results = pd.read_csv(SIGMORPHON_2019_results_filename)
+# SIGMORPHON_2018_results = pd.read_csv(SIGMORPHON_2018_results_filename, index_col="Language")
+# SIGMORPHON_2019_results = pd.read_csv(SIGMORPHON_2019_results_filename)
+my_results = pd.read_csv(my_results_filename) if os.path.exists(my_results_filename) else pd.DataFrame()
+
+ARCHES = [d.split("-")[1] for d in os.listdir("model")]
 
 
 def get_language_by_name(name):
-    return language_info[language_info["Name"] == name].iloc[0]
+    rows = language_info[language_info["Name"] == name]
+    if len(rows) == 1:
+        return rows.iloc[0]
+    else:
+        raise KeyError(f"There are {len(rows)} language with name {name}")
 
 
 def get_language_by_iso(iso_code):
@@ -47,3 +55,7 @@ def get_language_training_data(lang_name):
         data.append({"lemma":lemma, "inflected_form": inflected_form, "unimorph_tags": unimorph_tags})
 
     return data
+
+
+def flatten(l):
+    return [item for sublist in l for item in sublist]

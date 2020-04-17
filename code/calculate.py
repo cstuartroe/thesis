@@ -2,31 +2,124 @@ import numpy as np
 
 from .general import *
 from .unimorph import POS
-from .alignment import InflectionShapes
+from .alignment import InflectionShapes, levenshtein
 
 COLUMN_ORDER = [
     "Source Language",
-    "Target Language",
+    "Target Language"] + flatten([[
+    f"Baseline Accuracy ({arch})",
+    f"Transfer Accuracy ({arch})",
+    f"Accuracy Improvement ({arch})",
+    f"Baseline Levenshtein ({arch})",
+    f"Transfer Levenshtein ({arch})",
+    f"Levenshtein Improvement ({arch})"
+] for arch in ARCHES]) + [
+    "POS distribution similarity",
     "Distance",
-    "Baseline Accuracy",
-    "Best Transfer Accuracy",
-    "Accuracy Improvement vs Baseline",
-    "Best 2018 Accuracy",
-    "Accuracy Improvement vs 2018",
-    "Best Accuracy Team",
-    "Baseline Levenshtein",
-    "Best Transfer Levenshtein",
-    "Levenshtein Improvement",
-    "Best Levenshtein Team",
-    "POS distribution similarity"
-] + [f"{pos} category overlap" for pos in POS] + [
     "Inflection shape similarity"
-]
+] + [f"{pos} category overlap" for pos in POS]
+
+
+def split_langs(dirname):
+    l = dirname.split("-")
+    for i in range(len(l)-1):
+        if l[i] == "crimean":
+            l = [f"{l[i]}-{l[i+1]}"] + l[i+2:]
+    if l[0] == "none":
+        l[0] = None
+    return l
+
+
+def read_file(filename):
+    lines = []
+    with open(filename, "r") as fh:
+        for line in fh.readlines():
+            lemma, word, tags = line.replace("\n", " ").split("\t")
+            lines.append((lemma, word, tags))
+    return lines
+
+
+def create_rows():
+    global my_results
+    my_results = pd.DataFrame(columns=COLUMN_ORDER[:2+6*len(ARCHES)])
+
+    for arch in ARCHES:
+        for dirname in os.listdir("model/tag-" + arch):
+            langs = split_langs(dirname)
+            if len(langs) == 1:
+                continue
+            elif langs[0] is None:
+                continue
+
+            baseline_predictions_filename = f"model/tag-{arch}/none-{langs[1]}/predictions.txt"
+            transfer_predictions_filename = f"model/tag-{arch}/{dirname}/predictions.txt"
+            gold_filename = f"conll2018/task1/all/{langs[1]}-test"
+            if not os.path.exists(transfer_predictions_filename):
+                continue
+
+            baseline_guesses = read_file(baseline_predictions_filename)
+            transfer_guesses = read_file(transfer_predictions_filename)
+            answers = read_file(gold_filename)
+
+            assert(len(baseline_guesses) == len(answers))
+            assert(len(transfer_guesses) == len(answers))
+
+            correct_baseline_guesses, cumulative_baseline_levenshtein = 0, 0
+            correct_transfer_guesses, cumulative_transfer_levenshtein = 0, 0
+
+            for (lemma1, baseline_guess, tags1), (lemma2, transfer_guess, tags2), (lemma3, answer, tags3) in zip(baseline_guesses, transfer_guesses, answers):
+                assert(lemma1 == lemma2)
+                assert(lemma2 == lemma3)
+                assert(tags1 == tags2)
+                assert(tags2 == tags3)
+
+                if baseline_guess == answer:
+                    correct_baseline_guesses += 1
+                cumulative_baseline_levenshtein += levenshtein(baseline_guess, answer)
+
+                if transfer_guess == answer:
+                    correct_transfer_guesses += 1
+                cumulative_transfer_levenshtein += levenshtein(transfer_guess, answer)
+
+            row = {
+                f"Baseline Accuracy ({arch})": correct_baseline_guesses/len(answers),
+                f"Transfer Accuracy ({arch})": correct_transfer_guesses/len(answers),
+                f"Baseline Levenshtein ({arch})": cumulative_baseline_levenshtein/len(answers),
+                f"Transfer Levenshtein ({arch})": cumulative_transfer_levenshtein/len(answers)
+            }
+
+
+
+            rows = my_results.loc[
+                (my_results["Source Language"] == langs[0].replace("-", " ").title()) &
+                (my_results["Target Language"] == langs[1].replace("-", " ").title())
+            ]
+
+            if len(rows) == 0:
+                row["Source Language"] = langs[0].replace("-", " ").title()
+                row["Target Language"] = langs[1].replace("-", " ").title()
+                my_results = my_results.append(row, ignore_index=True)
+            elif len(rows) == 1:
+                rows.update(row)
+            else:
+                raise KeyError
+
+        my_results[f"Accuracy Improvement ({arch})"] = my_results[f"Transfer Accuracy ({arch})"] - my_results[f"Baseline Accuracy ({arch})"]
+        my_results[f"Levenshtein Improvement ({arch})"] = my_results[f"Transfer Levenshtein ({arch})"] - my_results[f"Baseline Levenshtein ({arch})"]
+
+        my_results = my_results.round({
+            f"Baseline Accuracy ({arch})": 3,
+            f"Transfer Accuracy ({arch})": 3,
+            f"Accuracy Improvement ({arch})": 3,
+            f"Baseline Levenshtein ({arch})": 2,
+            f"Transfer Levenshtein ({arch})": 2,
+            f"Levenshtein Improvement ({arch})": 2
+        })
 
 
 def calculate_distance():
     distances = []
-    for row in SIGMORPHON_2019_results.iterrows():
+    for row in my_results.iterrows():
         source = get_language_by_name(row[1]["Source Language"])
         target = get_language_by_name(row[1]["Target Language"])
         if source["Language family"] == target["Language family"]:
@@ -37,12 +130,12 @@ def calculate_distance():
         else:
             distances.append("Unrelated")
 
-    SIGMORPHON_2019_results["Distance"] = distances
+    my_results["Distance"] = distances
 
 
 def calculate_category_overlap(pos):
     category_overlaps = []
-    for row in SIGMORPHON_2019_results.iterrows():
+    for row in my_results.iterrows():
         source = get_language_by_name(row[1]["Source Language"])
         target = get_language_by_name(row[1]["Target Language"])
 
@@ -66,31 +159,7 @@ def calculate_category_overlap(pos):
 
         category_overlaps.append(round(overlap, 2))
 
-    SIGMORPHON_2019_results[f"{pos} category overlap"] = category_overlaps
-
-
-def calculate_improvements():
-    global SIGMORPHON_2019_results
-
-    SIGMORPHON_2019_results["Accuracy Improvement vs Baseline"] = SIGMORPHON_2019_results["Best Transfer Accuracy"] \
-                                                                  - SIGMORPHON_2019_results["Baseline Accuracy"]
-    SIGMORPHON_2019_results["Levenshtein Improvement"] = SIGMORPHON_2019_results["Best Transfer Levenshtein"] \
-                                                         - SIGMORPHON_2019_results["Baseline Levenshtein"]
-
-    accuracy_2018_list = []
-    accuracy_improvement_vs_2018 = []
-    for row in SIGMORPHON_2019_results.iterrows():
-        accuracy_2018 = SIGMORPHON_2018_results.loc[row[1]["Target Language"]]["Low-resource accuracy"]
-        accuracy_2018_list.append(accuracy_2018)
-        accuracy_improvement_vs_2018.append(row[1]["Best Transfer Accuracy"] - accuracy_2018)
-    SIGMORPHON_2019_results["Best 2018 Accuracy"] = accuracy_2018_list
-    SIGMORPHON_2019_results["Accuracy Improvement vs 2018"] = accuracy_improvement_vs_2018
-
-    SIGMORPHON_2019_results = SIGMORPHON_2019_results.round({
-        "Accuracy Improvement vs Baseline": 1,
-        "Accuracy Improvement vs 2018": 1,
-        "Levenshtein Improvement": 2
-    })
+    my_results[f"{pos} category overlap"] = category_overlaps
 
 
 def calculate_proportions(d):
@@ -100,7 +169,7 @@ def calculate_proportions(d):
 
 def calculate_POS_distribution_overlaps():
     POS_distribution_overlaps = []
-    for row in SIGMORPHON_2019_results.iterrows():
+    for row in my_results.iterrows():
         source = get_language_by_name(row[1]["Source Language"])
         target = get_language_by_name(row[1]["Target Language"])
 
@@ -110,12 +179,12 @@ def calculate_POS_distribution_overlaps():
         distribution_overlap = round(sum(min(source_POS[pos], target_POS[pos]) for pos in POS), 3)
         POS_distribution_overlaps.append(distribution_overlap)
 
-    SIGMORPHON_2019_results["POS distribution similarity"] = POS_distribution_overlaps
+    my_results["POS distribution similarity"] = POS_distribution_overlaps
 
 
 def calculate_inflection_shape_similarity():
     inflection_shape_similarities = []
-    for row in SIGMORPHON_2019_results.iterrows():
+    for row in my_results.iterrows():
         source = get_language_by_name(row[1]["Source Language"])
         target = get_language_by_name(row[1]["Target Language"])
 
@@ -125,14 +194,14 @@ def calculate_inflection_shape_similarity():
         inflection_shape_similarity = 1 - sum([abs(sp-tp) for sp, tp in zip(source_prevs, target_prevs)])/(sum(source_prevs) + sum(target_prevs))
         inflection_shape_similarities.append(round(inflection_shape_similarity, 3))
 
-    SIGMORPHON_2019_results["Inflection shape similarity"] = inflection_shape_similarities
+    my_results["Inflection shape similarity"] = inflection_shape_similarities
 
 
 def calculate():
+    create_rows()
     calculate_distance()
-    calculate_improvements()
     for pos in POS:
         calculate_category_overlap(pos)
     calculate_POS_distribution_overlaps()
     calculate_inflection_shape_similarity()
-    SIGMORPHON_2019_results[COLUMN_ORDER].to_csv(SIGMORPHON_2019_results_filename, index=False)
+    my_results[COLUMN_ORDER].to_csv(my_results_filename, index=False)

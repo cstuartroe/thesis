@@ -11,7 +11,8 @@ DISPATCH = {
     "knowntags": taginfo.print_knowns,
     "calculate": calculate.calculate,
     "graph": graphing.graph,
-    "model": modeling.main
+    "model": modeling.main,
+    "flush": modeling.flush
 }
 
 
@@ -21,8 +22,7 @@ def all():
     alignment.pull()
     fusion.pull()
     calculate.calculate()
-    graphing.graph()
-    modeling.main
+    # graphing.graph()
 
 
 DISPATCH["all"] = all

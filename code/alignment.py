@@ -49,6 +49,11 @@ def levenshtein_diffs(s1, s2, sub_penalty=1.5):
     return diffs
 
 
+def levenshtein(s1, s2, sub_penalty=1.5):
+    diffs = levenshtein_diffs(s1, s2, sub_penalty)
+    return diffs[-1][-1][-1]
+
+
 def levenshtein_align(s1, s2):
     diffs = levenshtein_diffs(s1, s2)
     i, j = len(s1) - 1, len(s2) - 1
