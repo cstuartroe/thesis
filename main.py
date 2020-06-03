@@ -12,7 +12,8 @@ DISPATCH = {
     "calculate": calculate.calculate,
     "graph": graphing.graph,
     "model": modeling.main,
-    "flush": modeling.flush
+    "flush": modeling.flush,
+    "stats": calculate.extra_stats
 }
 
 
