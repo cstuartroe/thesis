@@ -4,11 +4,16 @@
 \WarningFilter{scrreprt}{Usage of package}
 \WarningFilter{scrreprt}{Activating an ugly workaround}
 
+\RequirePackage[     % advanced quotes
+    strict=true,         %   - warning are errors now
+    style=english       %   - english quotes
+]{csquotes}
+
 % **************************************************
 % Document Class Definition
 % **************************************************
 \documentclass[%
-	paper=A4,					% paper size --> A4 is default in Germany
+	paper=letter,					% paper size --> A4 is default in Germany
 	twoside=false,				% onesite or twoside printing
 	openany,					% doublepage cleaning ends up right side
 	parskip=full,				% spacing value / method for paragraphs
@@ -45,6 +50,12 @@
 \usepackage[utf8]{inputenc}		% defines file's character encoding
 \usepackage[english]{babel} % babel system, adjust the language of the content
 \usepackage[textsize=footnotesize]{todonotes}   % allows todo notes
+\usepackage[style=authoryear,
+            maxbibnames=50,
+            maxcitenames=2,
+            bibstyle=authoryear,
+            citestyle=authoryear,
+           ]{biblatex}
 \usepackage[					% clean thesis style
 	figuresep=colon,%
 	sansserif=false,%
@@ -53,15 +64,36 @@
 	hangsubsection=true,%
 	colorize=full,%
 	colortheme=bluemagenta,%
- LLT: Use biber if using UTF8 encoding
-	bibsys=bibtex,%
-	bibsys=biber,%
+% LLT: Use biber if using UTF8 encoding
+%	bibsys=bibtex,%
+%	bibsys=biber,%
 	bibfile=sources,%
 	bibstyle=authoryear,%
 ]{cleanthesis}
 
 % Maroon and grey theme:
 \cthesissetcolor{cmyk}{0, 1, .7, .3}{.7, 1, .7, .3}
+% - fixes wrong fonts in the toc, thanks to magnucki
+\renewcommand{\cftchapfont}{\usefont{T1}{bch}{b}{n}\selectfont}
+\renewcommand{\cfttoctitlefont}{\thesischapterfont}
+\renewcommand{\cftloftitlefont}{\thesischapterfont}
+\renewcommand{\cftlottitlefont}{\thesischapterfont}
+
+\hypersetup{					% setup the hyperref-package options
+	pdftitle={\thesisTitle},	% 	- title (PDF meta)
+	pdfauthor={\thesisName},	% 	- author (PDF meta)
+	plainpages=false,			% 	-
+	colorlinks=false,			% 	- colorize links?
+	pdfborder={0 0 0},			% 	-
+	breaklinks=true,			% 	- allow line break inside links
+	bookmarksnumbered=true,		%
+	bookmarksopen=true,			%
+	citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black,
+    linktoc=all
+}
 
 \usepackage{amsthm}
  
@@ -74,25 +106,12 @@
  \usepackage{mathtools}
  \usepackage[fleqn]{amsmath}
 \usepackage{graphicx}
-\usepackage{hyperref}
-\hypersetup{					% setup the hyperref-package options
-%	pdftitle={\thesisTitle},	% 	- title (PDF meta)
-%	pdfsubject={\thesisSubject},% 	- subject (PDF meta)
-%	pdfauthor={\thesisName},	% 	- author (PDF meta)
-%	plainpages=false,			% 	-
-	colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,			% 	- colorize links?
-%	pdfborder={0 0 0},			% 	-
-%	breaklinks=true,			% 	- allow line break inside links
-%	bookmarksnumbered=true,		%
-%	bookmarksopen=true			%
-}
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 
-\urlstyle{same}
+% \urlstyle{same}
 
 % **************************************************
 % Document CONTENT
@@ -137,9 +156,10 @@
 \input{content/introduction.tex}
 \input{content/litreview.tex}
 \input{content/data.tex}
-\input{content/problem.tex}
+\input{content/methods.tex}
+\input{content/results}
 \input{content/conclusion.tex}
-\input{content/future.tex}
+% \input{content/future.tex}
 
 %\cleardoublepage
 
@@ -152,7 +172,7 @@
 \setlength{\biblabelsep}{0pt}
 \setlength{\bibitemsep}{0.5\baselineskip plus 0.5\baselineskip}
 \printbibliography[nottype=online]
-\printbibliography[heading=subbibliography,title={Webseiten},type=online,prefixnumbers={@}]
+%\printbibliography[heading=subbibliography,title={Webseiten},type=online,prefixnumbers={@}]
 }
  \cleardoublepage
 

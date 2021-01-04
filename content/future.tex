@@ -10,18 +10,6 @@ Secondly, since relatively little data about specific model performance and the 
 
 There are a number of linguistic typological features that should be possible to gather and may be useful parameters for analysis, including inflection shape (prefixing, suffixing, infixing, introflexion), degree of fusion, and presence of long-distance phonological processes. In addition, obtaining one or more continuous metrics of language relatedness would be useful in working around the statistical confounding that related language pairs appear to introduce.
 
-\subsection{Inflection shape}
-
-Inflection shape - that is, occurrence of prefixing, suffixing, or infixing morphology - may be important in determining, for instance, how attention mechanisms choose to focus on various parts of a word, so that a model trained on a language with a particular profile of inflection shapes may be more likely to attend to the correct parts of words when readapted to model a language with similar inflection shapes. For instance, if the source language indicates plurality with a prefix, then a soft attention model initially trained on that language may weight its attention toward the beginning of a word more highly when attempting to mark a word for plurality. Such focusing of attention may be a desired behavior if that model is adapted to another language which also marks plurality with a prefix.
-
-To generate inflection shape metrics, string alignment and transduction methods adopted from pre-neural morphology models can be used: simple character alignment can identify which parts of a lemma constitute the stem, and then the frequency of various inflection shapes can be measured by counting how many string changes take place before, after, or within the stem in inflected forms.
-
-\subsection{Fusion}
-
-Transfer learning may be beneficial between languages that both exhibit or lack fusion, or more specifically between languages that exhibit fusion between the same categories; since fusion operates over combinations of two or more categories, though, the space of possible fusion behaviors is quite large and it may be difficult to find unrelated languages with similar fusion behavior. 
-
-To measure fusion between a pair of grammatical categories, average Levenshtein or LCS distance can be taken between forms that differ along both categories and compared to distance between forms that only differ along one category. For example, recall the Spanish verbs \textit{hablé} "I spoke", \textit{hablo} "I speak", \textit{habló} "he/she spoke". \textit{Hablé} differs from each of the other forms along one category - it has a different tense from \textit{hablo} and a different subject person than \textit{habló} - and its LCS distance from each is 2. \textit{Hablo} and \textit{habló} differ in both tense and subject person but also have a LCS distance of 2; the fact that forms that differ along both categories are no more dissimilar than forms that differ along one is an indicator of the fact that tense and subject agreement are fused in Spanish verbs. In contrast, consider the Finnish verbs \textit{puhuin} "I spoke", \textit{puhun} "I speak", and \textit{puhui} "he/she spoke" - \textit{puhuin} has an LCS distance of 1 from both other forms while they have an LCS distance of 2 from one another, indicating that in this case Finnish does not fuse tense and subject marking - past tense is constructed with a suffix \textit{-i} and first person subject with a subsequent suffix \textit{-n}.
-
 \subsection{Long-distance phonological processes}
 
 Given that long-distance processes present considerable difficulty for non-neural morphology models, neural models may have to be intensively trained to attend to such processes, presenting an opportunity for transfer learning to leverage existing knowledge.
@@ -36,16 +24,3 @@ Consistent and quite fine-grained information language genealogy trees can be fo
 
 Finding good data about lexical similarity looks to be significantly more challenging - certainly, no database exists of pairwise lexical similarity between all languages, and automatically calculating lexical similarity from the SIGMORPHON 2018 data would require semantic or translation information about the words, to identify cognate words with corresponding meanings between languages. Such information may be obtainable via the Google Cloud Translation API. An easier mode of estimation may be via the "Translations" tab of entries on English Wiktionary, which provides translations of a word into a potentially large number of other languages. Average Levenshtein distance between translations for entries into a pair of languages might be a good indicator of overall lexical distance - such a method could be attempted on pairs of languages with known lexical distance to assess its utility.
 
-\section{Transfer learning experiments}
-
-\subsection{Pair and data selection}
-
-The set of language pairs chosen for SIGMORPHON 2019 was heavily skewed toward related Indo-European languages. Choosing pairs that are more balanced over different language families and levels of genealogical relation would be useful in robustly characterizing the impact of genealogical similarity. Specifically distributing languages pairs evenly over other typological categories and measures of structural similarity is also likely to produce more statistically robust results.
-
-One step that is also not taken in the SIGMORPHON 2019 shared task is selectively sampling data sets. For instance, training data could be artificially limited to a single part of speech. Models may have an easier time learning to inflect only one part of speech, and such filtering would also allow part of speech distribution overlap to be modulated independently of language pair choice. 
-
-\subsection{Neural model changes and comparisons}
-
-SIGMORPHON 2019 suggests in passing that the submitting teams found transfer data to boost the performance of models, but no raw data was published comparing the same models with and without access to transfer data. The means used in this paper of estimating the effect of transfer learning on performance is highly approximate; a next step would be to conduct and publish a direct comparison of models that differ only in their use of transfer learning.
-
-The performance of \texttt{CMU-03} on SIGMORPHON 2019 also suggests that neural model parameters may impact not only overall quality, but what types of language pairs a model does well with. Experimenting with model parameters other than transfer learning - in particular, attention mechanism and use of ensembling with string transduction methods - could yield insights about such effects.

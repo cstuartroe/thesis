@@ -27,7 +27,7 @@ scraped from Wiktionary and provided on GitHub\\ (https://github.com/sigmorphon/
 
 The languages represented in the 2018 data cover a wide range of families and typological categories. Although over half of the languages are from the Indo-European family, a grouping that includes most languages of Europe, Greater Iran, and the northern part of the Indian subcontinent, one or more languages each of the Athabaskan, Bantu, Causasian, Kartvelian, Quechua, Semitic, Sino-Tibetan, Turkic, and Uralic families, as well as two isolates (Haida and Basque), are represented. Diverse inflection strategies are also represented, including suffixing, prefixing, infixing, ablaut, and introflexion, and long-distance processes like vowel harmony and consonant harmony \parencite{Cotterell2018b}. 
 
-Among the 2019 pairs, all the aforementioned families except Athabaskan, Kartvelian, and Sino-Tibetan are represented \parencite{McCarthy2019}. The pairs are not chosen randomly from among the 2018 languages; many languages are chosen more often as source than target languages and vice versa, and the Turkic language family in particular was exhaustively paired. I conjecture that many seemingly difficult-to-explain trends in the data are related to confounding factors in the choices of language pairs, and in the conclusion section I will discuss what some of these effects may be and how future work might overcome these confounds.
+Among the 2019 pairs, all the aforementioned families except Athabaskan, Kartvelian, and Sino-Tibetan are represented \parencite{McCarthy2019}. The pairs are not chosen randomly from among the 2018 languages; many languages are chosen more often as source than target languages and vice versa, and the Turkic language family in particular was exhaustively paired. 
 
 \subsection{Sourcing and sampling}
 
@@ -37,7 +37,7 @@ For most of the languages in the SIGMORPHON 2018 data, forms were gathered via s
 
 \subsection{Representation of morphology}
 
-The SIGMORPHON data set uses the UniMorph format to indicate grammatical categories  \parencite{Cotterell2018b}. The UniMorph project, initially published in 2015, is a format for encoding morphological categories uniformly cross-linguistically. It uses a universal label set to encode morphological categories across languages. An example of the annotation can be seen in Fig. \ref{fig:fintrip}, where words are marked for, e.g., part of speech (\texttt{ADJ, V, N}), voice (\texttt{PASS}), tense (\texttt{PRS}), number (\texttt{SG, PL}), and other categories (\cite{SylakGlassman2015}, \cite{SylakGlassman2015a}, \cite{SylakGlassman2016}). These annotations were key in generating important metrics of language pairs for this study: category overlap for each part of speech, and part of speech distribution similarity, discussed in sections \ref{sec:CO} and \ref{sec:POSDS} respectively.
+The SIGMORPHON data set uses the UniMorph format to indicate grammatical categories  \parencite{Cotterell2018b}. The UniMorph project, initially published in 2015, is a format for encoding morphological categories uniformly cross-linguistically. It uses a universal label set to encode morphological categories across languages. An example of the annotation can be seen in Fig. \ref{fig:fintrip}, where words are marked for, e.g., part of speech (\texttt{ADJ, V, N}), voice (\texttt{PASS}), tense (\texttt{PRS}), number (\texttt{SG, PL}), and other categories (\cite{SylakGlassman2015}, \cite{SylakGlassman2015a}, \cite{SylakGlassman2016}). These annotations were key in generating important metrics of language pairs for this study: category overlap for each part of speech and part of speech distribution similarity are discussed in sections \ref{sec:CO} and \ref{sec:POSDS} respectively.
 
 \section{Language typology and genealogy data}
 
@@ -62,16 +62,6 @@ SIGMORPHON 2018 supplied a basic "Family" designation for each of the 103 langua
 \subsection{Part of speech category sets}
 
 As a simple measure of language structure, the SIGMORPHON 2019 data was scraped for UniMorph tags to identify the total set of morphological tags present for each language and each part of speech. For instance, the set of tags found on German nouns is \texttt{ACC;DAT;GEN;NOM;PL;SG}. This measure should not be taken as a set of all inflectional categories actually used in a particular language; the SIGMORPHON data can skew toward particular parts of speech or particular inflection types. The generated category sets were simply used as a rudimentary measure of structural similarity between languages. For instance, if a language A marks nouns for case but not definiteness, then another language B that marks nouns for case as well is in some sense more similar to language A than a language C that does not mark case but does mark definiteness on nouns.
-
-\section{Model performance data}
-
-\subsection{SIGMORPHON 2018}
-
-For the SIGMORPHON 2018 shared task 1, a morphological inflection task that did not license transfer learning, 27 models were submitted. Each model was described in a separate paper. In an appendix, SIGMORPHON 2018 published detailed results of the accuracy of each model on each language in low, medium, and high-resource settings, allowing for analysis of the specific performance differences of those models.
-
-\subsection{SIGMORPHON 2019}
-
-For the SIGMORPHON 2019 shared task 1, 13 models were submitted. Only two teams described their submissions in separately published papers; of those, only one published detailed data about the performance of its model on each transfer pair. SIGMORPHON 2019 only published average accuracy and Levenshtein distance of each team's submission, and the accuracy and Levenshtein distance of the baseline and highest-scoring submission for each transfer pair, so detailed comparison of the performance of each model was not possible.
 
 \section{A note on publishing}
 

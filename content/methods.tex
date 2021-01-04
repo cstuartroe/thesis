@@ -1,0 +1,160 @@
+\chapter{Methods}
+
+This section is essentially a prose description of the computational methods employed to generate data and results for this study. For a more precise look at methodology, the code for this project can be viewed at \texttt{https://github.com/cstuartroe/thesis}.
+
+\section{Assessing the impact of transfer learning}
+
+In order to assess transfer learning, I conducted an original data generation phase, with a model based on the SIGMORPHON 2019 baseline model. 
+
+\subsection{Pair selection}
+
+242 language pairs were selected, from among 21 languages: Turkish, Bashkir, Crimean Tatar, Uzbek, Spanish, Portuguese, Italian, Romanian, Georgian, Navajo, Arabic, Hebrew, Danish, Swedish, Czech, Slovak, Quechua, Zulu, and Basque. These languages were grouped into 11 groups: Turkic, Romance, Semitic, Germanic, Slavic, and six single-language groups. Each language was the target language in pairs with each language from their group as well as one from every other group as source languages; for instance, Arabic was a target language with Georgian, Estonian, Bashkir, Hebrew, Zulu, Czech, Navajo, Swedish, Quechua, Spanish, and Basque as source languages; pairs were chosen such that each language from a group was a source language roughly the same number of times.
+
+\subsection{Neural model changes and comparisons}
+
+The model used was based on the SIGMORPHON 2019 baseline model, but with two major changes. Firstly, the means of utilizing source language material was switched from concurrent training to pretraining. In the SIGMORPHON 2019 baseline, 10000 examples from the source language and 100 example from the target language were homogenously sampled, such that only about 1\% of training examples were from the target language. In this study, a model was pretrained on the source language before being fine-tuned on the target language. This allowed relatively less training time to be spent on the source language, and a single pretrained model of the source language to be adapted to multiple target languages. Secondly, the data setting for the target language was altered from the low-volume to medium-volume SIGMORPHON training sets; that is, from 100 examples of target language morphology to 1000.
+
+Pretraining and training were conducted identically in epochs, with each training example being attempted once per epoch in random order. Hyperparameters were modified in a validation step in between each epoch. 10 epochs were conducted in pretraining, and 20 in training.
+
+The SIGMORPHON 2019 baseline code actually had four models, differentiated by LSTM attention mechanism: soft attention, hard attention with dynamic programming, $0^{\text{th}}$-order hard attention, and $1^{\text{st}}$-order hard attention. This study conducted identical data generation with both soft attention and dynamic programming hard attention models, to assess the relationship between model architecture and transfer learning efficacy.
+
+\subsection{Non-transfer baseline}
+
+To assess the impact of transfer learning, outcomes of models with pretraining were compared to models with no transfer learning. These were identical in structure to the transfer learned models, but simply skipped a pretraining step. Target language training of non-transfer learning models was conducted in the same fashion as the transfer learning models: 20 epochs of training over data sets of 1000 examples. The primary dependent variable in this study was the difference in performance between a transfer learning model for a particular language pair, and a non-pretrained model with the same target language.
+
+\section{Part of speech category overlap}
+\label{sec:CO}
+
+As discussed in the data section, the UniMorph annotations in the training data were scraped to discover the full set of morphological categories for which each part of speech could be inflected in each language. These category sets were used to generate a metric of structural similarity I call category overlap.
+
+For each part speech in each of two languages, given the category sets $C_{POS, language\ A}$ and $C_{POS, language\ B}$, the overlap was calculated as
+
+\[overlap(POS, language\ A, language\ B) = \frac{\abs*{C_{POS, language\ A}\ \cap\ C_{POS, language\ B}}}{\abs*{C_{POS, language\ A}\ \cup\ C_{POS, language\ B}}}\]
+
+Take as an example the category overlap of nouns in German and Greek. The German category set for nouns is $C_{N,German} = \{ACC, DAT, GEN, NOM, PL, SG\}$ - German inflects nouns for singular and plural number and four grammatical cases. The Greek nominal category set is similar, except that it lacks a dative case and has a vocative case: $C_{N,Greek} = \{ACC, VOC, GEN, NOM, PL, SG\}$. The nominal category overlap is 
+
+$overlap(N, German, Greek)$\\
+$= \frac{\abs*{\{ACC, DAT, GEN, NOM, PL, SG\}\ \cap\ \{ACC, VOC, GEN, NOM, PL, SG\}}}{\abs*{\{ACC, DAT, GEN, NOM, PL, SG\}\ \cup\ \{ACC, VOC, GEN, NOM, PL, SG\}}}$\\
+$= \frac{\abs*{\{ACC, GEN, NOM, PL, SG\}}}{\abs*{\{ACC, DAT, VOC, GEN, NOM, PL, SG\}}}$\\
+$= \frac{5}{7} \approx .71$\\
+
+It is not uncommon for one or both languages in a pair to lack any morphological categories for a particular part of speech; many languages do not have training data for all parts of speech. If only one language has an empty tagset for a part of speech, then by the above formula the category overlap is 0. If both languages have empty tagsets, the above formula would yield $\frac{0}{0}$, not a real number; in such a case the pair is excluded from analysis.
+
+\section{Part of speech distribution similarity}
+\label{sec:POSDS}
+
+The UniMorph tags identify four broad parts of speech cross-linguistically in the SIGMORPHON data: nouns, verbs, adjectives, and determiners. However, there is only one language among the 79 in the SIGMORPHON 2019 data that has all of these parts of speech represented; 64 languages have verb data, 55 have noun data, 40 have adjective data, and only 2 have determiner data. 
+
+I use similarity between the relative distributions of parts of speech in source and target training sets as a metric of data set similarity. Part of speech distribution in the SIGMORPHON data is not necessarily an indication of actual linguistic typology; while some languages lack inflection on some parts of speech, there are also omissions in the SIGMORPHON data due to data sparsity \parencite{Cotterell2018b}.
+
+My part of speech distribution similarity statistic is simply the statistical distance between the part of speech distributions of the two languages, calculated by summing the differences of the proportions of each part of speech between the two languages. That is, if $f_{POS, language}$ is the number of training forms for a given language and part of speech and $f_{language}$ is the total number of training forms for a language, the part of speech distribution similarity between language A and language B is
+
+\[POSDS(language\ A, language\ B) = \sum\limits_{POS}\ \abs*{\frac{f_{POS, language\ A}}{f_{language\ A}} - \frac{f_{POS, language\ B}}{f_{language\ B}}}\]
+
+where $POS = \{N, V, ADJ, DET\}$.
+
+\section{Inflection shape}
+
+Inflection shape - that is, occurrence of prefixing, suffixing, or infixing morphology - may be important in determining, for instance, how attention mechanisms choose to focus on various parts of a word, so that a model trained on a language with a particular profile of inflection shapes may be more likely to attend to the correct parts of words when readapted to model a language with similar inflection shapes. For instance, if the source language indicates plurality with a prefix, then a soft attention model initially trained on that language may weight its attention toward the beginning of a word more highly when attempting to mark a word for plurality. Such focusing of attention may be a desired behavior if that model is adapted to another language which also marks plurality with a prefix.
+
+To generate inflection shape metrics, lemma-inflected form pairs were first aligned by a Levenshtein distance algorithm. As shown in the graphic below, Levenshtein distance was calculated using the classic dynamic programming algorithm with a substitution penalty of 1.5, and traced backwards to identify a string alignment corresponding to the set of insertions, deletions, and substitutions that minimizes edit distance.
+
+\begin{figure}[ht]
+\begin{tabular}{c|lllllllll}
+  & & s & a & a & v & u & t & t & u \\
+\hline
+   & \tikzmark{0x0l}0.0\tikzmark{0x0r} & \tikzmark{0x1l}1.0\tikzmark{0x1r} & \tikzmark{0x2l}2.0\tikzmark{0x2r} & \tikzmark{0x3l}3.0\tikzmark{0x3r} & \tikzmark{0x4l}4.0\tikzmark{0x4r} & \tikzmark{0x5l}5.0\tikzmark{0x5r} & \tikzmark{0x6l}6.0\tikzmark{0x6r} & \tikzmark{0x7l}7.0\tikzmark{0x7r} & \tikzmark{0x8l}8.0\tikzmark{0x8r} \\
+  s & \tikzmark{1x0l}1.0\tikzmark{1x0r} & \tikzmark{1x1l}0.0\tikzmark{1x1r} & \tikzmark{1x2l}1.0\tikzmark{1x2r} & \tikzmark{1x3l}2.0\tikzmark{1x3r} & \tikzmark{1x4l}3.0\tikzmark{1x4r} & \tikzmark{1x5l}4.0\tikzmark{1x5r} & \tikzmark{1x6l}5.0\tikzmark{1x6r} & \tikzmark{1x7l}6.0\tikzmark{1x7r} & \tikzmark{1x8l}7.0\tikzmark{1x8r} \\
+  a & \tikzmark{2x0l}2.0\tikzmark{2x0r} & \tikzmark{2x1l}1.0\tikzmark{2x1r} & \tikzmark{2x2l}0.0\tikzmark{2x2r} & \tikzmark{2x3l}1.0\tikzmark{2x3r} & \tikzmark{2x4l}2.0\tikzmark{2x4r} & \tikzmark{2x5l}3.0\tikzmark{2x5r} & \tikzmark{2x6l}4.0\tikzmark{2x6r} & \tikzmark{2x7l}5.0\tikzmark{2x7r} & \tikzmark{2x8l}6.0\tikzmark{2x8r} \\
+  a & \tikzmark{3x0l}3.0\tikzmark{3x0r} & \tikzmark{3x1l}2.0\tikzmark{3x1r} & \tikzmark{3x2l}1.0\tikzmark{3x2r} & \tikzmark{3x3l}0.0\tikzmark{3x3r} & \tikzmark{3x4l}1.0\tikzmark{3x4r} & \tikzmark{3x5l}2.0\tikzmark{3x5r} & \tikzmark{3x6l}3.0\tikzmark{3x6r} & \tikzmark{3x7l}4.0\tikzmark{3x7r} & \tikzmark{3x8l}5.0\tikzmark{3x8r} \\
+  p & \tikzmark{4x0l}4.0\tikzmark{4x0r} & \tikzmark{4x1l}3.0\tikzmark{4x1r} & \tikzmark{4x2l}2.0\tikzmark{4x2r} & \tikzmark{4x3l}1.0\tikzmark{4x3r} & \tikzmark{4x4l}1.5\tikzmark{4x4r} & \tikzmark{4x5l}2.5\tikzmark{4x5r} & \tikzmark{4x6l}3.5\tikzmark{4x6r} & \tikzmark{4x7l}4.5\tikzmark{4x7r} & \tikzmark{4x8l}5.5\tikzmark{4x8r} \\
+  u & \tikzmark{5x0l}5.0\tikzmark{5x0r} & \tikzmark{5x1l}4.0\tikzmark{5x1r} & \tikzmark{5x2l}3.0\tikzmark{5x2r} & \tikzmark{5x3l}2.0\tikzmark{5x3r} & \tikzmark{5x4l}2.5\tikzmark{5x4r} & \tikzmark{5x5l}1.5\tikzmark{5x5r} & \tikzmark{5x6l}2.5\tikzmark{5x6r} & \tikzmark{5x7l}3.5\tikzmark{5x7r} & \tikzmark{5x8l}4.5\tikzmark{5x8r} \\
+  a & \tikzmark{6x0l}6.0\tikzmark{6x0r} & \tikzmark{6x1l}5.0\tikzmark{6x1r} & \tikzmark{6x2l}4.0\tikzmark{6x2r} & \tikzmark{6x3l}3.0\tikzmark{6x3r} & \tikzmark{6x4l}3.5\tikzmark{6x4r} & \tikzmark{6x5l}2.5\tikzmark{6x5r} & \tikzmark{6x6l}3.0\tikzmark{6x6r} & \tikzmark{6x7l}4.0\tikzmark{6x7r} & \tikzmark{6x8l}5.0\tikzmark{6x8r} \\
+\end{tabular}
+\begin{tikzpicture}[overlay, remember picture, yshift=.25\baselineskip, shorten >=.5pt, shorten <=.5pt]
+\draw [->] ([yshift=.1cm]{pic cs:0x0r}) -- ([yshift=.1cm]{pic cs:0x0r});
+\draw [->] ([yshift=.1cm]{pic cs:0x1l}) -- ([yshift=.1cm]{pic cs:0x0r});
+\draw [->] ([yshift=.1cm]{pic cs:0x2l}) -- ([yshift=.1cm]{pic cs:0x1r});
+\draw [->] ([yshift=.1cm]{pic cs:0x3l}) -- ([yshift=.1cm]{pic cs:0x2r});
+\draw [->] ([yshift=.1cm]{pic cs:0x4l}) -- ([yshift=.1cm]{pic cs:0x3r});
+\draw [->] ([yshift=.1cm]{pic cs:0x5l}) -- ([yshift=.1cm]{pic cs:0x4r});
+\draw [->] ([yshift=.1cm]{pic cs:0x6l}) -- ([yshift=.1cm]{pic cs:0x5r});
+\draw [->] ([yshift=.1cm]{pic cs:0x7l}) -- ([yshift=.1cm]{pic cs:0x6r});
+\draw [->] ([yshift=.1cm]{pic cs:0x8l}) -- ([yshift=.1cm]{pic cs:0x7r});
+\draw [->] ([yshift=.1cm]{pic cs:1x0r}) -- ([yshift=.1cm]{pic cs:0x0r});
+\draw [->] ([yshift=.1cm]{pic cs:1x1l}) -- ([yshift=.1cm]{pic cs:0x0r});
+\draw [->] ([yshift=.1cm]{pic cs:1x2l}) -- ([yshift=.1cm]{pic cs:1x1r});
+\draw [->] ([yshift=.1cm]{pic cs:1x3l}) -- ([yshift=.1cm]{pic cs:1x2r});
+\draw [->] ([yshift=.1cm]{pic cs:1x4l}) -- ([yshift=.1cm]{pic cs:1x3r});
+\draw [->] ([yshift=.1cm]{pic cs:1x5l}) -- ([yshift=.1cm]{pic cs:1x4r});
+\draw [->] ([yshift=.1cm]{pic cs:1x6l}) -- ([yshift=.1cm]{pic cs:1x5r});
+\draw [->] ([yshift=.1cm]{pic cs:1x7l}) -- ([yshift=.1cm]{pic cs:1x6r});
+\draw [->] ([yshift=.1cm]{pic cs:1x8l}) -- ([yshift=.1cm]{pic cs:1x7r});
+\draw [->] ([yshift=.1cm]{pic cs:2x0r}) -- ([yshift=.1cm]{pic cs:1x0r});
+\draw [->] ([yshift=.1cm]{pic cs:2x1r}) -- ([yshift=.1cm]{pic cs:1x1r});
+\draw [->] ([yshift=.1cm]{pic cs:2x2l}) -- ([yshift=.1cm]{pic cs:1x1r});
+\draw [->] ([yshift=.1cm]{pic cs:2x3l}) -- ([yshift=.1cm]{pic cs:2x2r});
+\draw [->] ([yshift=.1cm]{pic cs:2x4l}) -- ([yshift=.1cm]{pic cs:2x3r});
+\draw [->] ([yshift=.1cm]{pic cs:2x5l}) -- ([yshift=.1cm]{pic cs:2x4r});
+\draw [->] ([yshift=.1cm]{pic cs:2x6l}) -- ([yshift=.1cm]{pic cs:2x5r});
+\draw [->] ([yshift=.1cm]{pic cs:2x7l}) -- ([yshift=.1cm]{pic cs:2x6r});
+\draw [->] ([yshift=.1cm]{pic cs:2x8l}) -- ([yshift=.1cm]{pic cs:2x7r});
+\draw [->] ([yshift=.1cm]{pic cs:3x0r}) -- ([yshift=.1cm]{pic cs:2x0r});
+\draw [->] ([yshift=.1cm]{pic cs:3x1r}) -- ([yshift=.1cm]{pic cs:2x1r});
+\draw [->] ([yshift=.1cm]{pic cs:3x2r}) -- ([yshift=.1cm]{pic cs:2x2r});
+\draw [->] ([yshift=.1cm]{pic cs:3x3l}) -- ([yshift=.1cm]{pic cs:2x2r});
+\draw [->] ([yshift=.1cm]{pic cs:3x4l}) -- ([yshift=.1cm]{pic cs:3x3r});
+\draw [->] ([yshift=.1cm]{pic cs:3x5l}) -- ([yshift=.1cm]{pic cs:3x4r});
+\draw [->] ([yshift=.1cm]{pic cs:3x6l}) -- ([yshift=.1cm]{pic cs:3x5r});
+\draw [->] ([yshift=.1cm]{pic cs:3x7l}) -- ([yshift=.1cm]{pic cs:3x6r});
+\draw [->] ([yshift=.1cm]{pic cs:3x8l}) -- ([yshift=.1cm]{pic cs:3x7r});
+\draw [->] ([yshift=.1cm]{pic cs:4x0r}) -- ([yshift=.1cm]{pic cs:3x0r});
+\draw [->] ([yshift=.1cm]{pic cs:4x1r}) -- ([yshift=.1cm]{pic cs:3x1r});
+\draw [->] ([yshift=.1cm]{pic cs:4x2r}) -- ([yshift=.1cm]{pic cs:3x2r});
+\draw [->] ([yshift=.1cm]{pic cs:4x3r}) -- ([yshift=.1cm]{pic cs:3x3r});
+\draw [->] ([yshift=.1cm]{pic cs:4x4l}) -- ([yshift=.1cm]{pic cs:3x3r});
+\draw [->] ([yshift=.1cm]{pic cs:4x5l}) -- ([yshift=.1cm]{pic cs:4x4r});
+\draw [->] ([yshift=.1cm]{pic cs:4x6l}) -- ([yshift=.1cm]{pic cs:4x5r});
+\draw [->] ([yshift=.1cm]{pic cs:4x7l}) -- ([yshift=.1cm]{pic cs:4x6r});
+\draw [->] ([yshift=.1cm]{pic cs:4x8l}) -- ([yshift=.1cm]{pic cs:4x7r});
+\draw [->] ([yshift=.1cm]{pic cs:5x0r}) -- ([yshift=.1cm]{pic cs:4x0r});
+\draw [->] ([yshift=.1cm]{pic cs:5x1r}) -- ([yshift=.1cm]{pic cs:4x1r});
+\draw [->] ([yshift=.1cm]{pic cs:5x2r}) -- ([yshift=.1cm]{pic cs:4x2r});
+\draw [->] ([yshift=.1cm]{pic cs:5x3r}) -- ([yshift=.1cm]{pic cs:4x3r});
+\draw [->] ([yshift=.1cm]{pic cs:5x4r}) -- ([yshift=.1cm]{pic cs:4x4r});
+\draw [->] ([yshift=.1cm]{pic cs:5x5l}) -- ([yshift=.1cm]{pic cs:4x4r});
+\draw [->] ([yshift=.1cm]{pic cs:5x6l}) -- ([yshift=.1cm]{pic cs:5x5r});
+\draw [->] ([yshift=.1cm]{pic cs:5x7l}) -- ([yshift=.1cm]{pic cs:5x6r});
+\draw [->] ([yshift=.1cm]{pic cs:5x8l}) -- ([yshift=.1cm]{pic cs:5x7r});
+\draw [->] ([yshift=.1cm]{pic cs:6x0r}) -- ([yshift=.1cm]{pic cs:5x0r});
+\draw [->] ([yshift=.1cm]{pic cs:6x1r}) -- ([yshift=.1cm]{pic cs:5x1r});
+\draw [->] ([yshift=.1cm]{pic cs:6x2r}) -- ([yshift=.1cm]{pic cs:5x2r});
+\draw [->] ([yshift=.1cm]{pic cs:6x3r}) -- ([yshift=.1cm]{pic cs:5x3r});
+\draw [->] ([yshift=.1cm]{pic cs:6x4r}) -- ([yshift=.1cm]{pic cs:5x4r});
+\draw [->] ([yshift=.1cm]{pic cs:6x5r}) -- ([yshift=.1cm]{pic cs:5x5r});
+\draw [->] ([yshift=.1cm]{pic cs:6x6l}) -- ([yshift=.1cm]{pic cs:5x5r});
+\draw [->] ([yshift=.1cm]{pic cs:6x7l}) -- ([yshift=.1cm]{pic cs:6x6r});
+\draw [->] ([yshift=.1cm]{pic cs:6x8l}) -- ([yshift=.1cm]{pic cs:6x7r});
+\end{tikzpicture} \\
+\centering
+\caption{Computing string alignment using the Levenshtein algorithm.}
+\end{figure}
+
+In the above example, the string pair is aligned as:
+\begin{center}
+\texttt{saapua----} \\
+\texttt{saavuttu}
+\end{center}
+with the substitutions \texttt{p} $\rightarrow$ \texttt{v} and \texttt{a} $\rightarrow$ \texttt{t}, and the addition of a suffix \texttt{-tu}. A boolean value is then calculated for the presence or absence of each inflection shape (prefixing, infixing, alternation, and suffixing) based on the aligned pair of strings: if there are unequal characters at the beginning or end of the strings, these are considered to be part of a prefix or suffix (even if the Levenshtein algorithm regarded them as a substitution, so that for instance in this example the \texttt{a} $\rightarrow$ \texttt{t} substitution is considered to be part of a suffix, not an alternation. Any non-spacer character aligned with a gap in the word interior is considered to be part of an infix, and two unequal non-spacer characters aligned in the word interior are considered to be part of an alternation, so that for instance in this example the \texttt{p} $\rightarrow$ \texttt{v} substitution is regarded as an alternation. 
+
+For each language in the dataset, a proportion was calculated for each inflection shape of how many lemma-inflected form pairs in the training set exhibited that inflection shape. For each language pair, an inflection shape similarity coefficient was calculated equal to $1 - \frac{\Sigma_{shape} |p_{s, shape} + p_{t, shape}}{\Sigma_{shape} |p_{s, shape} - p_{t, shape}}$, where $p_{s, shape}$ is the prevalence of a particular inflection shape in the source language, and $p_{t, shape}$ the same for the target language.
+
+\section{Fusion}
+
+To measure fusion between a pair of grammatical categories, average Levenshtein distance was taken between forms that differ along both categories and compared to distance between forms that only differ along one category. For example, recall the Spanish verbs \textit{hablé} "I spoke", \textit{hablo} "I speak", \textit{habló} "he/she spoke". \textit{Hablé} differs from each of the other forms along one category - it has a different tense from \textit{hablo} and a different subject person than \textit{habló} - and its Levenshtein distance from each is 1.5. \textit{Hablo} and \textit{habló} differ in both tense and subject person but also have a Levenshtein distance of 1.5; the fact that forms that differ along both categories are no more dissimilar than forms that differ along one is an indicator of the fact that tense and subject agreement are fused in Spanish verbs. In contrast, consider the Finnish verbs \textit{puhuin} "I spoke", \textit{puhun} "I speak", and \textit{puhui} "he/she spoke" - \textit{puhuin} has an Levenshtein distance of 1 from both other forms while they have an Levenshtein distance of 1.5 from one another, indicating that in this case Finnish does not fuse tense and subject marking - past tense is constructed with a suffix \textit{-i} and first person subject with a subsequent suffix \textit{-n}. 
+
+For each language in the dataset, a set of form pairs which differ only by one UniMorph category (e.g., number, case, tense, or gender) was generated for each category present in that language, and then a set of form pairs which differ by two categories was generated, and Levenshtein distance calculated for each pair. Average distance for each single category and category pair was calculated, and then a coefficient generated for every category pair $c_{a,b} = 2 - \frac{2d_{a,b}}{d_a + d_b}$ where $a$ and $b$ are the two categories, $d_a$ and $d_b$ the average Levenshtein distance between pairs which differ along only one particular category, and $d_{a,b}$ the average Levenshtein distance between pairs which differ by both categories and no other categories. This coefficient typically ranges between 0, indicating no fusion whatsoever, and 1, indicating total fusion between marking of the two categories, although there are not hard boundaries on its range. For instance, Spanish verbs which differ by tense only have an average Levenshtein distance of 2.7, those which differ by person only have an average Levenshtein distance of 3.2, and those which differ by both tense and person but are the same in all other grammatical categories have an average Levenshtein distance of 4.6, so the fusion coefficient for tense and person in Spanish is $2 - \frac{2\cdot4.6}{3.2+2.7} \approx .44$, indicating that tense and person marking are somewhat fused in Spanish. By contrast, tense and aspect have a fusion coefficient of 1.07 in Spanish, while person and aspect have a fusion coefficient of .19 (in the SIGMORPHON dataset, the Spanish preterite is considered to be perfective while the imperfect is considered to be imperfective, with all other Spanish verb forms unmarked for aspect).
+
+The similarity of fusion patterns between two languages was a coefficient between 0 and 1, calculated as follows: where $c_{x,y,language A}$ is the fusion coefficient for tag categories $x$ and $y$ in a particular language A, and $c_{x,y,language B}$ the same for language B, their fusion similarity is 
+
+$$\frac{\sum_x\sum_{y \neq x} |c_{x,y,language A} - c_{x,y,language B}|}{\sum_x\sum_{y \neq x} |c_{x,y,language A}| + |c_{x,y,language B}|}$$
